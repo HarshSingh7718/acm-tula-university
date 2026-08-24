@@ -1,56 +1,56 @@
 [
   {
     "id": "vault-01-hackathons",
-    "title": "Hackathon Builds & 24H Sprints",
+    "title": "Hack The Future 2.0 & Sprints",
     "category": "BUILD VAULT",
     "tag": "HACKATHONS",
-    "date": "2025–2026",
-    "count": "18 Project Repositories",
-    "description": "Snapshots and codebase archives from high-velocity builds, full-stack prototypes, hardware IoT nodes, and deployment demos created during chapter hackathons."
+    "date": "SEP 2025 – MAY 2026",
+    "count": "6 Flagship Hackathons",
+    "description": "Codebases, hardware prototypes, and deployments from Hack The Future 2.0, UTU AI & Coding Hackathon, SIH 2025, and Sprint-X Mini Hackathon."
   },
   {
     "id": "vault-02-charter",
-    "title": "Charter Inauguration & Keynotes",
+    "title": "Chapter Inauguration & Ethical Hacking",
     "category": "MILESTONES",
     "tag": "FOUNDATION",
-    "date": "OCT 2025",
-    "count": "12 Chapter Artifacts",
-    "description": "Historical documentation and inaugural sessions marking the official establishment of the ACM Student Chapter at Tula's University, Dehradun."
+    "date": "AUG 29, 2025",
+    "count": "Inaugural Charter Session",
+    "description": "The landmark inauguration ceremony of ACM Tula's Student Chapter accompanied by an in-depth cybersecurity awareness and ethical hacking masterclass."
   },
   {
     "id": "vault-03-workshops",
-    "title": "Systems & Algorithmic Whiteboards",
+    "title": "Fullstack & 21st Century Skills Workshops",
     "category": "WORKSHOPS",
     "tag": "COMPUTE LABS",
     "date": "2025–2026",
-    "count": "24 Workshop Logs",
-    "description": "Technical deep-dives covering distributed consensus, Linux kernel internals, compiler construction, and competitive programming problem breakdowns."
+    "count": "3 Dedicated Masterclasses",
+    "description": "Hands-on engineering tracks including the 6-day Personal Task Manager deployment series and community outreach workshops under PM Shri Yojana."
   },
   {
-    "id": "vault-04-research",
-    "title": "AI & Quantum Research Seminars",
-    "category": "RESEARCH",
-    "tag": "PUBLICATIONS",
+    "id": "vault-04-competitions",
+    "title": "DESIGN-ATHON & UI/UX Product Sprints",
+    "category": "DESIGN LAB",
+    "tag": "PRODUCT JAM",
+    "date": "MAY 14, 2026",
+    "count": "24 Design Submissions",
+    "description": "Rapid product prototyping showcase featuring design systems, spatial layouts, accessibility standards, and reactive user interfaces."
+  },
+  {
+    "id": "vault-05-symposium",
+    "title": "Utkrisht 2025 & State Tech Symposiums",
+    "category": "SYMPOSIUM",
+    "tag": "TECHFEST",
     "date": "NOV 2025",
-    "count": "8 Research Papers",
-    "description": "Colloquia slides, student preprint digests, and exploratory sessions on transformer optimizations, local LLMs, and cryptographic protocols."
+    "count": "Annual Gathering",
+    "description": "Major technical symposia including Utkrisht 2025 and 25 Years of Uttarakhand Glory celebrating regional computing breakthroughs and innovation."
   },
   {
-    "id": "vault-05-opensource",
-    "title": "Open Source Upstream Sprints",
-    "category": "COMMUNITY",
-    "tag": "CONTRIBUTIONS",
-    "date": "FEB 2026",
-    "count": "45 Merged Pull Requests",
-    "description": "Collaborative pull request sprints, mentoring first-time contributors, and maintaining community developer tools across modern toolchains."
-  },
-  {
-    "id": "vault-06-mentorship",
-    "title": "Industry Colloquia & AMA Firesides",
-    "category": "NETWORKING",
-    "tag": "LEADERSHIP",
-    "date": "2025–2026",
-    "count": "14 Interactive Sessions",
-    "description": "Interactive ask-me-anything sessions with software architects, research scientists, and alumni working across leading engineering organizations."
+    "id": "vault-06-coding",
+    "title": "CODERUSH & Algorithmic Arenas",
+    "category": "COMPETITIVE",
+    "tag": "ALGORITHMS",
+    "date": "NOV 04, 2025",
+    "count": "Speed & Logic Sprints",
+    "description": "Time-pressured competitive coding tournaments solving complex algorithmic challenges, dynamic programming problems, and data structures."
   }
 ]
