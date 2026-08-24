@@ -1,56 +1,110 @@
 [
   {
-    "id": "vault-01-hackathons",
-    "title": "Hack The Future 2.0 & Sprints",
-    "category": "BUILD VAULT",
-    "tag": "HACKATHONS",
-    "date": "SEP 2025 – MAY 2026",
-    "count": "6 Flagship Hackathons",
-    "description": "Codebases, hardware prototypes, and deployments from Hack The Future 2.0, UTU AI & Coding Hackathon, SIH 2025, and Sprint-X Mini Hackathon."
+    "id": "vault-01-sprint-x",
+    "title": "Sprint-X Mini Hackathon",
+    "category": "STUDENT COMPETITIONS",
+    "tag": "MINI HACKATHON",
+    "date": "MAY 15, 2026",
+    "count": "Rapid Build Sprint",
+    "description": "High-intensity engineering sprint challenging student teams to prototype functional applications, smart tools, and algorithmic workflows in a focused timeframe."
   },
   {
-    "id": "vault-02-charter",
-    "title": "Chapter Inauguration & Ethical Hacking",
-    "category": "MILESTONES",
-    "tag": "FOUNDATION",
-    "date": "AUG 29, 2025",
-    "count": "Inaugural Charter Session",
-    "description": "The landmark inauguration ceremony of ACM Tula's Student Chapter accompanied by an in-depth cybersecurity awareness and ethical hacking masterclass."
-  },
-  {
-    "id": "vault-03-workshops",
-    "title": "Fullstack & 21st Century Skills Workshops",
-    "category": "WORKSHOPS",
-    "tag": "COMPUTE LABS",
-    "date": "2025–2026",
-    "count": "3 Dedicated Masterclasses",
-    "description": "Hands-on engineering tracks including the 6-day Personal Task Manager deployment series and community outreach workshops under PM Shri Yojana."
-  },
-  {
-    "id": "vault-04-competitions",
-    "title": "DESIGN-ATHON & UI/UX Product Sprints",
-    "category": "DESIGN LAB",
-    "tag": "PRODUCT JAM",
+    "id": "vault-02-design-athon",
+    "title": "DESIGN-ATHON",
+    "category": "STUDENT COMPETITIONS",
+    "tag": "DESIGN-ATHON",
     "date": "MAY 14, 2026",
-    "count": "24 Design Submissions",
-    "description": "Rapid product prototyping showcase featuring design systems, spatial layouts, accessibility standards, and reactive user interfaces."
+    "count": "UI/UX Product Sprint",
+    "description": "Competitive design sprint focused on crafting intuitive UI/UX architectures, user flows, interactive prototypes, and design systems for next-gen digital products."
   },
   {
-    "id": "vault-05-symposium",
-    "title": "Utkrisht 2025 & State Tech Symposiums",
-    "category": "SYMPOSIUM",
-    "tag": "TECHFEST",
-    "date": "NOV 2025",
-    "count": "Annual Gathering",
-    "description": "Major technical symposia including Utkrisht 2025 and 25 Years of Uttarakhand Glory celebrating regional computing breakthroughs and innovation."
+    "id": "vault-03-personal-task-manager",
+    "title": "Personal Task Manager Workshop",
+    "category": "WORKSHOP",
+    "tag": "DEV WORKSHOP",
+    "date": "APR 20–25, 2026",
+    "count": "6-Day Masterclass",
+    "description": "Multi-day hands-on technical workshop guiding students through building, containerizing, and deploying a full-stack personal task manager with modern web technologies."
   },
   {
-    "id": "vault-06-coding",
-    "title": "CODERUSH & Algorithmic Arenas",
-    "category": "COMPETITIVE",
-    "tag": "ALGORITHMS",
+    "id": "vault-04-utkrisht-2025",
+    "title": "Utkrisht 2025",
+    "category": "STUDENT COMPETITIONS",
+    "tag": "ANNUAL TECHFEST",
+    "date": "NOV 13–14, 2025",
+    "count": "Landmark Tech Symposium",
+    "description": "The landmark technical fest uniting students across domains for competitive coding battles, robotics challenges, research expos, and keynote masterclasses."
+  },
+  {
+    "id": "vault-05-coderush",
+    "title": "CODERUSH",
+    "category": "STUDENT COMPETITIONS",
+    "tag": "COMPETITIVE CODING",
     "date": "NOV 04, 2025",
-    "count": "Speed & Logic Sprints",
-    "description": "Time-pressured competitive coding tournaments solving complex algorithmic challenges, dynamic programming problems, and data structures."
+    "count": "Algorithmic Arena",
+    "description": "Fast-paced competitive programming showdown testing algorithmic problem-solving, dynamic programming, data structures, and speed under strict time constraints."
+  },
+  {
+    "id": "vault-06-utu-ai-hackathon",
+    "title": "UTU AI & Coding Hackathon",
+    "category": "STUDENT COMPETITIONS",
+    "tag": "AI & STATE SUMMIT",
+    "date": "NOV 04–06, 2025",
+    "count": "25 Years Uttarakhand Glory",
+    "description": "State-level 3-day hackathon celebrating 25 years of Uttarakhand through AI-driven innovation, regional problem-solving, smart governance solutions, and coding challenges."
+  },
+  {
+    "id": "vault-07-sih-internal",
+    "title": "SIH Internal Hackathon 2025",
+    "category": "STUDENT COMPETITIONS",
+    "tag": "INTERNAL QUALIFIER",
+    "date": "OCT 13, 2025",
+    "count": "Campus Qualifier",
+    "description": "University-wide preliminary qualifier for Smart India Hackathon 2025, evaluating problem statements, architectural viability, and prototype readiness."
+  },
+  {
+    "id": "vault-08-hack-the-future-2",
+    "title": "Hack The Future 2.0 – National Hackathon",
+    "category": "STUDENT COMPETITIONS",
+    "tag": "NATIONAL HACKATHON",
+    "date": "SEP 26–27, 2025",
+    "count": "Flagship 24H Arena",
+    "description": "Flagship 24-hour national hackathon bringing together 500+ builders to architect, code, and deploy transformative software and hardware solutions."
+  },
+  {
+    "id": "vault-09-pm-shri-workshop",
+    "title": "Workshop on 21st Century Skills",
+    "category": "COMMUNITY SERVICE",
+    "tag": "PM SHRI YOJANA",
+    "date": "SEP 12, 2025",
+    "count": "Youth Outreach",
+    "description": "Community outreach and skill empowerment workshop introducing school students to foundational computational thinking, cybersecurity safety, and modern digital tools."
+  },
+  {
+    "id": "vault-10-web-a-thon",
+    "title": "WEB-A-THON Hackathon 2025",
+    "category": "STUDENT COMPETITIONS",
+    "tag": "ACM WEBSITE SPRINT",
+    "date": "SEP 08–10, 2025",
+    "count": "Fullstack Showdown",
+    "description": "Intensive 3-day fullstack hackathon dedicated to designing, engineering, and optimizing high-performance web applications and chapter digital portals."
+  },
+  {
+    "id": "vault-11-care-a-thon",
+    "title": "CARE-A-THON: Campus Action for Reusable Essentials",
+    "category": "STUDENT COMPETITIONS",
+    "tag": "SUSTAINABILITY SPRINT",
+    "date": "SEP 04, 2025",
+    "count": "Campus Action",
+    "description": "Tech-for-good hackathon crafting digital logistics, awareness platforms, and resource-sharing systems for sustainable campus essentials and recycling."
+  },
+  {
+    "id": "vault-12-cyber-security-inauguration",
+    "title": "Cyber Security Awareness & Chapter Inauguration",
+    "category": "LECTURE / TECH TALK",
+    "tag": "FOUNDATION & TALK",
+    "date": "AUG 29, 2025",
+    "count": "Chapter Foundation",
+    "description": "Milestone inaugural event marking the formal establishment of ACM Tula's Student Chapter paired with an intensive ethical hacking and threat defense masterclass."
   }
 ]

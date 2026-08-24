@@ -1,5 +1,15 @@
 [
   {
+    "id": "hack-the-future-3",
+    "title": "Hack The Future 3.0",
+    "category": "Flagship National Hackathon",
+    "date": "SEP 25–26, 2026",
+    "location": "Campus Central Arena & Innovation Hub",
+    "description": "The premier 24-hour national flagship hackathon returns for its third edition. 800+ builders assembling to architect, deploy, and showcase transformative software and hardware solutions.",
+    "tag": "UPCOMING FLAGSHIP",
+    "image": "/media/events/hack-the-future.svg"
+  },
+  {
     "id": "sprint-x-mini-hackathon",
     "title": "Sprint-X Mini Hackathon",
     "category": "Student Competitions",
