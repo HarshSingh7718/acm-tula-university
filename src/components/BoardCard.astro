@@ -1,0 +1,220 @@
+---
+interface Props {
+	fullName: string;
+	position: string;
+	yearBranch?: string;
+	initials?: string;
+	photo?: string;
+	quote?: string;
+	isFeatured?: boolean;
+}
+
+const {
+	fullName,
+	position,
+	yearBranch,
+	initials = fullName
+		.split(' ')
+		.map((n) => n[0])
+		.join('')
+		.substring(0, 2)
+		.toUpperCase(),
+	photo,
+	quote = position.toLowerCase().includes('faculty')
+		? 'Because technology empowers.'
+		: 'Because progress needs builders.',
+	isFeatured = false,
+} = Astro.props;
+
+const roleBadge = isFeatured || position.toLowerCase().includes('faculty') ? 'FACULTY' : 'MEMBER';
+const passType = isFeatured || position.toLowerCase().includes('faculty') ? 'FACULTY PASS' : 'MEMBER PASS';
+---
+
+<div
+	class={`board-card-wrapper relative flex flex-col items-center select-none transition-all duration-300 ease-out hover:-translate-y-1.5 group ${isFeatured ? 'max-w-md mx-auto w-full' : 'w-full max-w-[360px]'}`}
+>
+	<!-- 1. LANYARD STRAP & METAL CLIP AT TOP -->
+	<div class="flex flex-col items-center -mb-2 z-20 pointer-events-none">
+		<!-- Blue Lanyard Strap -->
+		<div class="w-7 h-5 bg-[#0099FF] rounded-t-sm shadow-sm"></div>
+		<!-- Silver Metallic Ring / Hook -->
+		<div class="w-3.5 h-4 -mt-1 rounded-full border-2 border-slate-300 bg-transparent shadow-sm"></div>
+	</div>
+
+	<!-- 2. OUTER DARK BADGE HOLDER POUCH -->
+	<div
+		class={`w-full rounded-[28px] bg-[#111622] border ${isFeatured ? 'border-cyan/50 shadow-[0_0_35px_rgba(0,240,255,0.25)]' : 'border-[#1e293b] shadow-2xl shadow-black/80'} p-3 sm:p-3.5 flex flex-col items-center gap-3 transition-all duration-300 group-hover:border-cyan/50 group-hover:shadow-[0_12px_35px_rgba(0,240,255,0.2)]`}
+	>
+		<!-- 3 PUNCH HOLES IN HOLDER -->
+		<div class="w-full flex items-center justify-center gap-2 pt-0.5" aria-hidden="true">
+			<div class="w-9 h-2 rounded-full bg-[#080b12] border border-slate-800"></div>
+			<div class="w-14 h-2.5 rounded-full bg-[#080b12] border border-slate-700"></div>
+			<div class="w-9 h-2 rounded-full bg-[#080b12] border border-slate-800"></div>
+		</div>
+
+		<!-- 3. INNER CRISP WHITE ID BADGE CARD -->
+		<div class="w-full rounded-[22px] bg-white text-[#0A2540] p-4 sm:p-4.5 flex flex-col gap-3 shadow-md relative overflow-hidden">
+			<!-- CARD HEADER -->
+			<div class="w-full flex items-center justify-between pb-2 border-b border-[#E2E8F0]">
+				<!-- Logo & University Branding -->
+				<div class="flex items-center gap-2.5">
+					<div class="w-8 h-8 rounded-full bg-[#0080E6] flex items-center justify-center p-1.5 shadow-sm shrink-0">
+						<img
+							src="/media/images/acm_tulas_mark.svg"
+							alt="ACM Mark"
+							class="w-full h-full object-contain brightness-0 invert"
+							width="20"
+							height="20"
+							loading="lazy"
+							decoding="async"
+						/>
+					</div>
+					<div class="flex flex-col text-left">
+						<span class="font-serif font-black text-xs sm:text-[13px] text-[#0A2540] tracking-wide leading-tight">
+							TULA'S UNIVERSITY
+						</span>
+						<span class="text-[9px] sm:text-[10px] font-sans font-bold text-[#0099FF] leading-tight">
+							Dehradun · ACM Student Chapter
+						</span>
+					</div>
+				</div>
+
+				<!-- Header Role Pill -->
+				<div class="px-2.5 py-0.5 rounded-md border border-[#0099FF]/40 bg-[#0099FF]/5 text-[#0099FF] text-[9px] font-mono font-extrabold tracking-wider uppercase">
+					{roleBadge}
+				</div>
+			</div>
+
+			<!-- BLUE RIBBON BANNER -->
+			<div class="rounded-xl bg-gradient-to-r from-[#0099FF] via-[#0088EE] to-[#00A3FF] text-white px-3.5 py-1.5 sm:py-2 flex items-center justify-between shadow-[0_3px_10px_rgba(0,153,255,0.3)]">
+				<span class="font-black text-xs sm:text-sm tracking-wide font-sans uppercase">
+					ACM TULAS!
+				</span>
+				<span class="text-[8px] sm:text-[9px] font-mono font-extrabold tracking-widest text-white/95 uppercase">
+					{passType}
+				</span>
+			</div>
+
+			<!-- TWO-COLUMN MAIN BODY -->
+			<div class="grid grid-cols-[100px_1fr] sm:grid-cols-[115px_1fr] gap-3 items-stretch pt-0.5">
+				<!-- LEFT: PHOTO FRAME WITH LOCAL GRADIENT & INITIALS FALLBACK -->
+				<div class="relative rounded-[16px] bg-gradient-to-b from-[#A5D8F3] via-[#D5ECF8] to-[#8BC6E8] border-2 border-[#0099FF]/40 aspect-[3/4] flex flex-col items-center justify-center overflow-hidden shadow-inner">
+					{
+						photo ? (
+							<img
+								src={photo}
+								alt={fullName}
+								width="115"
+								height="153"
+								loading="lazy"
+								decoding="async"
+								class="w-full h-full object-cover object-center"
+								onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+							/>
+						) : null
+					}
+
+					<!-- Neutral Initials Badge -->
+					<div
+						class={`${photo ? 'hidden' : 'flex'} flex-col items-center justify-center`}
+						aria-hidden="true"
+					>
+						<div class="w-12 h-12 rounded-full bg-[#0080E6] flex flex-col items-center justify-center text-white shadow-md">
+							<span class="text-sm sm:text-base font-mono font-black leading-none">{initials}</span>
+							<span class="text-[6px] font-mono font-bold uppercase tracking-wider opacity-90 mt-0.5">{roleBadge}</span>
+						</div>
+					</div>
+
+					<!-- Bottom Overlapping Role Badge -->
+					<div class="absolute bottom-1 inset-x-1 rounded-md bg-[#0077D6] text-white text-[7px] sm:text-[8px] font-mono font-extrabold uppercase tracking-tight py-0.5 px-1 text-center truncate shadow-sm">
+						{position}
+					</div>
+				</div>
+
+				<!-- RIGHT: STRUCTURED METADATA LINES -->
+				<div class="flex flex-col justify-between text-left py-0.5">
+					<!-- 1. NAME -->
+					<div>
+						<div class="font-serif font-black text-[12px] sm:text-[13px] text-[#0A2540] leading-tight">
+							{fullName}
+						</div>
+						<div class="text-[8px] font-mono font-bold text-[#0099FF] uppercase tracking-wider mt-0.5">
+							NAME
+						</div>
+					</div>
+					<div class="h-[1px] bg-[#E2E8F0] my-0.5"></div>
+
+					<!-- 2. ROLE -->
+					<div>
+						<div class="font-sans font-extrabold text-[10px] sm:text-[11px] text-[#0066CC] uppercase tracking-tight leading-tight">
+							{position}
+						</div>
+						<div class="text-[8px] font-mono font-bold text-[#0099FF] uppercase tracking-wider mt-0.5">
+							ROLE
+						</div>
+					</div>
+					<div class="h-[1px] bg-[#E2E8F0] my-0.5"></div>
+
+					<!-- 3. LEVEL / BRANCH -->
+					<div>
+						<div class="font-sans font-semibold text-[10px] sm:text-[11px] text-[#334155] leading-tight">
+							{yearBranch || position}
+						</div>
+						<div class="text-[8px] font-mono font-bold text-[#0099FF] uppercase tracking-wider mt-0.5">
+							LEVEL
+						</div>
+					</div>
+					<div class="h-[1px] bg-[#E2E8F0] my-0.5"></div>
+
+					<!-- 4. QUOTE / MOTTO -->
+					<div class="italic text-[9px] sm:text-[10px] text-[#475569] font-serif leading-tight mt-0.5 truncate">
+						"{quote}"
+					</div>
+				</div>
+			</div>
+
+			<!-- CARD FOOTER (BARCODE + WATERMARK) -->
+			<div class="relative pt-1.5 flex items-end justify-between border-t border-[#E2E8F0] overflow-hidden">
+				<!-- Faint ACM Background Watermark -->
+				<div class="absolute right-0 -bottom-1 text-4xl font-black text-[#0099FF]/10 font-mono pointer-events-none select-none" aria-hidden="true">
+					acm
+				</div>
+
+				<!-- Barcode Graphic -->
+				<div class="flex items-center" aria-hidden="true">
+					<svg class="h-4 sm:h-5 w-24 sm:w-28 text-[#0A2540]" viewBox="0 0 100 20" fill="currentColor" preserveAspectRatio="none">
+						<rect x="0" y="0" width="2" height="20" />
+						<rect x="4" y="0" width="1" height="20" />
+						<rect x="7" y="0" width="3" height="20" />
+						<rect x="12" y="0" width="1" height="20" />
+						<rect x="15" y="0" width="4" height="20" />
+						<rect x="21" y="0" width="2" height="20" />
+						<rect x="25" y="0" width="1" height="20" />
+						<rect x="28" y="0" width="3" height="20" />
+						<rect x="33" y="0" width="2" height="20" />
+						<rect x="37" y="0" width="4" height="20" />
+						<rect x="43" y="0" width="1" height="20" />
+						<rect x="46" y="0" width="3" height="20" />
+						<rect x="51" y="0" width="2" height="20" />
+						<rect x="55" y="0" width="1" height="20" />
+						<rect x="58" y="0" width="4" height="20" />
+						<rect x="64" y="0" width="2" height="20" />
+						<rect x="68" y="0" width="3" height="20" />
+						<rect x="73" y="0" width="1" height="20" />
+						<rect x="76" y="0" width="2" height="20" />
+						<rect x="80" y="0" width="4" height="20" />
+						<rect x="86" y="0" width="1" height="20" />
+						<rect x="89" y="0" width="3" height="20" />
+						<rect x="94" y="0" width="2" height="20" />
+						<rect x="98" y="0" width="2" height="20" />
+					</svg>
+				</div>
+
+				<!-- Year Identification Tag -->
+				<span class="text-[9px] font-mono font-bold text-[#64748B] tracking-wider">
+					ACM-2026
+				</span>
+			</div>
+		</div>
+	</div>
+</div>

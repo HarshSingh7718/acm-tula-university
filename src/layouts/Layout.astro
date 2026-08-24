@@ -1,0 +1,89 @@
+---
+import Font from 'astro/components/Font.astro';
+import Header from '../components/Header.astro';
+import Preloader from '../components/Preloader.astro';
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const defaultTitle = "ACM Tulas | Student Chapter — Tula's University";
+const defaultDescription =
+	"Official ACM Student Chapter of Tula's University, Dehradun. Empowering students in computing, software engineering, technical excellence, and innovation.";
+
+const { title = defaultTitle, description = defaultDescription } = Astro.props;
+const siteUrl = Astro.site || 'https://acmtulas.org';
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const ogImageURL = new URL('/media/images/og-image.jpg', siteUrl);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="canonical" href={canonicalURL} />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#020308" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImageURL} />
+		<meta property="og:site_name" content="ACM Tula's Student Chapter" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={ogImageURL} />
+
+		<!-- Local Fonts Preloads -->
+		<link rel="preload" href="/media/fonts/PolySans-400.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/media/fonts/PolySans-700.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/media/fonts/PolySans-trial/Wide/PolySansTrial-BulkyWide.otf" as="font" type="font/otf" crossorigin />
+		<link rel="preload" href="/media/fonts/PolySans-trial/Mono/PolySansTrial-NeutralMono.otf" as="font" type="font/otf" crossorigin />
+		<Font cssVariable="--font-polysans" preload={true} />
+	</head>
+	<body class="bg-[#020308] text-[#FEFCD9] antialiased selection:bg-[#00F0FF] selection:text-[#0D0E0D]">
+		<!-- Preloader Overlay -->
+		<Preloader />
+
+		<!-- 5. ACCESSIBILITY: First focusable skip-to-content link -->
+		<a
+			href="#main-content"
+			class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2.5 focus:bg-[#00F0FF] focus:text-[#0D0E0D] focus:font-bold focus:text-sm focus:rounded-lg focus:shadow-[0_0_25px_rgba(0,240,255,0.6)] focus:outline-none focus:ring-2 focus:ring-[#0D0E0D]"
+		>
+			Skip to main content
+		</a>
+
+		<!-- Fixed Header & Navigation -->
+		<Header />
+
+		<!-- Main Landmark -->
+		<main id="main-content" tabindex="-1" class="outline-none min-h-screen">
+			<slot />
+		</main>
+
+		<!-- 1. SCROLL ENGINE: Initialize Lenis driven by GSAP ticker -->
+		<script>
+			import { initScroll } from '../scripts/scroll';
+
+			initScroll();
+			document.addEventListener('astro:page-load', () => {
+				initScroll();
+			});
+		</script>
+	</body>
+</html>

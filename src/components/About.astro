@@ -1,0 +1,355 @@
+---
+import aboutData from '../content/about.json';
+
+interface Stat {
+	label: string;
+	value: string;
+}
+
+interface AboutItem {
+	id: string;
+	title: string;
+	tag: string;
+	description: string;
+	hologram: string;
+	stats?: Stat[];
+}
+
+const panels: AboutItem[] = aboutData;
+---
+
+<section
+	id="about"
+	data-about-section
+	aria-labelledby="about-main-heading"
+	class="relative w-full bg-[#020308] select-none py-16 sm:py-24 overflow-hidden scroll-mt-20"
+>
+	<!-- Accessible Main Heading with Masked Line Rise -->
+	<div class="max-w-7xl mx-auto px-6 sm:px-12 mb-12 sm:mb-20">
+		<div class="a-reveal inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#050B14] border border-cyan/30 text-[11px] font-mono tracking-widest text-cyan uppercase mb-3">
+			<span class="w-1.5 h-1.5 rounded-full bg-cyan animate-pulse"></span>
+			<span>CHAPTER OVERVIEW</span>
+		</div>
+		<h2
+			id="about-main-heading"
+			class="a-line text-3xl sm:text-5xl md:text-6xl font-wide font-black uppercase tracking-tight text-cream"
+		>
+			<span class="a-line-inner">ENGINEERING THE HORIZON</span>
+		</h2>
+	</div>
+
+	<!-- THREE PANELS CONTAINER -->
+	<div class="max-w-7xl mx-auto px-6 sm:px-12 flex flex-col gap-24 sm:gap-36">
+		{
+			panels.map((panel, index) => {
+				const isEven = index % 2 === 1;
+
+				return (
+					<article
+						class={`about-panel relative flex flex-col ${isEven ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center justify-between gap-12 lg:gap-16 min-h-[60vh]`}
+						data-about-panel
+						data-panel-index={index}
+					>
+						<!-- TEXT BLOCK (Left on odd, Right on even on desktop; stacked on mobile) -->
+						<div class="w-full lg:w-1/2 flex flex-col justify-center text-left">
+							<span
+								class="a-reveal text-xs font-mono tracking-[0.25em] text-cyan uppercase font-bold mb-2 inline-block"
+							>
+								{panel.tag}
+							</span>
+							<h3
+								class="a-reveal text-2xl sm:text-4xl font-wide font-extrabold text-cream tracking-tight leading-snug mb-4"
+							>
+								{panel.title}
+							</h3>
+							<p
+								class="a-reveal text-sm sm:text-base text-cream/75 leading-relaxed font-sans font-normal mb-8 max-w-xl"
+							>
+								{panel.description}
+							</p>
+
+							<!-- Divider Rule -->
+							<div class="a-rule w-full max-w-md h-[1px] bg-cyan/15 mb-6"></div>
+
+							<!-- Stats Row if present with Count-Up Hooks -->
+							{panel.stats && panel.stats.length > 0 && (
+								<div class="grid grid-cols-2 gap-4 max-w-md">
+									{panel.stats.map((stat) => {
+										const match = stat.value.match(/^(\d+)(.*)$/);
+										const num = match ? match[1] : null;
+										const suffix = match ? match[2] : '';
+
+										return (
+											<div class="a-reveal stat flex flex-col">
+												<span
+													class="text-2xl sm:text-3xl font-black text-cyan font-mono tracking-tight stat-num"
+													data-count={num}
+													data-suffix={suffix}
+												>
+													{stat.value}
+												</span>
+												<span class="text-[11px] font-mono uppercase tracking-wider text-cream/60 mt-0.5">
+													{stat.label}
+												</span>
+											</div>
+										);
+									})}
+								</div>
+							)}
+						</div>
+
+						<!-- CRT RETRO ARTWORK (GSAP Scroll-Triggered Bi-directional Drift & Motion) -->
+						<div class="w-full lg:w-1/2 flex items-center justify-center relative">
+							<div
+								class="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 flex items-center justify-center"
+							>
+								<div class="icon-wrap relative w-full h-full flex items-center justify-center bg-transparent">
+									<img
+										src={panel.hologram}
+										alt={panel.title}
+										width="384"
+										height="384"
+										loading="lazy"
+										decoding="async"
+										class={`a-crt w-full h-full object-contain pointer-events-none select-none ${isEven ? 'a-crt-reverse' : ''}`}
+										onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+									/>
+									<!-- Local Fallback Placeholder -->
+									<div
+										class="hidden absolute inset-0 bg-[#050B14] flex items-center justify-center p-6 rounded-full border border-cyan/20"
+										aria-hidden="true"
+									>
+										<svg
+											class="w-full h-full animate-[spin_20s_linear_infinite]"
+											viewBox="0 0 200 200"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<circle cx="100" cy="100" r="90" stroke="#00F0FF" stroke-width="1.5" stroke-dasharray="6 8" opacity="0.6" />
+											<circle cx="100" cy="100" r="70" stroke="#8B5CF6" stroke-width="1.5" stroke-dasharray="12 6" opacity="0.7" />
+											<circle cx="100" cy="100" r="50" stroke="#00F0FF" stroke-width="1" opacity="0.4" />
+											<polygon points="100,65 130,82 130,118 100,135 70,118 70,82" stroke="#00F0FF" stroke-width="2" fill="#00F0FF" fill-opacity="0.1" />
+											<circle cx="100" cy="100" r="8" fill="#00F0FF" />
+										</svg>
+									</div>
+								</div>
+							</div>
+						</div>
+					</article>
+				);
+			})
+		}
+	</div>
+</section>
+
+<style>
+	/* Masked Headline Container */
+	[data-about-section] .a-line {
+		overflow: hidden;
+	}
+	[data-about-section] .a-line-inner {
+		display: block;
+		will-change: transform;
+	}
+
+	/* Elements managed by GSAP ScrollTrigger */
+	[data-about-panel] .a-crt {
+		will-change: transform, opacity;
+	}
+
+	[data-about-panel] .a-rule {
+		will-change: transform;
+	}
+
+	[data-about-panel] .a-reveal {
+		will-change: transform, opacity;
+	}
+
+	/* Accessibility / Reduced Motion Fallback */
+	@media (prefers-reduced-motion: reduce) {
+		[data-about-section] .a-reveal,
+		[data-about-section] .a-line-inner,
+		[data-about-panel] .a-reveal,
+		[data-about-panel] .a-rule,
+		[data-about-panel] .a-crt {
+			opacity: 1 !important;
+			transform: none !important;
+			animation: none !important;
+		}
+	}
+</style>
+
+<script>
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import { isReducedMotion } from '../scripts/scroll';
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	function setupAboutScroll() {
+		const section = document.querySelector<HTMLElement>('[data-about-section]');
+		if (!section || section.dataset.scrollInit === 'true') return;
+		section.dataset.scrollInit = 'true';
+
+		if (isReducedMotion()) {
+			section.querySelectorAll<HTMLElement>('.a-crt, .a-reveal, .a-line-inner, .a-rule').forEach((el) => {
+				el.style.opacity = '1';
+				el.style.transform = 'none';
+			});
+			return;
+		}
+
+		// 1. Headline Masked Rise (Bi-directional)
+		const headline = section.querySelector<HTMLElement>('.a-line-inner');
+		if (headline) {
+			gsap.fromTo(
+				headline,
+				{ yPercent: 110 },
+				{
+					yPercent: 0,
+					duration: 0.9,
+					ease: 'power3.out',
+					scrollTrigger: {
+						trigger: section,
+						start: 'top 85%',
+						toggleActions: 'play reverse play reverse',
+					},
+				}
+			);
+		}
+
+		// 2. Each Panel: Bi-directional GSAP Motion & Parallax for CRT & Text
+		const panels = section.querySelectorAll<HTMLElement>('[data-about-panel]');
+		panels.forEach((panel, idx) => {
+			const isEven = idx % 2 === 1;
+			const crt = panel.querySelector<HTMLElement>('.a-crt');
+			const reveals = panel.querySelectorAll<HTMLElement>('.a-reveal');
+			const rule = panel.querySelector<HTMLElement>('.a-rule');
+			const statNums = panel.querySelectorAll<HTMLElement>('.stat-num[data-count]');
+
+			// A. CRT Artwork: Smooth Bi-directional Entrance & Exit
+			if (crt) {
+				const startX = isEven ? -140 : 140;
+				const startRot = isEven ? -6 : 6;
+
+				// Slide in on scroll down, slide back out on scroll up
+				gsap.fromTo(
+					crt,
+					{
+						x: startX,
+						rotation: startRot,
+						opacity: 0,
+						scale: 0.8,
+					},
+					{
+						x: 0,
+						rotation: 0,
+						opacity: 1,
+						scale: 1,
+						duration: 1.1,
+						ease: 'power3.out',
+						scrollTrigger: {
+							trigger: panel,
+							start: 'top 82%',
+							end: 'bottom 15%',
+							toggleActions: 'play reverse play reverse',
+						},
+					}
+				);
+
+				// Smooth continuous Parallax Scrub while scrolling through panel
+				gsap.to(crt, {
+					y: -45,
+					ease: 'none',
+					scrollTrigger: {
+						trigger: panel,
+						start: 'top bottom',
+						end: 'bottom top',
+						scrub: 1.2,
+					},
+				});
+			}
+
+			// B. Text Elements Stagger (Bi-directional)
+			if (reveals.length > 0) {
+				gsap.fromTo(
+					reveals,
+					{
+						y: 35,
+						opacity: 0,
+					},
+					{
+						y: 0,
+						opacity: 1,
+						duration: 0.85,
+						stagger: 0.1,
+						ease: 'power3.out',
+						scrollTrigger: {
+							trigger: panel,
+							start: 'top 78%',
+							end: 'bottom 15%',
+							toggleActions: 'play reverse play reverse',
+						},
+					}
+				);
+			}
+
+			// C. Horizontal Rule Divider Scale (Bi-directional)
+			if (rule) {
+				gsap.fromTo(
+					rule,
+					{ scaleX: 0, transformOrigin: 'left center' },
+					{
+						scaleX: 1,
+						duration: 0.85,
+						ease: 'power3.out',
+						scrollTrigger: {
+							trigger: panel,
+							start: 'top 75%',
+							end: 'bottom 15%',
+							toggleActions: 'play reverse play reverse',
+						},
+					}
+				);
+			}
+
+			// D. Count-Up Stats Animation (re-triggers on scroll down, resets on scroll up)
+			statNums.forEach((el) => {
+				const countVal = el.dataset.count;
+				if (!countVal) return;
+				const target = parseInt(countVal, 10);
+				if (isNaN(target)) return;
+
+				const suffix = el.dataset.suffix ?? '';
+				const counter = { val: 0 };
+
+				ScrollTrigger.create({
+					trigger: panel,
+					start: 'top 75%',
+					end: 'bottom 15%',
+					onEnter: () => {
+						counter.val = 0;
+						gsap.to(counter, {
+							val: target,
+							duration: 1.2,
+							ease: 'power2.out',
+							onUpdate: () => {
+								el.textContent = String(Math.round(counter.val)) + suffix;
+							},
+						});
+					},
+					onLeaveBack: () => {
+						counter.val = 0;
+						el.textContent = '0' + suffix;
+					},
+				});
+			});
+		});
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', setupAboutScroll);
+	} else {
+		setupAboutScroll();
+	}
+</script>

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "hack-the-future",
+    "title": "Hack The Future 2.0",
+    "category": "Flagship Hackathon",
+    "date": "OCT 2025",
+    "location": "Innovation Hub, Tula's",
+    "description": "500+ student developers assembling to architect, deploy, and showcase transformative software and hardware solutions over 24 continuous hours.",
+    "tag": "FLAGSHIP HACKATHON",
+    "image": "/media/events/hack-the-future.svg"
+  },
+  {
+    "id": "cyber-security-awareness",
+    "title": "Cyber Security Awareness",
+    "category": "Security & Defense",
+    "date": "NOV 2025",
+    "location": "Cyber Lab & Virtual",
+    "description": "Hands-on threat intelligence, ethical hacking, digital forensics, and vulnerability mitigation protocols for modern infrastructure.",
+    "tag": "CYBER SECURITY",
+    "image": "/media/events/cyber-security-awareness.svg"
+  },
+  {
+    "id": "sprint-x-hackathon",
+    "title": "Sprint-X Hackathon",
+    "category": "Rapid Prototyping",
+    "date": "DEC 2025",
+    "location": "Tula's Incubation Center",
+    "description": "Fast-paced engineering sprint transforming ambitious ideas into functional MVPs, mobile applications, and cloud-native systems.",
+    "tag": "SPRINT HACKATHON",
+    "image": "/media/events/sprint-x-hackathon.svg"
+  },
+  {
+    "id": "web-a-thon",
+    "title": "Web-A-Thon Sprint",
+    "category": "Fullstack Engineering",
+    "date": "JAN 2026",
+    "location": "CS Computing Labs",
+    "description": "Intensive web development showdown crafting high-performance, accessible, and reactive web applications using cutting-edge stacks.",
+    "tag": "WEB DEV SPRINT",
+    "image": "/media/events/web-a-thon.svg"
+  },
+  {
+    "id": "utkrisht-2025",
+    "title": "Utkrisht 2025 Techfest",
+    "category": "Annual Tech Symposium",
+    "date": "FEB 2026",
+    "location": "Main University Auditorium",
+    "description": "The landmark technical gathering featuring competitive coding arenas, robotics exhibits, keynote masterclasses, and project expos.",
+    "tag": "ANNUAL TECHFEST",
+    "image": "/media/events/utkrisht-2025.svg"
+  },
+  {
+    "id": "utu-ai",
+    "title": "UTU AI & Machine Learning Summit",
+    "category": "Artificial Intelligence",
+    "date": "MAR 2026",
+    "location": "AI Research Lab",
+    "description": "Deep exploration into neural networks, transformer architectures, computer vision, and responsible machine learning deployments.",
+    "tag": "AI SUMMIT",
+    "image": "/media/events/utu-ai.svg"
+  },
+  {
+    "id": "designthon",
+    "title": "Designathon UI/UX Jam",
+    "category": "Design & Product",
+    "date": "APR 2026",
+    "location": "Creative Media Studio",
+    "description": "Rapid product design sprint focused on user-centric interfaces, design systems, interactive prototypes, and spatial experiences.",
+    "tag": "DESIGNATHON",
+    "image": "/media/events/designthon.svg"
+  },
+  {
+    "id": "workshop-21century",
+    "title": "21st Century Tech Skills Workshop",
+    "category": "Industry Readiness",
+    "date": "MAY 2026",
+    "location": "Conference Hall B",
+    "description": "Masterclass series on cloud infrastructure, distributed version control, containerization, and developer tooling essentials.",
+    "tag": "TECH WORKSHOP",
+    "image": "/media/events/workshop-21century.svg"
+  }
+]

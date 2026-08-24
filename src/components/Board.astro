@@ -1,0 +1,106 @@
+---
+import boardData from '../content/board.json';
+import BoardCard from './BoardCard.astro';
+
+interface BoardMember {
+	id: string;
+	fullName: string;
+	position: string;
+	yearBranch?: string;
+	initials?: string;
+	photo?: string;
+	quote?: string;
+}
+
+const members: BoardMember[] = boardData;
+const facultyMembers = members.filter(
+	(m) => m.position.toLowerCase().includes('faculty') || m.id.startsWith('faculty-')
+);
+const studentMembers = members.filter(
+	(m) => !m.position.toLowerCase().includes('faculty') && !m.id.startsWith('faculty-')
+);
+---
+
+<section
+	id="board"
+	aria-labelledby="board-main-heading"
+	class="relative w-full bg-[#020308] select-none py-20 sm:py-28 px-4 sm:px-8 overflow-hidden scroll-mt-20"
+>
+	<!-- Ambient Background Glows -->
+	<div
+		class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(0,240,255,0.06),transparent_70%)] pointer-events-none -z-0"
+		aria-hidden="true"
+	></div>
+
+	<!-- Section Header -->
+	<div class="max-w-7xl mx-auto text-center mb-16 sm:mb-20 relative z-10">
+		<div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#050B14] border border-cyan/30 text-[11px] font-mono tracking-widest text-cyan uppercase mb-3">
+			<span class="w-1.5 h-1.5 rounded-full bg-cyan shadow-[0_0_8px_#00F0FF] animate-pulse"></span>
+			<span>CHAPTER LEADERSHIP</span>
+		</div>
+		<h2
+			id="board-main-heading"
+			class="text-3xl sm:text-5xl md:text-6xl font-wide font-black uppercase tracking-tight text-cream"
+		>
+			EXECUTIVE BOARD
+		</h2>
+		<p class="text-xs sm:text-sm text-cream/70 font-mono mt-3 max-w-xl mx-auto">
+			The student engineers, mentors, and innovators steering ACM Tula's Student Chapter towards technical excellence.
+		</p>
+	</div>
+
+	<div class="max-w-7xl mx-auto relative z-10 flex flex-col gap-16">
+		<!-- 1. FEATURED FACULTY SPONSORS / MENTORS -->
+		{
+			facultyMembers.length > 0 && (
+				<div class="flex flex-col items-center">
+					<div class="text-center mb-6">
+						<span class="text-xs font-mono tracking-[0.3em] text-cyan uppercase font-bold">
+							[ FACULTY MENTORS & ADVISORS ]
+						</span>
+					</div>
+					<div class={`w-full grid grid-cols-1 ${facultyMembers.length > 1 ? 'sm:grid-cols-2 max-w-3xl' : 'max-w-md'} gap-6 lg:gap-8 justify-items-center`}>
+						{facultyMembers.map((fac) => (
+							<BoardCard
+								fullName={fac.fullName}
+								position={fac.position}
+								yearBranch={fac.yearBranch}
+								initials={fac.initials}
+								photo={fac.photo}
+								quote={fac.quote}
+								isFeatured={true}
+							/>
+						))}
+					</div>
+				</div>
+			)
+		}
+
+		<!-- 2. STUDENT LEADERSHIP RESPONSIVE GRID (1 / 2 / 3 / 4 COLUMNS) -->
+		<div class="flex flex-col items-center">
+			<div class="text-center mb-8">
+				<span class="text-[11px] font-mono tracking-[0.3em] text-cream/60 uppercase font-bold">
+					[ STUDENT EXECUTIVE COMMITTEE ]
+				</span>
+			</div>
+
+			<div
+				class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8 justify-items-center"
+			>
+				{
+					studentMembers.map((member) => (
+						<BoardCard
+							fullName={member.fullName}
+							position={member.position}
+							yearBranch={member.yearBranch}
+							initials={member.initials}
+							photo={member.photo}
+							quote={member.quote}
+							isFeatured={false}
+						/>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>

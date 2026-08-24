@@ -1,0 +1,434 @@
+---
+---
+
+<header class="fixed top-0 inset-x-0 z-40 w-full pointer-events-none transition-all duration-300 py-3 sm:py-5 px-4 sm:px-8">
+	<div class="max-w-7xl mx-auto flex items-center justify-between relative">
+		<!-- 3. BRAND: Fixed Top-Left Logo Link -->
+		<a
+			href="#home"
+			class="pointer-events-auto flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan rounded-lg transition-transform hover:scale-[1.02]"
+			aria-label="ACM Tula's Student Chapter Home"
+		>
+			<img
+				src="/media/images/acm_tulas_logo.svg"
+				alt="ACM Tula's Student Chapter"
+				class="h-10 sm:h-12 md:h-13 w-auto max-w-[200px] object-contain block select-none"
+				width="200"
+				height="52"
+				loading="eager"
+				decoding="async"
+			/>
+			<!-- Local Same-Dimension Fallback Surface in case image asset is missing -->
+			<div
+				class="hidden h-10 sm:h-12 md:h-13 aspect-[200/52] items-center justify-center px-3 rounded bg-[#050B14] border border-cyan/30 text-cyan text-xs font-bold tracking-widest uppercase select-none"
+				aria-hidden="true"
+			>
+				ACM TULA'S
+			</div>
+		</a>
+
+		<!-- 4. CENTERED PILL NAV (Desktop) -->
+		<nav
+			id="desktop-nav"
+			class="pointer-events-auto hidden md:flex items-center relative rounded-full bg-[#050B14]/80 backdrop-blur-md border border-cyan/20 px-2 py-1.5 shadow-[0_0_25px_rgba(0,240,255,0.08)]"
+			aria-label="Main Navigation"
+		>
+			<!-- #nav-blob indicator -->
+			<div
+				id="nav-blob"
+				class="absolute top-1.5 bottom-1.5 left-0 rounded-full bg-cyan/15 border border-cyan/40 pointer-events-none transition-all duration-250 ease-out opacity-0"
+				aria-hidden="true"
+			></div>
+
+			<ul class="flex items-center gap-1 relative z-10 m-0 p-0 list-none text-xs font-mono font-bold tracking-wider text-cream/90">
+				<li>
+					<a
+						href="#about"
+						data-nav-link="about"
+						class="nav-item relative block px-4 py-2 rounded-full transition-colors hover:text-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+					>
+						ABOUT
+					</a>
+				</li>
+				<li>
+					<a
+						href="#events"
+						data-nav-link="events"
+						class="nav-item relative block px-4 py-2 rounded-full transition-colors hover:text-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+					>
+						EVENT
+					</a>
+				</li>
+				<li>
+					<a
+						href="#board"
+						data-nav-link="board"
+						class="nav-item relative block px-4 py-2 rounded-full transition-colors hover:text-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+					>
+						TEAM
+					</a>
+				</li>
+				<li>
+					<a
+						href="#gallery"
+						data-nav-link="gallery"
+						class="nav-item relative block px-4 py-2 rounded-full transition-colors hover:text-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+					>
+						GALLERY
+					</a>
+				</li>
+				<li class="ml-1.5">
+					<a
+						href="#contact"
+						data-nav-link="contact"
+						class="nav-item nav-join block px-5 py-2 rounded-full border border-cyan text-cyan hover:bg-cyan hover:text-ink font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan shadow-[0_0_15px_rgba(0,240,255,0.15)] hover:shadow-[0_0_20px_rgba(0,240,255,0.4)]"
+					>
+						JOIN
+					</a>
+				</li>
+			</ul>
+		</nav>
+
+		<!-- MOBILE HAMBURGER BUTTON -->
+		<div class="md:hidden pointer-events-auto">
+			<button
+				type="button"
+				id="mobile-menu-button"
+				class="relative flex items-center justify-center w-11 h-11 rounded-full bg-[#050B14]/85 backdrop-blur-md border border-cyan/30 text-cyan hover:border-cyan hover:bg-cyan/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+				aria-expanded="false"
+				aria-controls="mobile-nav-overlay"
+				aria-label="Toggle navigation menu"
+			>
+				<svg
+					id="hamburger-icon"
+					class="w-5 h-5 transition-transform duration-200"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+					stroke-width="2"
+					aria-hidden="true"
+				>
+					<path class="line-top transition-transform duration-300 origin-center" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16" />
+					<path class="line-mid transition-opacity duration-200" stroke-linecap="round" stroke-linejoin="round" d="M4 12h16" />
+					<path class="line-bot transition-transform duration-300 origin-center" stroke-linecap="round" stroke-linejoin="round" d="M4 18h16" />
+				</svg>
+			</button>
+		</div>
+	</div>
+
+	<!-- FULL-SCREEN MOBILE OVERLAY MENU -->
+	<div
+		id="mobile-nav-overlay"
+		class="pointer-events-auto fixed inset-0 z-50 bg-[#050B14]/95 backdrop-blur-2xl flex flex-col justify-between p-6 sm:p-10 opacity-0 pointer-events-none transition-all duration-300"
+		aria-hidden="true"
+		role="dialog"
+		aria-modal="true"
+		aria-label="Mobile Navigation Menu"
+	>
+		<!-- Top Bar inside Overlay -->
+		<div class="flex items-center justify-between w-full">
+			<a
+				href="#home"
+				class="mobile-nav-link flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan rounded"
+				aria-label="ACM Tula's Home"
+			>
+				<img
+					src="/media/images/acm_tulas_logo.svg"
+					alt="ACM Tula's Student Chapter"
+					class="h-[32px] w-auto"
+					width="120"
+					height="32"
+				/>
+			</a>
+			<button
+				type="button"
+				id="mobile-close-button"
+				class="flex items-center justify-center w-11 h-11 rounded-full bg-navy border border-cyan/30 text-cyan hover:bg-cyan/10 hover:border-cyan transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+				aria-label="Close navigation menu"
+			>
+				<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+				</svg>
+			</button>
+		</div>
+
+		<!-- Navigation Links -->
+		<nav class="my-auto py-8" aria-label="Mobile Navigation Links">
+			<ul class="flex flex-col gap-6 list-none m-0 p-0 text-center">
+				<li>
+					<a
+						href="#about"
+						class="mobile-nav-link text-2xl font-bold tracking-widest text-cream hover:text-cyan transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan inline-block py-2"
+					>
+						ABOUT
+					</a>
+				</li>
+				<li>
+					<a
+						href="#events"
+						class="mobile-nav-link text-2xl font-bold tracking-widest text-cream hover:text-cyan transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan inline-block py-2"
+					>
+						EVENT
+					</a>
+				</li>
+				<li>
+					<a
+						href="#board"
+						class="mobile-nav-link text-2xl font-bold tracking-widest text-cream hover:text-cyan transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan inline-block py-2"
+					>
+						TEAM
+					</a>
+				</li>
+				<li>
+					<a
+						href="#gallery"
+						class="mobile-nav-link text-2xl font-bold tracking-widest text-cream hover:text-cyan transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan inline-block py-2"
+					>
+						GALLERY
+					</a>
+				</li>
+				<li class="pt-4">
+					<a
+						href="#contact"
+						class="mobile-nav-link inline-block px-8 py-3 rounded-full border-2 border-cyan text-cyan font-extrabold text-lg tracking-widest hover:bg-cyan hover:text-ink transition-all shadow-[0_0_25px_rgba(0,240,255,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+					>
+						JOIN
+					</a>
+				</li>
+			</ul>
+		</nav>
+
+		<!-- Bottom Chapter Info -->
+		<div class="text-center text-xs text-cream/50 tracking-wider">
+			<p class="m-0">ACM Student Chapter · Tula's University Dehradun</p>
+		</div>
+	</div>
+</header>
+
+<script>
+	function setupHeader() {
+		const desktopNav = document.getElementById('desktop-nav');
+		const navBlob = document.getElementById('nav-blob');
+		const navItems = document.querySelectorAll<HTMLAnchorElement>('.nav-item');
+		const mobileMenuButton = document.getElementById('mobile-menu-button');
+		const mobileCloseButton = document.getElementById('mobile-close-button');
+		const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+		const mobileNavLinks = document.querySelectorAll<HTMLAnchorElement>('.mobile-nav-link');
+
+		let activeNavItem: HTMLAnchorElement | null = null;
+		let rafId: number | null = null;
+
+		// --- NAV BLOB POSITIONING WITH rAF THROTTLING ---
+		function moveBlob(targetElement: HTMLElement | null, opacity = 1) {
+			if (!navBlob || !desktopNav) return;
+
+			if (rafId !== null) {
+				cancelAnimationFrame(rafId);
+			}
+
+			rafId = requestAnimationFrame(() => {
+				if (!targetElement) {
+					navBlob.style.opacity = '0';
+					return;
+				}
+
+				const navRect = desktopNav.getBoundingClientRect();
+				const targetRect = targetElement.getBoundingClientRect();
+				const x = targetRect.left - navRect.left;
+				const width = targetRect.width;
+
+				navBlob.style.transform = `translate3d(${x}px, 0, 0)`;
+				navBlob.style.width = `${width}px`;
+				navBlob.style.opacity = `${opacity}`;
+			});
+		}
+
+		navItems.forEach((item) => {
+			item.addEventListener('mouseenter', () => {
+				moveBlob(item, 1);
+			});
+
+			item.addEventListener('focusin', () => {
+				moveBlob(item, 1);
+			});
+		});
+
+		if (desktopNav) {
+			desktopNav.addEventListener('mouseleave', () => {
+				if (activeNavItem) {
+					moveBlob(activeNavItem, 1);
+				} else {
+					moveBlob(null, 0);
+				}
+			});
+		}
+
+		// --- ACTIVE SECTION TRACKING (INTERSECTION OBSERVER - NO SCROLL LISTENERS) ---
+		const sectionMap: Record<string, string> = {
+			about: 'about',
+			events: 'events',
+			board: 'board',
+			gallery: 'gallery',
+			contact: 'contact',
+			'contact-laptop': 'contact',
+		};
+
+		const sectionElements = document.querySelectorAll<HTMLElement>(
+			'#hero, #about, #events, #board, #gallery, #contact, #contact-laptop'
+		);
+
+		const visibleSections = new Map<string, number>();
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					const id = entry.target.id;
+					if (entry.isIntersecting) {
+						visibleSections.set(id, entry.intersectionRatio);
+					} else {
+						visibleSections.delete(id);
+					}
+				});
+
+				// Determine the most prominent visible section
+				let maxRatio = 0;
+				let bestSectionId = '';
+
+				visibleSections.forEach((ratio, id) => {
+					if (ratio > maxRatio) {
+						maxRatio = ratio;
+						bestSectionId = id;
+					}
+				});
+
+				const navKey = sectionMap[bestSectionId];
+				if (navKey) {
+					const matchingLink = document.querySelector<HTMLAnchorElement>(
+						`[data-nav-link="${navKey}"]`
+					);
+					activeNavItem = matchingLink;
+					// Update nav items visual state
+					navItems.forEach((link) => {
+						if (link === matchingLink) {
+							link.classList.add('text-cyan');
+							link.setAttribute('aria-current', 'page');
+						} else {
+							link.classList.remove('text-cyan');
+							link.removeAttribute('aria-current');
+						}
+					});
+
+					// If cursor is not currently hovering desktopNav, align blob to active item
+					if (desktopNav && !desktopNav.matches(':hover')) {
+						moveBlob(matchingLink, 1);
+					}
+				} else {
+					// In hero or unmapped section
+					activeNavItem = null;
+					navItems.forEach((link) => {
+						link.classList.remove('text-cyan');
+						link.removeAttribute('aria-current');
+					});
+					if (desktopNav && !desktopNav.matches(':hover')) {
+						moveBlob(null, 0);
+					}
+				}
+			},
+			{
+				threshold: [0.1, 0.25, 0.5, 0.75],
+				rootMargin: '-60px 0px -40% 0px',
+			}
+		);
+
+		sectionElements.forEach((el) => observer.observe(el));
+
+		// --- MOBILE MENU ACCESSIBILITY & FOCUS TRAP ---
+		let isMenuOpen = false;
+
+		function openMenu() {
+			if (!mobileNavOverlay || !mobileMenuButton) return;
+			isMenuOpen = true;
+			mobileMenuButton.setAttribute('aria-expanded', 'true');
+			mobileNavOverlay.setAttribute('aria-hidden', 'false');
+			mobileNavOverlay.classList.remove('opacity-0', 'pointer-events-none');
+			mobileNavOverlay.classList.add('opacity-100');
+			document.body.style.overflow = 'hidden';
+
+			// Set focus inside modal
+			if (mobileCloseButton) {
+				mobileCloseButton.focus();
+			}
+		}
+
+		function closeMenu() {
+			if (!mobileNavOverlay || !mobileMenuButton) return;
+			isMenuOpen = false;
+			mobileMenuButton.setAttribute('aria-expanded', 'false');
+			mobileNavOverlay.setAttribute('aria-hidden', 'true');
+			mobileNavOverlay.classList.add('opacity-0', 'pointer-events-none');
+			mobileNavOverlay.classList.remove('opacity-100');
+			document.body.style.overflow = '';
+
+			// Restore focus to menu toggle button
+			mobileMenuButton.focus();
+		}
+
+		if (mobileMenuButton) {
+			mobileMenuButton.addEventListener('click', () => {
+				if (isMenuOpen) {
+					closeMenu();
+				} else {
+					openMenu();
+				}
+			});
+		}
+
+		if (mobileCloseButton) {
+			mobileCloseButton.addEventListener('click', closeMenu);
+		}
+
+		mobileNavLinks.forEach((link) => {
+			link.addEventListener('click', closeMenu);
+		});
+
+		// Close on Escape key
+		window.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && isMenuOpen) {
+				closeMenu();
+			}
+		});
+
+		// Focus Trap within Mobile Navigation Overlay
+		if (mobileNavOverlay) {
+			mobileNavOverlay.addEventListener('keydown', (e) => {
+				if (!isMenuOpen || e.key !== 'Tab') return;
+
+				const focusableElements = mobileNavOverlay.querySelectorAll<HTMLElement>(
+					'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+				);
+				const firstElement = focusableElements[0];
+				const lastElement = focusableElements[focusableElements.length - 1];
+
+				if (e.shiftKey) {
+					if (document.activeElement === firstElement) {
+						lastElement.focus();
+						e.preventDefault();
+					}
+				} else {
+					if (document.activeElement === lastElement) {
+						firstElement.focus();
+						e.preventDefault();
+					}
+				}
+			});
+		}
+	}
+
+	// Initialize on page load and support Astro View Transitions if enabled
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', setupHeader);
+	} else {
+		setupHeader();
+	}
+	document.addEventListener('astro:page-load', setupHeader);
+</script>

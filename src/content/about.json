@@ -1,0 +1,35 @@
+[
+  {
+    "id": "chapter-intro",
+    "title": "Pioneering Computing at Tula's",
+    "tag": "ACM STUDENT CHAPTER",
+    "description": "The official ACM Student Chapter at Tula's University cultivates a collaborative ecosystem for software engineers, algorithmic researchers, and technology pioneers. We empower students to architect real-world systems, lead open-source initiatives, and compete in high-stakes hackathons.",
+    "hologram": "/media/images/1_About_ACM-removebg-preview.png",
+    "stats": [
+      { "label": "Founding Cohort", "value": "2025" },
+      { "label": "Active Builders", "value": "21+" }
+    ]
+  },
+  {
+    "id": "tulas-university",
+    "title": "Engineering Excellence in Dehradun",
+    "tag": "TULA'S UNIVERSITY",
+    "description": "Nestled in the Himalayan foothills of Dehradun, Tula's University stands at the forefront of technical education and applied research. Equipped with advanced computing laboratories and incubation hubs, the campus nurtures future technology leaders and entrepreneurs.",
+    "hologram": "/media/images/2_about_tulas-removebg-preview.png",
+    "stats": [
+      { "label": "Computing Labs", "value": "15+" },
+      { "label": "Regional Rank", "value": "Top Tier" }
+    ]
+  },
+  {
+    "id": "acm-international",
+    "title": "Connected to the Global Society",
+    "tag": "ACM INTERNATIONAL",
+    "description": "As part of the Association for Computing Machinery—the world's premier educational and scientific computing society—our members gain direct access to the ACM Digital Library, Turing Award lectures, international conferences, and a worldwide network of computing professionals.",
+    "hologram": "/media/images/3_About_ACM_tulas-removebg-preview.png",
+    "stats": [
+      { "label": "Global Chapters", "value": "800+" },
+      { "label": "Research Archive", "value": "3M+" }
+    ]
+  }
+]

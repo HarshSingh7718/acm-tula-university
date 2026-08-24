@@ -1,0 +1,1692 @@
+---
+import eventsData from '../content/events.json';
+
+interface Project {
+	caption: string;
+	site: string;
+	src: string;
+	description?: string;
+	tag?: string;
+	category?: string;
+	date?: string;
+}
+
+const works: Project[] = eventsData.map((item) => ({
+	caption: item.title,
+	site: '#contact',
+	src: item.image,
+	description: item.description,
+	tag: item.tag,
+	category: item.category,
+	date: item.date,
+}));
+
+const EVENT_MOVEMENT_SCROLL_MULTIPLIER = 5;
+const EVENT_END_WRAP_SCROLL_MULTIPLIER = 3;
+const EVENT_BASE_INTRO_DURATION = 10.0;
+const EVENT_BASE_CARDS_DELAY = 0.35;
+const EVENT_BASE_CARDS_DURATION = 0.9;
+const EVENT_BASE_CARDS_STAGGER = 0.32;
+const EVENT_BASE_END_WRAP_DURATION = 1;
+const EVENT_END_WRAP_DELAY_DURATION = 2;
+
+const getEventSectionScrollMultiplier = (itemCount: number) => {
+	const cardsStart = EVENT_BASE_INTRO_DURATION + EVENT_BASE_CARDS_DELAY;
+	const baseMovementDuration =
+		EVENT_BASE_CARDS_DURATION +
+		Math.max(itemCount - 1, 0) * EVENT_BASE_CARDS_STAGGER;
+	const baseTimelineDuration =
+		cardsStart + baseMovementDuration + EVENT_BASE_END_WRAP_DURATION;
+	const expandedTimelineDuration =
+		cardsStart +
+		baseMovementDuration * EVENT_MOVEMENT_SCROLL_MULTIPLIER +
+		EVENT_END_WRAP_DELAY_DURATION +
+		EVENT_BASE_END_WRAP_DURATION * EVENT_END_WRAP_SCROLL_MULTIPLIER;
+	return expandedTimelineDuration / baseTimelineDuration;
+};
+
+const EVENT_SECTION_SCROLL_MULTIPLIER = getEventSectionScrollMultiplier(
+	works.length
+);
+const worksHeight = works.length * 48 * EVENT_SECTION_SCROLL_MULTIPLIER;
+const worksHeightMobile = works.length * 42 * EVENT_SECTION_SCROLL_MULTIPLIER;
+---
+
+<section
+	id="events"
+	class="s-work relative select-none scroll-mt-20"
+	data-intersect
+	style={`--height: ${worksHeight}svh; --height-mobile: ${worksHeightMobile}svh;`}
+	aria-label="Chapter events"
+>
+	<div class="s__outer">
+		<div class="s__inner js-container">
+			<h2 class="s__title">
+				<span class="s__title__inner js-title">
+					<span class="s__title__letter js-letter">E</span>
+					<span class="s__title__letter js-letter">V</span>
+					<span class="s__title__letter js-letter">E</span>
+					<span class="s__title__letter js-letter">N</span>
+					<span class="s__title__letter js-letter">T</span>
+					<span class="s__title__letter js-letter">S</span>
+				</span>
+			</h2>
+
+			<div class="s__scene js-scene">
+				{
+					works.map((work, index) => {
+						const key = `${String(index + 1).padStart(2, '0')}/${String(works.length).padStart(2, '0')}`;
+						return (
+							<a-work
+								class="s__scene__work s__scene__work--video js-work"
+								progress="1"
+								style="--progress: 1;"
+							>
+								<div class="a__inner">
+									<div class="a__link">
+										<div class="a__media">
+											{
+												work.src ? (
+													<img
+														src={work.src}
+														class="a__video js-video"
+														width={1082}
+														height={636}
+														alt={work.caption}
+														loading={index < 2 ? 'eager' : 'lazy'}
+														decoding="async"
+													/>
+												) : (
+													<div class="a__video a__placeholder js-video">
+														<div class="a__placeholder-badge">
+															<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+																<path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+															</svg>
+														</div>
+														<span class="a__placeholder-tag">{work.tag || 'ACM EVENT'}</span>
+														<span class="a__placeholder-title">{work.caption}</span>
+													</div>
+												)
+											}
+										</div>
+
+										<div class="a__caption">
+											<div class="a__caption__text">{work.caption}</div>
+											<div class="a__caption__key">#{key}</div>
+										</div>
+									</div>
+								</div>
+							</a-work>
+						);
+					})
+				}
+			</div><!-- .s__scene -->
+		</div><!-- .s__inner -->
+
+		<div
+			class="s__mask-outer"
+			style="pointer-events: none !important; z-index: 10;"
+		>
+			<div class="s__mask js-mask" style="pointer-events: none !important;">
+				<svg
+					class="s__mask__svg js-mask-svg"
+					style="pointer-events: none !important;"
+				>
+					<path class="s__mask__path-inner js-mask-path-inner" d=""></path>
+					<path class="s__mask__path-outer js-mask-path-outer" d=""></path>
+					<path class="s__mask__path-lines js-mask-path-lines" d=""></path>
+				</svg>
+			</div><!-- .s__mask -->
+		</div><!-- .s__mask-outer -->
+
+		<div class="s__ruler js-ruler"></div>
+	</div><!-- .s__outer -->
+
+	<!-- ACCESSIBLE REDUCED-MOTION STATIC FALLBACK -->
+	<div class="s__reduced-fallback">
+		<h2 class="s__reduced-title">EVENTS</h2>
+		<div class="s__reduced-grid">
+			{
+				works.map((work) => (
+					<article class="s__reduced-card">
+						<span class="s__reduced-tag">{work.tag || 'EVENT'} · {work.date || '2025–2026'}</span>
+						<h3 class="s__reduced-heading">{work.caption}</h3>
+						<p class="s__reduced-desc">{work.description}</p>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<script>
+	import { gsap } from 'gsap';
+	import { SlowMo } from 'gsap/EasePack';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	gsap.registerPlugin(ScrollTrigger, SlowMo);
+
+	// Extend Window interface for custom safe area properties
+	declare global {
+		interface Window {
+			safeWidth?: number;
+			safeHeight?: number;
+		}
+	}
+
+	function computeScrollMultiplier(itemCount: number) {
+		const movementScrollMultiplier = 5;
+		const endWrapScrollMultiplier = 3;
+		const introDuration = 10.0;
+		const cardsDelay = 0.35;
+		const baseCardsDuration = 0.9;
+		const baseCardsStagger = 0.32;
+		const baseEndWrapDuration = 1;
+		const endWrapDelayDuration = 2;
+		const cardsStart = introDuration + cardsDelay;
+		const baseMovementDuration =
+			baseCardsDuration + Math.max(itemCount - 1, 0) * baseCardsStagger;
+		const baseTimelineDuration =
+			cardsStart + baseMovementDuration + baseEndWrapDuration;
+		const expandedTimelineDuration =
+			cardsStart +
+			baseMovementDuration * movementScrollMultiplier +
+			endWrapDelayDuration +
+			baseEndWrapDuration * endWrapScrollMultiplier;
+		return expandedTimelineDuration / baseTimelineDuration;
+	}
+
+	// --- Utils ---
+	class Emitter {
+		events: { [key: string]: any[] };
+		constructor() {
+			this.events = {};
+		}
+		on(name: string, callback: any, context: any, once = false) {
+			if (!this.events[name]) {
+				this.events[name] = [];
+			}
+			let exists = false;
+			this.events[name].forEach((object) => {
+				if (object.cb === callback && object.context === context) {
+					exists = true;
+					return;
+				}
+			});
+			if (exists) {
+				return;
+			}
+			this.events[name].push({ cb: callback, context: context, once: once });
+		}
+		once(name: string, callback: any, context: any) {
+			this.on(name, callback, context, true);
+		}
+		emit(name: string, ...args: any[]) {
+			const self = this;
+			if (this.events[name]) {
+				this.events[name].forEach((object, index) => {
+					object.cb.apply(object.context, args);
+					if (object.once) {
+						delete self.events[name][index];
+					}
+				});
+			}
+		}
+		off(name: string, callback: any, context: any) {
+			const self = this;
+			if (this.events[name]) {
+				this.events[name].forEach((object, index) => {
+					if (object.cb === callback && object.context === context) {
+						delete self.events[name][index];
+					}
+				});
+			}
+		}
+	}
+	const emitter = new Emitter();
+
+	class Ticker {
+		callbacks: any[];
+		delta: number;
+		constructor() {
+			this.callbacks = [];
+			this.delta = 0;
+		}
+		init() {
+			gsap.ticker.add(this.tick.bind(this));
+		}
+		tick(time: number, delta: number) {
+			const self = this;
+			this.delta = delta;
+			this.callbacks.forEach((object, index) => {
+				object.callback.apply(object.context);
+				delete self.callbacks[index];
+			});
+			emitter.emit('tick', time * 1000);
+		}
+		nextTick(callback: Function, context: any) {
+			this.callbacks.push({ callback, context });
+		}
+	}
+	const ticker = new Ticker();
+	ticker.init();
+
+	// --- AWork Web Component ---
+	class AWork extends HTMLElement {
+		static observedAttributes = ['progress'];
+		video!: HTMLElement | null;
+		isPlaying!: boolean;
+
+		connectedCallback() {
+			this.video = this.querySelector('.js-video');
+			this.isPlaying = false;
+		}
+
+		attributeChangedCallback(
+			name: string,
+			_oldValue: string | null,
+			newValue: string | null
+		) {
+			if (name === 'progress' && newValue !== null) {
+				this.style.setProperty('--progress', newValue);
+				const num = parseFloat(newValue);
+				if (num >= 0.999 || num <= -0.999) {
+					if (this.isPlaying) {
+						this.outView();
+					}
+				} else {
+					if (!this.isPlaying) {
+						this.inView();
+					}
+				}
+			}
+		}
+
+		inView() {
+			this.isPlaying = true;
+			this.classList.add('is-inview');
+		}
+
+		outView() {
+			this.isPlaying = false;
+			this.classList.remove('is-inview');
+		}
+	}
+	if (!customElements.get('a-work')) {
+		customElements.define('a-work', AWork);
+	}
+
+	// --- Section Logic ---
+	interface Ghost {
+		el: HTMLElement;
+		x: number;
+		y: number;
+		z: number;
+		i: number;
+		p: number;
+		ap: number;
+		mx: number;
+		my: number;
+	}
+
+	interface Letter {
+		el: HTMLElement;
+		ghosts: Ghost[];
+		width?: number;
+		height?: number;
+		top?: number;
+		left?: number;
+		freq: number;
+		total: number;
+	}
+
+	class Section {
+		el: HTMLElement;
+		container: HTMLElement;
+		ruler: HTMLElement;
+		scene: HTMLElement;
+		title: HTMLElement;
+		videos: NodeListOf<HTMLImageElement>;
+
+		mask: {
+			width: number;
+			height: number;
+			maxScale: number;
+			lines: any[];
+			el: HTMLElement;
+			svg: HTMLElement;
+			pathOuter: HTMLElement;
+			pathInner: HTMLElement;
+			pathLines: HTMLElement;
+		};
+
+		bounding!: {
+			left: number;
+			top: number;
+			width: number;
+			height: number;
+		};
+		letters: Letter[];
+		works: any[];
+
+		tl!: gsap.core.Timeline;
+		scrubTrigger: any = null;
+		targetProgress: number = 0;
+		renderedProgress: number = 0;
+		progressRafId: number = 0;
+		lastProgressFrameAt: number = 0;
+		animationProgress!: number;
+		scrollProgress: number;
+		smoothScrollProgress: number;
+		state = 0;
+		speed!: number;
+		isPaused: boolean;
+		isTouchDevice: boolean;
+		touchScrollRafId: number;
+		touchViewportResizeRafId: number;
+		touchViewportRefreshTimeoutId: number;
+		touchSectionTop: number;
+		touchSectionHeight: number;
+		touchLastScrollY: number;
+		touchStableFrames: number;
+		touchLastViewportWidth: number;
+		touchSyncForce: boolean;
+		reducedMotion: boolean;
+		reducedData: boolean;
+
+		constructor() {
+			this.el = document.querySelector('.s-work')!;
+			this.container = this.el.querySelector('.js-container')!;
+			this.ruler = this.el.querySelector('.js-ruler')!;
+			this.scene = this.container.querySelector('.js-scene')!;
+			this.title = this.container.querySelector('.js-title')!;
+			this.videos = this.container.querySelectorAll('img');
+
+			this.mask = {
+				width: 0,
+				height: 0,
+				maxScale: 1,
+				lines: [],
+				el: this.el.querySelector('.js-mask')!,
+				svg: this.el.querySelector('.js-mask-svg')!,
+				pathOuter: this.el.querySelector('.js-mask-path-outer')!,
+				pathInner: this.el.querySelector('.js-mask-path-inner')!,
+				pathLines: this.el.querySelector('.js-mask-path-lines')!,
+			};
+
+			this.letters = [];
+			this.title.querySelectorAll('.js-letter').forEach((_letter) => {
+				const letter: Letter = {
+					el: _letter as HTMLElement,
+					ghosts: [],
+					freq: 1,
+					total: 0,
+				};
+				this.letters.push(letter);
+			});
+
+			this.works = [];
+			this.container.querySelectorAll('.js-work').forEach((_work) => {
+				const work = {
+					el: _work,
+				};
+				this.works.push(work);
+			});
+
+			this.scrollProgress = 0;
+			this.smoothScrollProgress = 0;
+
+			this.isPaused = true;
+			this.isTouchDevice =
+				window.matchMedia('(max-width: 768px)').matches ||
+				(ScrollTrigger.isTouch === 1 &&
+					window.matchMedia('(max-width: 1024px)').matches);
+			this.touchScrollRafId = 0;
+			this.touchViewportResizeRafId = 0;
+			this.touchViewportRefreshTimeoutId = 0;
+			this.touchSectionTop = 0;
+			this.touchSectionHeight = 0;
+			this.touchLastScrollY = -1;
+			this.touchStableFrames = 0;
+			this.touchLastViewportWidth = window.innerWidth || 0;
+			this.touchSyncForce = false;
+			this.reducedMotion = window.matchMedia(
+				'(prefers-reduced-motion: reduce)'
+			).matches;
+			this.reducedData = Boolean((navigator as any).connection?.saveData);
+
+			if (document.readyState === 'complete') {
+				ticker.nextTick(this.init, this);
+			} else {
+				window.addEventListener('load', () => ticker.nextTick(this.init, this), { once: true });
+			}
+		}
+
+		init() {
+			this.setSize();
+			this.setMask();
+			this.setLetters();
+			this.setWorks();
+			this.setTimeline();
+
+			this.bindEvents();
+		}
+
+		bindEvents() {
+			emitter.on('resize', this.onResize, this);
+			window.addEventListener('resize', () => this.onResize(true));
+			window.addEventListener('scroll', this.onTouchScroll, { passive: true });
+			document.addEventListener('touchstart', this.onTouchInput, {
+				passive: true,
+			});
+			document.addEventListener('touchmove', this.onTouchInput, {
+				passive: true,
+			});
+			document.addEventListener('touchend', this.onTouchInput, {
+				passive: true,
+			});
+			window.visualViewport?.addEventListener('scroll', this.onTouchScroll, {
+				passive: true,
+			});
+			window.visualViewport?.addEventListener(
+				'resize',
+				this.onTouchViewportResize,
+				{ passive: true }
+			);
+
+			this.el.addEventListener(
+				'intersect',
+				this.onIntersect.bind(this) as EventListener,
+				{
+					passive: true,
+				}
+			);
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => {
+					this.el.dispatchEvent(
+						new CustomEvent('intersect', {
+							detail: { isIntersecting: entry.isIntersecting },
+						})
+					);
+				});
+			});
+			observer.observe(this.el);
+		}
+
+		lastWidth: number = 0;
+
+		onResize(widthChanged: boolean) {
+			if (widthChanged) {
+				const width = window.innerWidth;
+				if (width === this.lastWidth) return;
+				this.lastWidth = width;
+				this.touchLastViewportWidth = width;
+				this.isTouchDevice =
+					window.matchMedia('(max-width: 768px)').matches ||
+					(ScrollTrigger.isTouch === 1 &&
+						window.matchMedia('(max-width: 1024px)').matches);
+				this.reducedMotion = window.matchMedia(
+					'(prefers-reduced-motion: reduce)'
+				).matches;
+				this.reducedData = Boolean((navigator as any).connection?.saveData);
+
+				this.setSize();
+				this.setMask();
+				this.setLetters();
+				this.setWorks();
+				this.setTimeline();
+
+				if (this.isTouchDevice) {
+					ScrollTrigger.refresh();
+					this.queueTouchSync(true);
+				} else {
+					this.stopTouchSync();
+				}
+			}
+		}
+
+		onIntersect(e: CustomEvent<{ isIntersecting: boolean }>) {
+			this.isPaused = !e.detail.isIntersecting;
+			emitter.off('tick', this.tick, this);
+
+			if (this.isTouchDevice) {
+				this.queueTouchSync(true);
+				return;
+			}
+
+			if (!this.isPaused) {
+				emitter.on('tick', this.tick, this);
+			}
+		}
+
+		getCurrentScrollY() {
+			const windowScroll =
+				window.scrollY ||
+				window.pageYOffset ||
+				document.documentElement.scrollTop ||
+				document.body.scrollTop ||
+				0;
+
+			if (Number.isFinite(windowScroll)) {
+				return windowScroll;
+			}
+
+			const visualViewportScroll = window.visualViewport?.pageTop;
+			return typeof visualViewportScroll === 'number' &&
+				Number.isFinite(visualViewportScroll)
+				? visualViewportScroll
+				: 0;
+		}
+
+		getViewportHeight() {
+			const visualViewportHeight = window.visualViewport?.height;
+			if (
+				typeof visualViewportHeight === 'number' &&
+				Number.isFinite(visualViewportHeight)
+			) {
+				return visualViewportHeight;
+			}
+
+			return window.innerHeight || this.bounding.height || 1;
+		}
+
+		measureTouchRange() {
+			const scrollY = this.getCurrentScrollY();
+			const rect = this.el.getBoundingClientRect();
+			this.touchSectionTop = rect.top + scrollY;
+			this.touchSectionHeight = this.el.offsetHeight;
+		}
+
+		isTouchSectionActive() {
+			const rect = this.el.getBoundingClientRect();
+			const viewportHeight = this.getViewportHeight();
+			return rect.bottom >= -viewportHeight && rect.top <= viewportHeight * 2;
+		}
+
+		getTouchTimelineProgress(scrollY = this.getCurrentScrollY()) {
+			const totalScrollableDistance = Math.max(
+				this.touchSectionHeight - this.getViewportHeight(),
+				1
+			);
+
+			return Math.max(
+				0,
+				Math.min(1, (scrollY - this.touchSectionTop) / totalScrollableDistance)
+			);
+		}
+
+		getTouchScrollEffectProgress(scrollY = this.getCurrentScrollY()) {
+			const viewportHeight = this.getViewportHeight();
+			const top = this.touchSectionTop - scrollY;
+			const bottom = top + this.touchSectionHeight;
+			const topProgress = Math.max(Math.min(top / viewportHeight, 1), 0);
+			const bottomProgress = Math.max(Math.min(bottom / viewportHeight, 1), 0);
+
+			return -topProgress + (1 - bottomProgress);
+		}
+
+		onTouchScroll = () => {
+			if (!this.isTouchDevice || !this.tl) return;
+			this.queueTouchSync();
+		};
+
+		onTouchInput = () => {
+			if (!this.isTouchDevice || !this.tl) return;
+			this.queueTouchSync(true);
+		};
+
+		onTouchViewportResize = () => {
+			if (!this.isTouchDevice || !this.tl) return;
+			if (this.touchViewportResizeRafId) return;
+
+			this.touchViewportResizeRafId = requestAnimationFrame(() => {
+				this.touchViewportResizeRafId = 0;
+
+				const width = window.innerWidth || document.documentElement.clientWidth;
+				const widthChanged = Math.abs(width - this.touchLastViewportWidth) > 1;
+				this.touchLastViewportWidth = width;
+
+				if (widthChanged) {
+					this.onResize(true);
+					return;
+				}
+
+				this.measureTouchRange();
+				this.updateTouchTimeline(true);
+				this.queueTouchSync(true);
+
+				clearTimeout(this.touchViewportRefreshTimeoutId);
+				this.touchViewportRefreshTimeoutId = window.setTimeout(() => {
+					if (!this.isTouchDevice || !this.tl) return;
+					this.measureTouchRange();
+					ScrollTrigger.refresh();
+					this.updateTouchTimeline(true);
+				}, 180);
+			});
+		};
+
+		queueTouchSync(force = false) {
+			if (force) {
+				this.touchSyncForce = true;
+			}
+			if (this.touchScrollRafId) return;
+
+			const sync = () => {
+				if (!this.isTouchDevice || !this.tl) {
+					this.touchScrollRafId = 0;
+					return;
+				}
+
+				const scrollY = this.getCurrentScrollY();
+				const scrollChanged = Math.abs(scrollY - this.touchLastScrollY) > 0.01;
+				const isActive = this.isTouchSectionActive();
+				const shouldForce = this.touchSyncForce || force;
+				this.touchSyncForce = false;
+
+				this.touchLastScrollY = scrollY;
+				this.touchStableFrames = scrollChanged ? 0 : this.touchStableFrames + 1;
+
+				if (isActive) {
+					this.updateTouchTimeline(shouldForce || scrollChanged, scrollY);
+				}
+
+				if (scrollChanged || this.touchStableFrames < 8) {
+					this.touchScrollRafId = requestAnimationFrame(sync);
+					return;
+				}
+
+				this.touchScrollRafId = 0;
+			};
+
+			this.touchScrollRafId = requestAnimationFrame(sync);
+		}
+
+		stopTouchSync() {
+			if (this.touchScrollRafId) {
+				cancelAnimationFrame(this.touchScrollRafId);
+				this.touchScrollRafId = 0;
+			}
+			if (this.touchViewportResizeRafId) {
+				cancelAnimationFrame(this.touchViewportResizeRafId);
+				this.touchViewportResizeRafId = 0;
+			}
+			if (this.touchViewportRefreshTimeoutId) {
+				clearTimeout(this.touchViewportRefreshTimeoutId);
+				this.touchViewportRefreshTimeoutId = 0;
+			}
+			this.touchSyncForce = false;
+		}
+
+		updateTouchTimeline(force = false, scrollY = this.getCurrentScrollY()) {
+			if (
+				!this.isTouchDevice ||
+				!this.tl ||
+				this.reducedMotion ||
+				this.reducedData
+			) {
+				return;
+			}
+
+			const nextProgress = this.getTouchTimelineProgress(scrollY);
+
+			if (force || Math.abs(nextProgress - this.tl.progress()) > 0.0005) {
+				this.tl.progress(nextProgress, false);
+			}
+
+			this.syncScrollEffects(force, scrollY);
+		}
+
+		setSize() {
+			const sectionHeightPerWork =
+				(this.isTouchDevice ? 42 : 48) * computeScrollMultiplier(this.works.length);
+			this.el.style.setProperty(
+				'--height',
+				this.works.length * sectionHeightPerWork + 'svh'
+			);
+			const bounding = this.container.getBoundingClientRect();
+			const safeWidth = window.safeWidth || window.innerWidth;
+			const safeHeight = window.safeHeight || window.innerHeight;
+
+			this.bounding = {
+				left: bounding.left,
+				top: bounding.top,
+				width: safeWidth,
+				height: safeHeight,
+			};
+
+			this.speed = Math.hypot(this.bounding.width, this.bounding.height) * 4;
+
+			if (this.isTouchDevice) {
+				this.measureTouchRange();
+			}
+		}
+
+		setMask() {
+			const { mask } = this;
+			const width = mask.el.clientWidth;
+			const height = mask.el.clientHeight;
+
+			mask.width = width;
+			mask.height = height;
+			mask.svg.style.width = mask.width + 'px';
+			mask.svg.style.height = mask.height + 'px';
+
+			const elBounding = this.el.getBoundingClientRect();
+			const rulerBounding = this.ruler.getBoundingClientRect();
+			const rulerWidth = rulerBounding.width;
+			const rulerHeight = rulerBounding.height;
+			const offsetX = rulerBounding.left - elBounding.left;
+			const offsetY = rulerBounding.top - elBounding.top;
+
+			const dOuter = `M -1 0 L ${width + 2} 0 L ${width + 2} ${height} L -1 ${height} Z`;
+
+			const corners = {
+				tl: { x: offsetX, y: offsetY },
+				tr: { x: offsetX + rulerWidth, y: offsetY },
+				br: { x: offsetX + rulerWidth, y: offsetY + rulerHeight },
+				bl: { x: offsetX, y: offsetY + rulerHeight },
+			};
+
+			const size = (corners.tr.x - corners.tl.x) / 2;
+			const safeWidth = window.safeWidth || window.innerWidth;
+			const safeHeight = window.safeHeight || window.innerHeight || height;
+			const expandMargin = safeWidth > 767 ? 96 : 40;
+			const horizontalScale =
+				(safeWidth + rulerWidth + expandMargin * 2) /
+				Math.max(rulerWidth, 1);
+			const verticalScale =
+				(safeHeight + rulerHeight + expandMargin * 2) /
+				Math.max(rulerHeight, 1);
+			mask.maxScale = Math.max(horizontalScale, verticalScale) * 1.15;
+
+			const dInner = `M ${corners.tl.x} ${corners.tl.y + size} A ${size} ${size} 0 0 1 ${corners.tr.x} ${corners.tr.y + size} L ${corners.br.x} ${corners.br.y - size} A ${size} ${size} 0 0 1 ${corners.bl.x} ${corners.bl.y - size} Z`;
+			const linesClip = `${dOuter} ${dInner}`;
+
+			mask.pathOuter.setAttribute('d', `${dOuter} ${dInner}`);
+
+			const thickness = safeWidth > 767 ? 14 : 7;
+			const innerCorners = {
+				tl: { x: corners.tl.x + thickness, y: corners.tl.y + thickness },
+				tr: { x: corners.tr.x - thickness, y: corners.tr.y + thickness },
+				br: { x: corners.br.x - thickness, y: corners.br.y - thickness },
+				bl: { x: corners.bl.x + thickness, y: corners.bl.y - thickness },
+			};
+
+			const innerSize = (innerCorners.tr.x - innerCorners.tl.x) / 2;
+			const dInner2 = `M ${innerCorners.tl.x} ${innerCorners.tl.y + innerSize} A ${innerSize} ${innerSize} 0 0 1 ${innerCorners.tr.x} ${innerCorners.tr.y + innerSize} L ${innerCorners.br.x} ${innerCorners.br.y - innerSize} A ${innerSize} ${innerSize} 0 0 1 ${innerCorners.bl.x} ${innerCorners.bl.y - innerSize} Z`;
+
+			mask.pathInner.setAttribute('d', `${dOuter} ${dInner2}`);
+
+			mask.lines = [];
+			const vLines = safeWidth > 767 ? 12 : 8;
+			const gapX = width / vLines;
+			const gapY = height * 0.1;
+			const hLines = Math.ceil(height / gapY);
+
+			for (let i = 1; i < vLines; i++) {
+				const x = gapX * i;
+				mask.lines.push({ p1: { x, y: 0 }, p2: { x, y: height } });
+			}
+
+			for (let i = 0; i < hLines; i++) {
+				const y = gapY * i;
+				mask.lines.push({ p1: { x: 0, y }, p2: { x: width, y } });
+			}
+
+			let dLines = '';
+			mask.lines.forEach((line) => {
+				dLines += `M ${line.p1.x} ${line.p1.y} L ${line.p2.x} ${line.p2.y} `;
+			});
+
+			mask.pathLines.setAttribute('d', dLines);
+			(mask.pathLines as HTMLElement).style.clipPath = `path(evenodd, '${linesClip}')`;
+		}
+
+		setLetters() {
+			const { letters, scene } = this;
+			const safeWidth = window.safeWidth || window.innerWidth;
+			const reduceMotion = this.reducedMotion || this.reducedData;
+
+			letters.forEach((letter, j) => {
+				letter.ghosts.forEach((ghost: Ghost) => {
+					ghost.el.remove();
+				});
+				letter.ghosts = [];
+
+				const bounding = letter.el.getBoundingClientRect();
+				letter.width = bounding.width;
+				letter.height = bounding.height;
+				letter.top = bounding.top - this.bounding.top;
+				letter.left = bounding.left;
+				letter.freq = 1 + Math.random();
+
+				const multiplier = safeWidth > 767 ? 1.6 : 0.75;
+
+				if (reduceMotion) {
+					letter.total = 0;
+				} else {
+					letter.total =
+						Math.round((this.bounding.width / letter.width) * multiplier) + 2;
+					if (safeWidth < 768) {
+						letter.total = Math.max(3, Math.min(letter.total, 10));
+					}
+				}
+
+				for (let i = 0; i < letter.total; i++) {
+					const el = document.createElement('span');
+					el.classList.add('s__scene__letter');
+					el.classList.add('js-letter');
+					el.innerText = letter.el.innerText;
+					el.dataset.letter = letter.el.innerText;
+					scene.appendChild(el);
+
+					const ghost = {
+						el,
+						x: letter.left,
+						y: letter.top,
+						z: Math.random() * 100,
+						i: i - letter.total * 0.5,
+						p: (i / letter.total - 0.5) * 2,
+						ap: Math.abs(i / letter.total - 0.5) * 2,
+						mx: 0,
+						my: 0,
+					};
+
+					el.style.top = ghost.y + 'px';
+					el.style.left = ghost.x + 'px';
+					el.style.zIndex = String(
+						j !== 1 && j !== 2 && (j + letters.length + i) % 5 === 0 ? 3 : 1
+					);
+					el.style.setProperty('--ix', String(ghost.i));
+					el.style.setProperty(
+						'--iy',
+						String(((j + 1) / (letters.length + 1) - 0.5) * 2)
+					);
+					el.style.setProperty('--ap', String(ghost.ap));
+					el.style.setProperty('--p', String(ghost.p));
+
+					letter.ghosts.push(ghost);
+				}
+			});
+		}
+
+		setWorks() {
+			const { works } = this;
+			const vh = this.bounding?.height || window.innerHeight || 768;
+			// Lock card centers strictly between 32% and 68% of innerHeight
+			// 50% is center. Max displacement is ± 18% of innerHeight.
+			const maxDisplacement = vh * 0.18;
+			const bandFactors = [-0.85, 0.85, -0.55, 0.55, -0.75, 0.75, -0.45, 0.45];
+
+			works.forEach((work, i) => {
+				const el = work.el as HTMLElement;
+				const factor = bandFactors[i % bandFactors.length];
+				const yPx = Math.round(factor * maxDisplacement);
+
+				el.style.setProperty('--y-px', `${yPx}px`);
+				el.style.setProperty('--size', '1');
+			});
+		}
+
+		setTimeline() {
+			const { el, container, works, scene, mask } = this;
+			const worksEl = works.map((work) => work.el);
+			let { tl } = this;
+			if (tl) {
+				tl.scrollTrigger?.kill();
+				tl.kill();
+			}
+			if (this.scrubTrigger) {
+				this.scrubTrigger.kill();
+				this.scrubTrigger = null;
+			}
+			if (this.progressRafId) {
+				cancelAnimationFrame(this.progressRafId);
+				this.progressRafId = 0;
+			}
+			this.lastProgressFrameAt = 0;
+			this.targetProgress = 0;
+			this.renderedProgress = 0;
+
+			const introDuration = 10.0;
+			const cardsDelay = 0.35;
+			const cardsStart = introDuration + cardsDelay;
+			const movementScrollMultiplier = 5;
+			const endWrapScrollMultiplier = 3;
+			const endWrapDelayDuration = 2;
+
+			const timelineConfig: gsap.TimelineVars = {
+				paused: true,
+				onUpdate: () => {
+					scene.style.setProperty('--state', String(this.state));
+				},
+			};
+
+			tl = gsap.timeline(timelineConfig);
+			this.tl = tl;
+
+			const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+			tl.fromTo(
+				scene,
+				{ scale: 0.75 },
+				{ scale: 1, duration: introDuration, ease: 'power3.in' },
+				0
+			);
+
+			tl.fromTo(
+				mask.el,
+				{ scale: 1 },
+				{ scale: mask.maxScale, duration: introDuration, ease: 'power4.in' },
+				0
+			);
+
+			if (!isMobile) {
+				tl.fromTo(
+					container,
+					{ clipPath: 'inset(0 1rem)' },
+					{
+						clipPath: 'inset(0 0rem)',
+						duration: introDuration,
+						ease: 'power3.in',
+					},
+					0
+				);
+			}
+
+			tl.fromTo(
+				this,
+				{ state: 0 },
+				{ state: 1, duration: 0.75, ease: 'power4.in' },
+				introDuration
+			);
+			const baseCardsDuration = 0.9;
+			const baseCardsStagger = 0.32;
+			const cardsDuration = baseCardsDuration * movementScrollMultiplier;
+			const cardsStagger = baseCardsStagger * movementScrollMultiplier;
+			const baseMovementDuration =
+				baseCardsDuration + Math.max(worksEl.length - 1, 0) * baseCardsStagger;
+			const movementDuration = baseMovementDuration * movementScrollMultiplier;
+			const wrapStart = cardsStart + movementDuration + endWrapDelayDuration;
+			const wrapDuration = 0.75 * endWrapScrollMultiplier;
+			tl.fromTo(
+				worksEl,
+				{ attr: { progress: 1 } },
+				{
+					attr: { progress: -1 },
+					duration: cardsDuration,
+					ease: 'slow(0.15, 0.6)',
+					stagger: cardsStagger,
+				},
+				cardsStart
+			);
+			tl.fromTo(
+				this,
+				{ animationProgress: 0 },
+				{
+					animationProgress: 10000,
+					duration: movementDuration,
+					ease: 'power1.out',
+				},
+				cardsStart
+			);
+			tl.fromTo(
+				this,
+				{ state: 1 },
+				{
+					state: 0,
+					duration: wrapDuration,
+					ease: 'power4.inOut',
+					immediateRender: false,
+				},
+				wrapStart
+			);
+			tl.fromTo(
+				mask.el,
+				{ scale: mask.maxScale },
+				{
+					scale: 1,
+					duration: wrapDuration,
+					ease: 'power4.inOut',
+					immediateRender: false,
+				},
+				wrapStart
+			);
+			tl.fromTo(
+				scene,
+				{ scale: 1 },
+				{
+					scale: 0.75,
+					duration: wrapDuration,
+					ease: 'power3.inOut',
+					immediateRender: false,
+				},
+				wrapStart
+			);
+
+			if (!isMobile) {
+				tl.fromTo(
+					container,
+					{ clipPath: 'inset(0 0rem)' },
+					{
+						clipPath: 'inset(0 1rem)',
+						duration: wrapDuration,
+						ease: 'power3.inOut',
+						immediateRender: false,
+					},
+					wrapStart
+				);
+			}
+
+			if (this.isTouchDevice) {
+				this.measureTouchRange();
+				this.updateTouchTimeline(true);
+				this.queueTouchSync(true);
+			} else if (!this.reducedMotion && !this.reducedData) {
+				this.scrubTrigger = ScrollTrigger.create({
+					trigger: el,
+					start: 'top top',
+					end: 'bottom bottom',
+					invalidateOnRefresh: true,
+					onUpdate: (self) => {
+						this.targetProgress = self.progress;
+						this.scheduleProgressRender();
+						this.syncScrollEffects(false);
+					},
+					onRefresh: (self) => {
+						this.targetProgress = self.progress;
+						this.renderedProgress = self.progress;
+						if (this.progressRafId) {
+							cancelAnimationFrame(this.progressRafId);
+							this.progressRafId = 0;
+						}
+						this.lastProgressFrameAt = 0;
+						tl.progress(self.progress, false);
+						this.syncScrollEffects(true);
+					},
+				});
+			}
+
+			if (this.reducedMotion || this.reducedData) {
+				tl.progress(1);
+				this.syncScrollEffects(true);
+			}
+		}
+
+		scheduleProgressRender() {
+			if (this.progressRafId) return;
+			this.progressRafId = requestAnimationFrame(this.renderSmoothedProgress);
+		}
+
+		renderSmoothedProgress = (now: number) => {
+			this.progressRafId = 0;
+			if (!this.tl) {
+				this.lastProgressFrameAt = 0;
+				return;
+			}
+
+			const delta = this.lastProgressFrameAt
+				? Math.min((now - this.lastProgressFrameAt) / 1000, 0.05)
+				: 1 / 60;
+			this.lastProgressFrameAt = now;
+
+			const diff = this.targetProgress - this.renderedProgress;
+			const minStep = 0.0001;
+
+			if (Math.abs(diff) <= minStep) {
+				this.renderedProgress = this.targetProgress;
+				this.tl.progress(this.renderedProgress, false);
+				this.lastProgressFrameAt = 0;
+				return;
+			}
+
+			const ease = 1 - Math.exp(-delta / 0.08);
+			const easedStep = diff * ease;
+			const step =
+				Math.sign(diff) * Math.min(Math.abs(easedStep), Math.abs(diff));
+			this.renderedProgress += step;
+			this.tl.progress(this.renderedProgress, false);
+
+			if (Math.abs(this.targetProgress - this.renderedProgress) > minStep) {
+				this.progressRafId = requestAnimationFrame(this.renderSmoothedProgress);
+			} else {
+				this.lastProgressFrameAt = 0;
+			}
+		};
+
+		moveLetters() {
+			if (this.reducedMotion || this.reducedData) return;
+			const { speed, letters, animationProgress } = this;
+			letters.forEach((letter) => {
+				const letterSpeed = speed * letter.freq;
+				letter.ghosts.forEach((ghost: Ghost, index: number) => {
+					let progress =
+						(((animationProgress % letterSpeed) / letterSpeed +
+							index / letter.total) %
+							1) /
+							0.7 -
+						0.15;
+					ghost.el.style.setProperty('--progress', String(progress));
+				});
+			});
+		}
+
+		syncScrollEffects(force = false, touchScrollY?: number) {
+			const nextScrollProgress = this.isTouchDevice
+				? this.getTouchScrollEffectProgress(touchScrollY)
+				: (() => {
+						const viewportHeight =
+							window.innerHeight || this.bounding.height || 1;
+						const rect = this.el.getBoundingClientRect();
+						const topProgress = Math.max(
+							Math.min(rect.top / viewportHeight, 1),
+							0
+						);
+						const bottomProgress = Math.max(
+							Math.min(rect.bottom / viewportHeight, 1),
+							0
+						);
+
+						return -topProgress + (1 - bottomProgress);
+					})();
+
+			if (force || Math.abs(nextScrollProgress - this.scrollProgress) > 0.001) {
+				this.scrollProgress = nextScrollProgress;
+				this.smoothScrollProgress +=
+					(this.scrollProgress - this.smoothScrollProgress) * 0.1;
+				this.el.style.setProperty(
+					'--scroll-progress',
+					String(this.scrollProgress)
+				);
+			}
+
+			this.moveLetters();
+		}
+
+		tick() {
+			this.syncScrollEffects();
+		}
+	}
+
+	const sectionRoot = document.querySelector('.s-work');
+	if (sectionRoot) {
+		const initSection = () => {
+			if ((sectionRoot as HTMLElement).dataset.sWorkInit) return;
+			(sectionRoot as HTMLElement).dataset.sWorkInit = 'true';
+			new Section();
+		};
+
+		if ('IntersectionObserver' in window) {
+			const initObserver = new IntersectionObserver(
+				(entries, observer) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							initSection();
+							observer.disconnect();
+						}
+					});
+				},
+				{ rootMargin: '200px 0px', threshold: 0.01 }
+			);
+			initObserver.observe(sectionRoot);
+		} else {
+			initSection();
+		}
+	}
+</script>
+
+<style>
+	:root {
+		--color-primary: #00F0FF;
+		--color-secondary: #050B14;
+		--color-shadow: #002B3D;
+		--color-white: #FFFFFF;
+	}
+
+	.s-work {
+		--height: 100svh;
+		position: relative;
+		z-index: 2;
+		height: var(--height);
+		background: #050B14;
+	}
+
+	.s-work::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		width: 100%;
+		height: 1px;
+		background: var(--color-secondary);
+		content: "";
+	}
+
+	.s-work .s__mask-outer {
+		position: sticky;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100svh;
+		overflow: hidden;
+		pointer-events: none !important;
+		z-index: 10;
+	}
+
+	.s-work .s__mask-outer * {
+		pointer-events: none !important;
+	}
+
+	@media only screen and (max-width: 767px) and (orientation: landscape),
+		only screen and (max-width: 576px) {
+		.s-work {
+			background: var(--color-secondary);
+		}
+		.s-work .s__mask-outer {
+			left: -150vw;
+		}
+	}
+
+	.s-work .s__mask {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		transform-origin: 50% 50%;
+		will-change: scale, transform;
+		pointer-events: none !important;
+	}
+
+	.s-work .s__mask__svg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none !important;
+	}
+
+	.s-work .s__mask__path-outer,
+	.s-work .s__mask__path-inner,
+	.s-work .s__mask__path-lines {
+		pointer-events: none !important;
+	}
+
+	.s-work .s__mask__path-outer {
+		fill: #050B14;
+		fill-rule: evenodd;
+		stroke: #00F0FF;
+		stroke-width: 1.5px;
+	}
+
+	.s-work .s__mask__path-inner {
+		fill: #050B14;
+		fill-rule: evenodd;
+		stroke: #00F0FF;
+		stroke-width: 1.5px;
+	}
+
+	.s-work .s__mask__path-lines {
+		fill: none;
+		stroke: #8B5CF6;
+		stroke-width: 1px;
+	}
+
+	.s-work .s__outer {
+		position: relative;
+		height: var(--height);
+		clip-path: inset(0 -1rem);
+		overflow: clip;
+		overflow-clip-margin: 1rem;
+	}
+
+	.s-work .s__inner {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		position: sticky;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100svh;
+		background: var(--color-secondary);
+		color: white;
+		will-change: clip-path;
+	}
+
+	@media only screen and (max-width: 767px) and (orientation: landscape),
+		only screen and (max-width: 576px) {
+		.s-work .s__inner {
+			transform: none;
+		}
+	}
+
+	.s-work .s__ruler {
+		--width: clamp(8.5rem, 8vw, 9.5rem);
+		position: absolute;
+		top: 10svh;
+		left: calc(50% - var(--width) / 2);
+		width: var(--width);
+		height: 80svh;
+		pointer-events: none;
+	}
+
+	@media only screen and (max-width: 987px) {
+		.s-work .s__ruler {
+			--width: clamp(8.5rem, 18vw, 9rem);
+		}
+	}
+
+	@media only screen and (max-width: 767px) and (orientation: landscape),
+		only screen and (max-width: 576px) {
+		.s-work .s__ruler {
+			--width: min(32vw, 8rem);
+		}
+	}
+
+	.s-work .s__title,
+	.s-work .s__scene {
+		font-weight: 900;
+		font-size: min(12.5rem, 16svh);
+		line-height: 1;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	.s-work .s__title__inner,
+	:global(.s__scene__letter) {
+		line-height: 0.85;
+		letter-spacing: 0.5em;
+	}
+
+	.s-work .s__title__letter,
+	:global(.s__scene__letter) {
+		margin-right: -0.5em;
+	}
+
+	.s-work .s__title {
+		width: 0.7em;
+		opacity: 0;
+		pointer-events: none;
+		word-break: break-all;
+	}
+
+	.s-work .s__title__inner {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin: 0.075em 0 -0.125em;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.s-work .s__outer {
+			display: none;
+		}
+	}
+
+	.s-work .s__scene {
+		--shadow: var(--color-shadow);
+		--progress: 0.5;
+		--state: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		width: 100%;
+		height: 100%;
+		perspective: 40rem;
+		will-change: transform;
+	}
+
+	:global(.s__scene__letter) {
+		--head: calc((var(--progress, 0.5) - 0.5) * -2);
+		--ahead: calc(var(--head) * var(--head));
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: block;
+		transform: rotateY(calc(var(--head) * -10deg * var(--state, 0)))
+			translate3d(
+				calc(var(--head) * 50vw * var(--state, 0)),
+				calc(var(--iy, 0) * 50% * var(--ahead) * var(--state, 0)),
+				0
+			);
+		pointer-events: none;
+		will-change: transform;
+		color: #FFFFFF;
+		font-weight: 900;
+	}
+
+	:global(.s__scene__letter)::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		color: #002B3D;
+		opacity: min(calc(var(--state, 0) * 2), 1);
+		transform: scale(1.05, 1.02)
+			translate3d(
+				calc(var(--head) * 0.1rem * var(--state, 0) * var(--state, 0)),
+				0,
+				0
+			);
+		transform-origin: calc(50% - var(--head) * 50%) -50%;
+		will-change: opacity, transform;
+		content: attr(data-letter);
+	}
+
+	.s-work a-work.js-work,
+	.s-work :global(a-work),
+	:global(.s-work .s__scene__work) {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		z-index: 8;
+		display: block;
+		width: clamp(320px, 34vw, 500px);
+		max-width: 540px;
+		margin: 0;
+		padding: 0.65rem 0.65rem 0.45rem;
+		border-radius: 1.25rem;
+		background: linear-gradient(135deg, rgba(5, 11, 20, 0.96) 0%, rgba(13, 22, 40, 0.92) 100%);
+		border: 1.5px solid rgba(0, 240, 255, 0.45);
+		box-shadow: 0 0 28px rgba(0, 240, 255, 0.22), 0 20px 50px rgba(0, 0, 0, 0.9);
+		backdrop-filter: blur(16px);
+		transform-style: preserve-3d;
+		transform-origin: center center;
+		transform: rotateY(calc(var(--progress, 1) * -20deg))
+			translate3d(
+				calc(var(--progress, 1) * (80vw + 160%) - 50%),
+				calc(var(--y-px, 0px) - 50%),
+				calc(var(--progress, 1) * var(--progress, 1) * -4.5rem)
+			)
+			scale(var(--size, 1));
+		opacity: 0;
+		will-change: transform;
+		pointer-events: none;
+	}
+
+	.s-work a-work.js-work.is-inview,
+	.s-work :global(a-work.is-inview),
+	:global(.s-work .s__scene__work.is-inview) {
+		z-index: 9;
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	@media only screen and (max-width: 987px) {
+		.s-work a-work.js-work,
+		.s-work :global(a-work),
+		:global(.s-work .s__scene__work) {
+			width: clamp(280px, 78vw, 360px);
+			max-width: 380px;
+			padding: 0.4rem 0.4rem 0.3rem;
+			border-radius: 1rem;
+			transform: rotateY(calc(var(--progress, 1) * -20deg))
+				translate3d(
+					calc(var(--progress, 1) * (100vw + 200%) - 50%),
+					calc(var(--y-px, 0px) - 50%),
+					calc(var(--progress, 1) * var(--progress, 1) * -4.5rem)
+				)
+				scale(var(--size, 1));
+		}
+	}
+
+	a-work .a__link {
+		display: block;
+		text-decoration: none;
+		cursor: default;
+		pointer-events: none;
+		position: relative;
+		z-index: 9999;
+	}
+
+	a-work .a__inner {
+		display: block;
+		margin: 0;
+		padding: 0;
+	}
+
+	a-work .a__media {
+		display: block;
+		width: 100%;
+		border-radius: 0.85rem;
+		overflow: hidden;
+		background: #020308;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	a-work .a__video {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+	}
+
+	a-work .a__placeholder {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 1.5rem;
+		text-align: center;
+		background: linear-gradient(135deg, #080f1d 0%, #050B14 50%, #14102c 100%);
+	}
+
+	a-work .a__placeholder-badge {
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 9999px;
+		background: rgba(0, 240, 255, 0.15);
+		border: 1px solid rgba(0, 240, 255, 0.4);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #00F0FF;
+		margin-bottom: 0.5rem;
+		box-shadow: 0 0 12px rgba(0, 240, 255, 0.35);
+	}
+
+	a-work .a__placeholder-tag {
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+		font-size: 10px;
+		letter-spacing: 0.15em;
+		color: #00F0FF;
+		text-transform: uppercase;
+		font-weight: 700;
+	}
+
+	a-work .a__placeholder-title {
+		font-family: sans-serif;
+		font-size: 13px;
+		font-weight: 800;
+		color: #FEFCD9;
+		margin-top: 0.25rem;
+		letter-spacing: -0.01em;
+	}
+
+	a-work .a__caption {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.5rem 0.25rem 0.15rem;
+		color: #00F0FF;
+		font: 700 11px / 1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+		letter-spacing: 0.15em;
+		text-align: right;
+		text-transform: uppercase;
+	}
+
+	@media only screen and (max-width: 767px) and (orientation: landscape),
+		only screen and (max-width: 576px) {
+		a-work .a__caption {
+			font-size: 9px;
+			padding: 0.35rem 0.15rem 0.1rem;
+		}
+	}
+
+	/* --- Reduced Motion Static Fallback --- */
+	.s__reduced-fallback {
+		display: none;
+		max-width: 1024px;
+		margin: 0 auto;
+		padding: 5rem 1.5rem;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.s__reduced-fallback {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+		}
+	}
+
+	.s__reduced-title {
+		font-size: 3rem;
+		font-weight: 900;
+		color: #00F0FF;
+		letter-spacing: 0.15em;
+		text-align: center;
+	}
+
+	.s__reduced-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 1.5rem;
+	}
+
+	.s__reduced-card {
+		padding: 1.5rem;
+		border-radius: 1rem;
+		background: #050B14;
+		border: 1px solid rgba(0, 240, 255, 0.3);
+	}
+
+	.s__reduced-tag {
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+		font-size: 11px;
+		color: #00F0FF;
+		text-transform: uppercase;
+		font-weight: 700;
+	}
+
+	.s__reduced-heading {
+		font-size: 1.25rem;
+		font-weight: 800;
+		color: #FEFCD9;
+		margin-top: 0.5rem;
+	}
+
+	.s__reduced-desc {
+		font-size: 0.85rem;
+		color: rgba(254, 252, 217, 0.75);
+		margin-top: 0.5rem;
+		line-height: 1.5;
+	}
+</style>

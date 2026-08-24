@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   POLYSANS TYPOGRAPHY SYSTEM
+   Variants:
+   1. Standard -> Body, UI, general text
+   2. Wide     -> Large display headings & signature titles
+   3. Mono     -> Technical labels, metadata, counters, microcopy
+   ========================================================================== */
+
+/* --- 1. PolySans Standard --- */
+@font-face {
+  font-family: "PolySans";
+  src:
+    url("/media/fonts/PolySans-400.woff2") format("woff2"),
+    url("/media/fonts/PolySans-trial/Standard/PolySansTrial-Neutral.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PolySans";
+  src: url("/media/fonts/PolySans-trial/Standard/PolySansItalicTrial-NeutralItalic.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PolySans";
+  src: url("/media/fonts/PolySans-trial/Standard/PolySansTrial-Slim.otf")
+    format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PolySans";
+  src:
+    url("/media/fonts/PolySans-500.woff2") format("woff2"),
+    url("/media/fonts/PolySans-trial/Standard/PolySansTrial-Median.otf")
+    format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PolySans";
+  src:
+    url("/media/fonts/PolySans-700.woff2") format("woff2"),
+    url("/media/fonts/PolySans-trial/Standard/PolySansTrial-Bulky.otf")
+    format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PolySans";
+  src: url("/media/fonts/PolySans-trial/Standard/PolySansItalicTrial-BulkyItalic.otf")
+    format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* --- 2. PolySans Wide (Display Headings) --- */
+@font-face {
+  font-family: "PolySans Wide";
+  src: url("/media/fonts/PolySans-trial/Wide/PolySansTrial-SlimWide.otf")
+    format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PolySans Wide";
+  src: url("/media/fonts/PolySans-trial/Wide/PolySansTrial-NeutralWide.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PolySans Wide";
+  src: url("/media/fonts/PolySans-trial/Wide/PolySansTrial-MedianWide.otf")
+    format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PolySans Wide";
+  src: url("/media/fonts/PolySans-trial/Wide/PolySansTrial-BulkyWide.otf")
+    format("opentype");
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PolySans Wide";
+  src: url("/media/fonts/PolySans-trial/Wide/PolySansItalicTrial-BulkyWideItalic.otf")
+    format("opentype");
+  font-weight: 700 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* --- 3. PolySans Mono (Technical / Microcopy) --- */
+@font-face {
+  font-family: "PolySans Mono";
+  src: url("/media/fonts/PolySans-trial/Mono/PolySansTrial-SlimMono.otf")
+    format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PolySans Mono";
+  src: url("/media/fonts/PolySans-trial/Mono/PolySansTrial-NeutralMono.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PolySans Mono";
+  src: url("/media/fonts/PolySans-trial/Mono/PolySansTrial-MedianMono.otf")
+    format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PolySans Mono";
+  src: url("/media/fonts/PolySans-trial/Mono/PolySansTrial-BulkyMono.otf")
+    format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- Theme Configuration --- */
+@theme {
+  --color-cyan: #00f0ff;
+  --color-violet: #8b5cf6;
+  --color-navy: #050b14;
+  --color-night: #020308;
+  --color-cream: #fefcd9;
+  --color-ink: #0d0e0d;
+
+  --font-sans:
+    "PolySans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "PolySans Wide", "PolySans", sans-serif;
+  --font-wide: "PolySans Wide", "PolySans", sans-serif;
+  --font-mono:
+    "PolySans Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  background-color: #020308;
+  color: #fefcd9;
+  font-family: var(--font-sans);
+}
+
+body {
+  background-color: #020308;
+  color: #fefcd9;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Text Selection */
+::selection {
+  background-color: #00f0ff;
+  color: #0d0e0d;
+}
+
+::-moz-selection {
+  background-color: #00f0ff;
+  color: #0d0e0d;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020308;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0f192c;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 240, 255, 0.15);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.35);
+}

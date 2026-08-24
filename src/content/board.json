@@ -1,0 +1,186 @@
+[
+  {
+    "id": "faculty-sandeep-kumar",
+    "fullName": "Sandeep Kumar",
+    "position": "HOD of CSE",
+    "yearBranch": "HOD of CSE",
+    "initials": "SK",
+    "quote": "Guiding innovators of tomorrow."
+  },
+  {
+    "id": "faculty-shivam-pandey",
+    "fullName": "Shivam Pandey",
+    "position": "Faculty Coordinator",
+    "yearBranch": "Faculty Coordinator",
+    "initials": "SP",
+    "quote": "Because technology empowers."
+  },
+  {
+    "id": "gaurav-shukla",
+    "fullName": "Gaurav Shukla",
+    "position": "Advisor",
+    "yearBranch": "4th Year · B.Tech CSE",
+    "initials": "GS",
+    "quote": "Architecting resilient systems."
+  },
+  {
+    "id": "chetan-pandey",
+    "fullName": "Chetan Pandey",
+    "position": "Chairperson",
+    "yearBranch": "4th Year · B.Tech CSE",
+    "initials": "CP",
+    "quote": "Because progress needs builders."
+  },
+  {
+    "id": "simriti-bisht",
+    "fullName": "Simriti Bisht",
+    "position": "Vice-Chairperson",
+    "yearBranch": "4th Year · B.Tech CSE",
+    "initials": "SB",
+    "quote": "Engineering with curiosity."
+  },
+  {
+    "id": "prashant-krishan-bharti",
+    "fullName": "Prashant Krishan Bharti",
+    "position": "Secretary",
+    "yearBranch": "3rd Year · B.Tech CSE",
+    "initials": "PB",
+    "quote": "Empowering community collaboration."
+  },
+  {
+    "id": "prakriti",
+    "fullName": "Prakriti",
+    "position": "Treasurer",
+    "yearBranch": "4th Year · B.Tech CSE",
+    "initials": "PR",
+    "quote": "Sustaining innovation."
+  },
+  {
+    "id": "piyush-lingwal",
+    "fullName": "Piyush Lingwal",
+    "position": "Technical Lead",
+    "yearBranch": "4th Year · B.Tech CSE",
+    "initials": "PL",
+    "quote": "Crafting digital experiences."
+  },
+  {
+    "id": "nikhil-rajput",
+    "fullName": "Nikhil Rajput",
+    "position": "Co-Technical Lead",
+    "yearBranch": "3rd Year · B.Tech AI/ML",
+    "initials": "NR",
+    "quote": "Driven by intelligent computation."
+  },
+  {
+    "id": "prince-kumar",
+    "fullName": "Prince Kumar",
+    "position": "Event Head",
+    "yearBranch": "3rd Year · BCA",
+    "initials": "PK",
+    "quote": "Executing premier experiences."
+  },
+  {
+    "id": "aditya-shyamveer-thakur",
+    "fullName": "Aditya Shyamveer Thakur",
+    "position": "Co Event Head",
+    "yearBranch": "3rd Year · BCA",
+    "initials": "AT",
+    "quote": "Orchestrating memorable events."
+  },
+  {
+    "id": "jasan-dikshit",
+    "fullName": "Jasan Dikshit",
+    "position": "PR Lead",
+    "yearBranch": "3rd Year · B.Tech AI/ML",
+    "initials": "JD",
+    "quote": "Connecting minds and ideas."
+  },
+  {
+    "id": "ritish-dhar",
+    "fullName": "Ritish Dhar",
+    "position": "Membership Chair",
+    "yearBranch": "3rd Year · B.Tech CSE",
+    "initials": "RD",
+    "quote": "Growing our computing family."
+  },
+  {
+    "id": "adarsh-maurya",
+    "fullName": "Adarsh Maurya",
+    "position": "Media Lead",
+    "yearBranch": "3rd Year · B.Tech CSE",
+    "initials": "AM",
+    "quote": "Visualizing tech narratives."
+  },
+  {
+    "id": "rishanshu",
+    "fullName": "Rishanshu",
+    "position": "Webmaster",
+    "yearBranch": "4th Year · B.Tech CSE",
+    "initials": "RI",
+    "quote": "Building responsive interfaces."
+  },
+  {
+    "id": "keshav",
+    "fullName": "Keshav",
+    "position": "PR Member",
+    "yearBranch": "2nd Year · B.Tech CSE",
+    "initials": "KS",
+    "quote": "Amplifying student voices."
+  },
+  {
+    "id": "sonali-kumari",
+    "fullName": "Sonali Kumari",
+    "position": "Event Management Member",
+    "yearBranch": "3rd Year · BCA CSE",
+    "initials": "SK",
+    "quote": "Bringing ideas to life."
+  },
+  {
+    "id": "harsh-kumar",
+    "fullName": "Harsh Kumar",
+    "position": "Technical Member",
+    "yearBranch": "3rd Year · B.Tech CSE",
+    "initials": "HK",
+    "quote": "Building solutions with code."
+  },
+  {
+    "id": "golu-kumar",
+    "fullName": "Golu Kumar",
+    "position": "Technical Member",
+    "yearBranch": "3rd Year · BCA",
+    "initials": "GK",
+    "quote": "Curious coder and builder."
+  },
+  {
+    "id": "aayush-gupta",
+    "fullName": "Aayush Gupta",
+    "position": "Technical Member",
+    "yearBranch": "3rd Year · B.Tech CSE",
+    "initials": "AG",
+    "quote": "Crafting intelligent software."
+  },
+  {
+    "id": "piyush-rawat",
+    "fullName": "Piyush Rawat",
+    "position": "Technical Member",
+    "yearBranch": "4th Year · B.Tech CSE",
+    "initials": "PR",
+    "quote": "Solving real-world problems."
+  },
+  {
+    "id": "tabeer",
+    "fullName": "Tabeer",
+    "position": "Social Media Member",
+    "yearBranch": "3rd Year · B.Tech CSE",
+    "initials": "TB",
+    "quote": "Broadcasting our journey."
+  },
+  {
+    "id": "sawpnil",
+    "fullName": "Sawpnil",
+    "position": "Social Media Member",
+    "yearBranch": "2nd Year · B.Tech CSE",
+    "initials": "SW",
+    "quote": "Engaging tech communities."
+  }
+]

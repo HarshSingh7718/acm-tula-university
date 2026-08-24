@@ -1,0 +1,88 @@
+---
+const navLinks = [
+	{ label: 'ABOUT', href: '#about' },
+	{ label: 'EVENTS', href: '#events' },
+	{ label: 'TEAM', href: '#board' },
+	{ label: 'GALLERY', href: '#gallery' },
+	{ label: 'CONTACT', href: '#contact' },
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer
+	id="footer"
+	aria-labelledby="footer-heading"
+	class="relative border-t border-cyan/20 py-16 px-6 sm:px-12 bg-[#020308] text-cream select-none z-10"
+>
+	<div class="max-w-7xl mx-auto flex flex-col gap-12">
+		<!-- Top Row: Branding, Navigation Links & Back to Top -->
+		<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-10 border-b border-cyan/15">
+			<!-- Brand Info -->
+			<div class="flex flex-col gap-2">
+				<div class="flex items-center gap-2">
+					<img
+						src="/media/images/acm_tulas_logo.svg"
+						alt="ACM Tula's Student Chapter"
+						class="h-10 sm:h-12 w-auto max-w-[200px] object-contain block select-none"
+						width="180"
+						height="48"
+						loading="lazy"
+						decoding="async"
+					/>
+				</div>
+				<p class="text-xs text-cream/60 font-mono max-w-sm mt-1">
+					Tula's University, Dhoolkot, PO-Selaqui, Chakrata Road, Dehradun, Uttarakhand, India 248011.
+				</p>
+			</div>
+
+			<!-- Navigation Links -->
+			<nav aria-label="Footer Navigation" class="flex flex-wrap items-center gap-6">
+				{
+					navLinks.map((link) => (
+						<a
+							href={link.href}
+							class="text-xs font-mono tracking-widest text-cream/70 hover:text-cyan transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan rounded py-1"
+						>
+							{link.label}
+						</a>
+					))
+				}
+			</nav>
+
+			<!-- Back to Top Button -->
+			<div>
+				<a
+					href="#home"
+					class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#050B14] border border-cyan/30 text-cyan text-xs font-mono hover:bg-cyan/10 hover:border-cyan transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan shadow-[0_0_15px_rgba(0,240,255,0.1)]"
+					aria-label="Back to top of page"
+				>
+					<span>TOP</span>
+					<span aria-hidden="true">↑</span>
+				</a>
+			</div>
+		</div>
+
+		<!-- Bottom Row: Copyright & Legal Notice -->
+		<div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-xs font-mono text-cream/50">
+			<div class="flex items-center gap-2">
+				<img
+					src="/media/images/acm_tulas_mark.svg"
+					alt="ACM Mark"
+					class="w-4 h-4 object-contain opacity-75"
+					width="16"
+					height="16"
+					loading="lazy"
+					decoding="async"
+				/>
+				<p class="m-0">
+					© {currentYear} ACM Student Chapter · Tula's University. All rights reserved.
+				</p>
+			</div>
+			<p class="m-0 flex items-center gap-2">
+				<span class="w-1.5 h-1.5 rounded-full bg-cyan shadow-[0_0_6px_#00F0FF] animate-pulse"></span>
+				<span>AFFILIATED CHARTER OF ACM INTERNATIONAL</span>
+			</p>
+		</div>
+	</div>
+</footer>

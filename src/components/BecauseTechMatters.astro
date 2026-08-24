@@ -1,0 +1,208 @@
+---
+---
+
+<section
+	id="because-tech-matters"
+	aria-labelledby="tech-matters-title"
+	class="relative w-full h-[130vh] min-h-[130vh] flex items-center justify-center overflow-hidden bg-[#020308] select-none scroll-mt-20"
+>
+	<!-- Subtle Ambient Glow Background -->
+	<div
+		class="absolute inset-0 bg-[radial-gradient(ellipse_70%_70%_at_50%_50%,rgba(139,92,246,0.08),transparent_75%)] pointer-events-none"
+		aria-hidden="true"
+	></div>
+
+	<!-- Accessible Section Heading for Screen Readers -->
+	<h2 id="tech-matters-title" class="sr-only">
+		Because Progress Needs Builders: Learn, Build, Ship, Repeat
+	</h2>
+
+	<!-- Pinned Stack Container -->
+	<div
+		id="btm-stack"
+		class="relative z-10 w-full max-w-6xl mx-auto px-4 flex flex-col items-center justify-center text-center gap-1 sm:gap-3"
+	>
+		<!-- Line 1: Learn -->
+		<div
+			class="btm-line btm-line-1 text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-wide font-black uppercase tracking-tight text-cream/40"
+			aria-hidden="true"
+		>
+			Learn
+		</div>
+
+		<!-- Line 2: Build -->
+		<div
+			class="btm-line btm-line-2 text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-wide font-black uppercase tracking-tight text-cream/65"
+			aria-hidden="true"
+		>
+			Build
+		</div>
+
+		<!-- Line 3: Because progress needs builders (Center Hero Statement) -->
+		<div
+			id="btm-center-line"
+			class="btm-line btm-line-center text-xl sm:text-3xl md:text-5xl lg:text-6xl font-wide font-black uppercase tracking-tight py-2 sm:py-3 text-cream transition-transform duration-100"
+		>
+			<span class="btm-stroke-text inline-block transition-all duration-300">
+				Because progress needs builders
+			</span>
+		</div>
+
+		<!-- Line 4: Ship -->
+		<div
+			class="btm-line btm-line-4 text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-wide font-black uppercase tracking-tight text-cream/65"
+			aria-hidden="true"
+		>
+			Ship
+		</div>
+
+		<!-- Line 5: Repeat -->
+		<div
+			class="btm-line btm-line-5 text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-wide font-black uppercase tracking-tight text-cream/40"
+			aria-hidden="true"
+		>
+			Repeat
+		</div>
+	</div>
+</section>
+
+<style>
+	.btm-stroke-text {
+		will-change: auto;
+	}
+
+	.btm-stroke-active {
+		color: transparent !important;
+		-webkit-text-fill-color: transparent !important;
+		-webkit-text-stroke: 2px #F95F4A !important;
+		text-shadow: 0 0 25px rgba(249, 95, 74, 0.35);
+	}
+
+	@media (max-width: 768px) {
+		.btm-stroke-active {
+			-webkit-text-stroke: 1px #F95F4A !important;
+		}
+	}
+</style>
+
+<script>
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import { isReducedMotion } from '../scripts/scroll';
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	function setupBecauseTechMatters() {
+		const section = document.getElementById('because-tech-matters');
+		const lines = document.querySelectorAll<HTMLElement>('.btm-line');
+		const line1 = document.querySelector<HTMLElement>('.btm-line-1');
+		const line2 = document.querySelector<HTMLElement>('.btm-line-2');
+		const centerLine = document.querySelector<HTMLElement>('.btm-line-center');
+		const strokeText = document.querySelector<HTMLElement>('.btm-stroke-text');
+		const line4 = document.querySelector<HTMLElement>('.btm-line-4');
+		const line5 = document.querySelector<HTMLElement>('.btm-line-5');
+
+		if (!section || !centerLine || !strokeText) return;
+
+		// Reduced motion fallback
+		if (isReducedMotion()) {
+			strokeText.classList.add('btm-stroke-active');
+			if (line1) line1.style.transform = 'translateY(-60px)';
+			if (line2) line2.style.transform = 'translateY(-25px)';
+			if (line4) line4.style.transform = 'translateY(25px)';
+			if (line5) line5.style.transform = 'translateY(60px)';
+			return;
+		}
+
+		// GSAP Scrub Timeline
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: section,
+				start: 'top top',
+				end: 'bottom bottom',
+				scrub: 0.6,
+				onToggle: (self) => {
+					if (self.isActive) {
+						lines.forEach((el) => {
+							el.style.willChange = 'transform, opacity';
+						});
+						strokeText.style.willChange = 'transform, -webkit-text-stroke';
+					} else {
+						lines.forEach((el) => {
+							el.style.willChange = 'auto';
+						});
+						strokeText.style.willChange = 'auto';
+					}
+				},
+				onUpdate: (self) => {
+					// Smoothly activate stroke as scrub progresses past initial threshold
+					if (self.progress > 0.25) {
+						strokeText.classList.add('btm-stroke-active');
+					} else {
+						strokeText.classList.remove('btm-stroke-active');
+					}
+				},
+			},
+		});
+
+		// Lines spread outward from center
+		if (line1) {
+			tl.fromTo(
+				line1,
+				{ y: 60, opacity: 0.2 },
+				{ y: -90, opacity: 0.8, ease: 'power2.out' },
+				0
+			);
+		}
+
+		if (line2) {
+			tl.fromTo(
+				line2,
+				{ y: 30, opacity: 0.4 },
+				{ y: -40, opacity: 0.95, ease: 'power2.out' },
+				0
+			);
+		}
+
+		tl.fromTo(
+			centerLine,
+			{ scale: 0.94 },
+			{ scale: 1.08, ease: 'power2.out' },
+			0
+		);
+
+		if (line4) {
+			tl.fromTo(
+				line4,
+				{ y: -30, opacity: 0.4 },
+				{ y: 40, opacity: 0.95, ease: 'power2.out' },
+				0
+			);
+		}
+
+		if (line5) {
+			tl.fromTo(
+				line5,
+				{ y: -60, opacity: 0.2 },
+				{ y: 90, opacity: 0.8, ease: 'power2.out' },
+				0
+			);
+		}
+
+		window.addEventListener(
+			'pagehide',
+			() => {
+				tl.scrollTrigger?.kill();
+				tl.kill();
+			},
+			{ once: true }
+		);
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', setupBecauseTechMatters);
+	} else {
+		setupBecauseTechMatters();
+	}
+	document.addEventListener('astro:page-load', setupBecauseTechMatters);
+</script>

@@ -1,0 +1,517 @@
+---
+---
+
+<section
+	id="contact"
+	aria-labelledby="contact-heading"
+	class="relative w-full bg-[#020308] select-none scroll-mt-20"
+>
+	<!-- ========================================== -->
+	<!-- 1. MOBILE CONTACT VIEW (BLOCK ON MOBILE, HIDDEN ON MD+) -->
+	<!-- ========================================== -->
+	<div class="block md:hidden w-full px-4 py-16">
+		<div
+			class="mx-auto max-w-xl rounded-[32px] border border-white/15 bg-white/[0.04] p-6 text-white shadow-[0_15px_45px_rgba(0,0,0,0.45)] backdrop-blur-xl"
+		>
+			<div class="mb-6 text-center">
+				<span class="text-cyan font-mono text-[10px] tracking-[0.3em] uppercase font-bold block mb-1">
+					INITIALIZE PROTOCOL
+				</span>
+				<h3 class="text-3xl font-wide font-black uppercase text-cream tracking-tight">
+					Contact us!
+				</h3>
+				<p class="mt-1 text-xs font-mono uppercase tracking-[0.35em] text-cream/60">
+					Say Hello!
+				</p>
+			</div>
+
+			<form
+				class="flex flex-col gap-4 text-sm"
+				method="POST"
+				id="contact-form-mobile"
+			>
+				<div class="flex flex-col gap-4 sm:flex-row sm:gap-3">
+					<label
+						class="flex flex-col gap-1.5 text-xs font-mono font-semibold uppercase tracking-[0.25em] text-cream/70"
+					>
+						First Name *
+						<input
+							type="text"
+							name="firstName"
+							required
+							class="rounded-2xl border-2 border-dashed border-white/30 bg-transparent px-4 py-3 text-sm font-mono text-white outline-none transition focus:border-cyan"
+						/>
+					</label>
+					<label
+						class="flex flex-col gap-1.5 text-xs font-mono font-semibold uppercase tracking-[0.25em] text-cream/70"
+					>
+						Last Name
+						<input
+							type="text"
+							name="lastName"
+							class="rounded-2xl border-2 border-dashed border-white/30 bg-transparent px-4 py-3 text-sm font-mono text-white outline-none transition focus:border-cyan"
+						/>
+					</label>
+				</div>
+
+				<label
+					class="flex flex-col gap-1.5 text-xs font-mono font-semibold uppercase tracking-[0.25em] text-cream/70"
+				>
+					Email *
+					<input
+						type="email"
+						name="email"
+						required
+						class="rounded-2xl border-2 border-dashed border-white/30 bg-transparent px-4 py-3 text-sm font-mono text-white outline-none transition focus:border-cyan"
+					/>
+				</label>
+
+				<label
+					class="flex flex-col gap-1.5 text-xs font-mono font-semibold uppercase tracking-[0.25em] text-cream/70"
+				>
+					Phone
+					<input
+						type="tel"
+						name="phone"
+						inputmode="tel"
+						pattern="^[0-9+()\\s-]{7,}$"
+						class="rounded-2xl border-2 border-dashed border-white/30 bg-transparent px-4 py-3 text-sm font-mono text-white outline-none transition focus:border-cyan"
+					/>
+				</label>
+
+				<label
+					class="flex flex-col gap-1.5 text-xs font-mono font-semibold uppercase tracking-[0.25em] text-cream/70"
+				>
+					Message *
+					<textarea
+						name="message"
+						rows="4"
+						required
+						class="rounded-2xl border-2 border-dashed border-white/30 bg-transparent px-4 py-3 text-sm font-mono text-white outline-none transition focus:border-cyan resize-none"
+					></textarea>
+				</label>
+
+				<button
+					type="submit"
+					class="mt-2 inline-flex items-center justify-center rounded-full border border-cyan/60 bg-cyan/15 px-8 py-3 text-sm font-mono font-bold uppercase tracking-[0.3em] text-cyan hover:bg-cyan hover:text-black transition-all shadow-[0_0_20px_rgba(0,240,255,0.25)] hover:shadow-[0_0_30px_rgba(0,240,255,0.5)] cursor-pointer"
+				>
+					Submit Dispatch →
+				</button>
+			</form>
+		</div>
+	</div>
+
+	<!-- ========================================== -->
+	<!-- 2. DESKTOP 3D LAPTOP CANVAS STAGE (HIDDEN ON MOBILE, MD:BLOCK WITH 300VH SCRUB) -->
+	<!-- ========================================== -->
+	<div class="laptop-section hidden md:block relative w-full h-[300vh]">
+		<div
+			class="sticky top-0 left-0 w-full h-screen flex items-center justify-center overflow-hidden"
+		>
+			<canvas
+				id="laptop-canvas"
+				class="w-[96vw] max-w-[1350px] h-[86vh] max-h-[850px] object-contain brightness-110"
+			></canvas>
+			<div
+				class="contact-heading absolute top-[20%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-10 opacity-100 pointer-events-none"
+			>
+				<div
+					id="contact-heading"
+					class="justify-start text-white text-5xl sm:text-6xl font-semibold font-wide uppercase tracking-tight"
+				>
+					Contact us!
+				</div>
+			</div>
+
+			<!-- Contact Form Overlay -->
+			<div
+				class="contact-form-overlay absolute top-[6%] left-[13.5%] w-[75%] h-[76%] z-20 opacity-0 pointer-events-none flex flex-col items-center justify-center translate-x-2 sm:translate-x-3"
+			>
+				<div class="flex flex-col items-center text-black mb-1">
+					<div
+						class="text-center justify-start text-stone-900 text-2xl sm:text-3xl font-bold font-wide tracking-tight"
+					>
+						Say Hello!
+					</div>
+				</div>
+
+				<form
+					class="contact-form pointer-events-auto mt-4 flex w-full max-w-[54%] flex-col gap-4 text-xs text-black px-4"
+					method="POST"
+					id="contact-form-desktop"
+				>
+					<div class="contact-grid grid gap-4 sm:grid-cols-2">
+						<label
+							class="flex flex-col gap-2 text-[8px] font-semibold uppercase tracking-[0.35em] text-neutral-500 sm:text-[10px]"
+						>
+							First Name
+							<input
+								type="text"
+								name="firstName"
+								required
+								class="contact-input"
+							/>
+						</label>
+						<label
+							class="flex flex-col gap-2 text-[8px] font-semibold uppercase tracking-[0.35em] text-neutral-500 sm:text-[10px]"
+						>
+							Last Name
+							<input type="text" name="lastName" class="contact-input" />
+						</label>
+					</div>
+
+					<div class="contact-grid grid gap-4 sm:grid-cols-2">
+						<label
+							class="flex flex-col gap-2 text-[8px] font-semibold uppercase tracking-[0.35em] text-neutral-500 sm:text-[10px]"
+						>
+							Email
+							<input type="email" name="email" required class="contact-input" />
+						</label>
+						<label
+							class="flex flex-col gap-2 text-[8px] font-semibold uppercase tracking-[0.35em] text-neutral-500 sm:text-[10px]"
+						>
+							Phone
+							<input
+								type="tel"
+								name="phone"
+								inputmode="tel"
+								pattern="^[0-9+()\\s-]{7,}$"
+								class="contact-input"
+							/>
+						</label>
+					</div>
+
+					<label
+						class="flex flex-col gap-2 text-[8px] font-semibold uppercase tracking-[0.35em] text-neutral-500 sm:text-[10px]"
+					>
+						Message
+						<textarea
+							name="message"
+							rows="2"
+							required
+							class="contact-input resize-none py-2.5"
+						></textarea>
+					</label>
+
+					<div class="flex flex-col items-center gap-4 mt-4">
+						<div
+							class="w-40 h-10 bg-stone-900 rounded-[200px] flex items-center justify-center overflow-hidden"
+						>
+							<button
+								type="submit"
+								class="group inline-flex items-center justify-center gap-2 w-full h-full text-lg font-light text-[#ffeead] sm:text-xl hover:bg-white/5 transition-colors cursor-pointer"
+							>
+								Submit
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.contact-input {
+		border-radius: 0.75rem;
+		border: 1.5px dashed #050505;
+		background: transparent;
+		padding: 0.6rem 0.8rem;
+		font-size: 0.8rem;
+		font-weight: 500;
+		color: #050505;
+		outline: none;
+		transition: border 0.2s ease;
+		width: 100%;
+	}
+
+	.contact-input:focus {
+		border-color: #00F0FF;
+	}
+
+	/* Adjust form layout for the laptop screen size */
+	.contact-form {
+		height: auto;
+	}
+</style>
+
+<script>
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	// 1. Mobile Form Handler
+	const mobileForm = document.getElementById('contact-form-mobile') as HTMLFormElement | null;
+	if (mobileForm) {
+		mobileForm.addEventListener('submit', (e) => {
+			e.preventDefault();
+			const formData = new FormData(mobileForm);
+			const firstName = (formData.get('firstName') as string) || '';
+			const lastName = (formData.get('lastName') as string) || '';
+			const senderEmail = (formData.get('email') as string) || '';
+			const phone = (formData.get('phone') as string) || '';
+			const message = (formData.get('message') as string) || '';
+
+			const subject = encodeURIComponent(`Inquiry from ${firstName} ${lastName} - ACM Tulas`);
+			const body = encodeURIComponent(
+				`Hello ACM Tulas Team,\n\n` +
+				`Name: ${firstName} ${lastName}\n` +
+				`Email: ${senderEmail}\n` +
+				`Phone: ${phone}\n\n` +
+				`Message:\n${message}\n\n` +
+				`---\nSent from ACM Tulas Website`
+			);
+
+			const mailtoUrl = `mailto:acm@tulas.edu.in?subject=${subject}&body=${body}`;
+			window.location.href = mailtoUrl;
+			mobileForm.reset();
+		});
+	}
+
+	// 2. Desktop Canvas Scrub Sequence
+	function initLaptopCanvas() {
+		const canvas = document.querySelector<HTMLCanvasElement>('#laptop-canvas');
+		const section = document.querySelector<HTMLElement>('.laptop-section');
+		if (!canvas || !section || section.dataset.canvasInit === 'true') return;
+		section.dataset.canvasInit = 'true';
+
+		const context = canvas.getContext('2d', { alpha: true });
+		if (!context) return;
+
+		const frameCount = 125;
+		const narrowQuery = '(max-width: 1024px)';
+		let maxCacheSize = frameCount;
+		let preloadRadius = 8;
+		const pendingFrames = new Set<number>();
+		const frameCache = new Map<number, HTMLImageElement>();
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+		const laptop = {
+			frame: 0,
+		};
+
+		const updatePerfSettings = () => {
+			const isNarrow = window.matchMedia(narrowQuery).matches;
+			maxCacheSize = isNarrow ? Math.min(16, frameCount) : frameCount;
+			preloadRadius = isNarrow ? 4 : 8;
+		};
+
+		const currentFrame = (index: number) =>
+			`/media/laptopFrames/frame_${(index + 1).toString().padStart(4, '0')}.avif`;
+
+		const clampFrame = (index: number) =>
+			Math.max(0, Math.min(frameCount - 1, Math.round(index)));
+
+		const resizeCanvas = () => {
+			updatePerfSettings();
+			const rect = canvas.getBoundingClientRect();
+			const dpr = Math.min(window.devicePixelRatio || 1, 2);
+			const width = Math.max(300, Math.round((rect.width || window.innerWidth * 0.95) * dpr));
+			const height = Math.max(200, Math.round((rect.height || window.innerHeight * 0.85) * dpr));
+			if (canvas.width !== width || canvas.height !== height) {
+				canvas.width = width;
+				canvas.height = height;
+			}
+		};
+
+		const drawToCanvas = (img: HTMLImageElement) => {
+			if (!canvas || !context || !img || !img.naturalWidth) return;
+			if (canvas.width === 0 || canvas.height === 0) {
+				resizeCanvas();
+			}
+			context.clearRect(0, 0, canvas.width, canvas.height);
+			const hRatio = canvas.width / img.naturalWidth;
+			const vRatio = canvas.height / img.naturalHeight;
+			const ratio = Math.min(hRatio, vRatio);
+			const centerShift_x = (canvas.width - img.naturalWidth * ratio) / 2;
+			const centerShift_y = (canvas.height - img.naturalHeight * ratio) / 2;
+			context.drawImage(
+				img,
+				0,
+				0,
+				img.naturalWidth,
+				img.naturalHeight,
+				centerShift_x,
+				centerShift_y,
+				img.naturalWidth * ratio,
+				img.naturalHeight * ratio
+			);
+		};
+
+		const trimCache = (center: number) => {
+			if (maxCacheSize >= frameCount || frameCache.size <= maxCacheSize) return;
+			const keys = Array.from(frameCache.keys()).sort(
+				(a, b) => Math.abs(a - center) - Math.abs(b - center)
+			);
+			const keep = new Set(keys.slice(0, maxCacheSize));
+			for (const key of frameCache.keys()) {
+				if (!keep.has(key)) frameCache.delete(key);
+			}
+		};
+
+		const loadFrame = (index: number): Promise<HTMLImageElement | null> => {
+			const clampedIndex = clampFrame(index);
+			const cached = frameCache.get(clampedIndex);
+			if (cached && cached.naturalWidth > 0) return Promise.resolve(cached);
+
+			if (pendingFrames.has(clampedIndex)) return Promise.resolve(null);
+			pendingFrames.add(clampedIndex);
+
+			return new Promise((resolve) => {
+				const img = new Image();
+				img.src = currentFrame(clampedIndex);
+				img.onload = () => {
+					pendingFrames.delete(clampedIndex);
+					frameCache.set(clampedIndex, img);
+					trimCache(clampedIndex);
+					resolve(img);
+				};
+				img.onerror = () => {
+					pendingFrames.delete(clampedIndex);
+					resolve(null);
+				};
+			});
+		};
+
+		const queueFrames = (center: number) => {
+			const start = Math.max(0, center - preloadRadius);
+			const end = Math.min(frameCount - 1, center + preloadRadius);
+			for (let i = start; i <= end; i++) {
+				void loadFrame(i);
+			}
+		};
+
+		const preloadAllFrames = async () => {
+			const concurrency = Math.min(6, frameCount);
+			let nextIndex = 0;
+			const worker = async () => {
+				while (nextIndex < frameCount) {
+					const idx = nextIndex++;
+					await loadFrame(idx);
+				}
+			};
+			await Promise.all(Array.from({ length: concurrency }, () => worker()));
+		};
+
+		const render = () => {
+			const frame = clampFrame(laptop.frame);
+			const img = frameCache.get(frame);
+			if (!img || !img.naturalWidth) {
+				void loadFrame(frame).then((loaded) => {
+					if (loaded && frame === clampFrame(laptop.frame)) {
+						drawToCanvas(loaded);
+					}
+				});
+				return;
+			}
+			drawToCanvas(img);
+			queueFrames(frame);
+		};
+
+		// Initialize sequence
+		resizeCanvas();
+		loadFrame(0).then((firstImg) => {
+			if (firstImg) {
+				drawToCanvas(firstImg);
+			}
+			preloadAllFrames();
+		});
+
+		if (prefersReducedMotion) {
+			const formOverlay = document.querySelector<HTMLElement>('.contact-form-overlay');
+			if (formOverlay) {
+				formOverlay.style.opacity = '1';
+				formOverlay.style.pointerEvents = 'auto';
+			}
+			const heading = document.querySelector<HTMLElement>('.contact-heading');
+			if (heading) {
+				heading.style.opacity = '0';
+				heading.style.transform = 'translateY(-50px)';
+			}
+			loadFrame(frameCount - 1).then((lastImg) => {
+				if (lastImg) drawToCanvas(lastImg);
+			});
+			return;
+		}
+
+		// GSAP ScrollTrigger Sequence
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: section,
+				start: 'top top',
+				end: 'bottom bottom',
+				scrub: 0.5,
+			},
+		});
+
+		tl.to(laptop, {
+			frame: frameCount - 1,
+			snap: 'frame',
+			ease: 'none',
+			duration: 2,
+			onUpdate: render,
+		})
+			.to(
+				'.contact-heading',
+				{
+					opacity: 0,
+					y: -50,
+					duration: (20 / frameCount) * 2,
+					ease: 'none',
+				},
+				`<+${(40 / frameCount) * 2}`
+			)
+			.to(
+				'.contact-form-overlay',
+				{
+					opacity: 1,
+					pointerEvents: 'auto',
+					duration: 0.5,
+					ease: 'power2.inOut',
+				},
+				`<+${(40 / frameCount) * 2}`
+			);
+
+		window.addEventListener('resize', () => {
+			resizeCanvas();
+			render();
+		});
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initLaptopCanvas);
+	} else {
+		initLaptopCanvas();
+	}
+	window.addEventListener('load', initLaptopCanvas);
+
+	// Desktop Form Handling
+	const desktopForm = document.getElementById('contact-form-desktop') as HTMLFormElement | null;
+	if (desktopForm) {
+		desktopForm.addEventListener('submit', (e) => {
+			e.preventDefault();
+			const formData = new FormData(desktopForm);
+			const firstName = (formData.get('firstName') as string) || '';
+			const lastName = (formData.get('lastName') as string) || '';
+			const senderEmail = (formData.get('email') as string) || '';
+			const phone = (formData.get('phone') as string) || '';
+			const message = (formData.get('message') as string) || '';
+
+			const subject = encodeURIComponent(`Inquiry from ${firstName} ${lastName} - ACM Tulas`);
+			const body = encodeURIComponent(
+				`Hello ACM Tulas Team,\n\n` +
+				`Name: ${firstName} ${lastName}\n` +
+				`Email: ${senderEmail}\n` +
+				`Phone: ${phone}\n\n` +
+				`Message:\n${message}\n\n` +
+				`---\nSent from ACM Tulas Website`
+			);
+
+			const mailtoUrl = `mailto:acm@tulas.edu.in?subject=${subject}&body=${body}`;
+			window.location.href = mailtoUrl;
+
+			desktopForm.reset();
+		});
+	}
+</script>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" fill="none" width="100%" height="100%">
+  <defs>
+    <linearGradient id="favDiamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00AEEF" />
+      <stop offset="50%" stop-color="#0088D6" />
+      <stop offset="100%" stop-color="#005B9E" />
+    </linearGradient>
+  </defs>
+
+  <!-- Diamond Base -->
+  <polygon 
+    points="110,15 205,110 110,205 15,110" 
+    fill="url(#favDiamondGrad)" 
+  />
+
+  <!-- Inner Circle -->
+  <circle 
+    cx="110" 
+    cy="110" 
+    r="58" 
+    fill="none" 
+    stroke="#FFFFFF" 
+    stroke-width="6" 
+  />
+
+  <!-- "acm" Text -->
+  <text 
+    x="110" 
+    y="109" 
+    text-anchor="middle" 
+    fill="#FFFFFF" 
+    font-family="'Inter', 'Montserrat', 'Helvetica Neue', Arial, sans-serif" 
+    font-weight="900" 
+    font-size="42" 
+    letter-spacing="-0.04em"
+  >acm</text>
+
+  <!-- "student chapter" Text -->
+  <text 
+    x="110" 
+    y="130" 
+    text-anchor="middle" 
+    fill="#FFFFFF" 
+    font-family="'Inter', 'Montserrat', 'Helvetica Neue', Arial, sans-serif" 
+    font-weight="700" 
+    font-size="10.5" 
+    letter-spacing="0.01em"
+  >student chapter</text>
+</svg>

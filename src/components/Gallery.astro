@@ -1,0 +1,238 @@
+---
+import ProofGallery from './ProofGallery.astro';
+---
+
+<section
+	id="gallery"
+	aria-labelledby="gallery-main-title"
+	class="gallery-section relative w-full min-h-[380px] sm:min-h-[75vh] flex flex-col items-center justify-center py-14 sm:py-36 px-4 sm:px-8 bg-[#020308] overflow-hidden select-none scroll-mt-20"
+>
+	<!-- 1. HIGH-CONTRAST TEAM HIGHLIGHT BACKDROP -->
+	<div class="team-bg-wrapper absolute inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center">
+		<img
+			src="/media/images/group_photo.png"
+			alt="ACM Tulas Core Team"
+			width="1920"
+			height="1080"
+			loading="lazy"
+			decoding="async"
+			class="team-bg-img w-full h-full object-contain sm:object-cover object-center grayscale contrast-150 brightness-135 opacity-75 sm:opacity-85 filter drop-shadow-[0_0_35px_rgba(0,240,255,0.25)]"
+			onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+		/>
+
+		<!-- Fallback Dark Backdrop Surface -->
+		<div
+			class="hidden absolute inset-0 bg-gradient-to-t from-[#020308] via-[#050B14]/80 to-[#020308] opacity-35"
+			aria-hidden="true"
+		></div>
+
+		<!-- Subtle Vignette Gradient Overlays -->
+		<div
+			class="absolute inset-0 bg-gradient-to-b from-[#020308] via-transparent to-[#020308] opacity-60"
+			aria-hidden="true"
+		></div>
+		<div
+			class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#020308_95%)] opacity-80"
+			aria-hidden="true"
+		></div>
+	</div>
+
+	<!-- 2. CENTERED HEADINGS & RESPONSIVE CALL-TO-ACTION BUTTONS -->
+	<div class="flex w-full flex-col items-center gap-6 relative z-10 my-auto max-w-4xl mx-auto text-center px-4">
+		<div class="relative flex w-full flex-col items-center">
+			<span class="text-cyan font-mono text-[10px] sm:text-xs tracking-[0.25em] sm:tracking-[0.35em] uppercase mb-1 font-bold">
+				MOMENTS &amp; IMPACT
+			</span>
+			<h2
+				id="gallery-main-title"
+				class="text-3xl sm:text-6xl md:text-7xl font-wide font-black uppercase tracking-tight text-cream m-0"
+			>
+				Gallery
+			</h2>
+			<!-- Decorative Gradient Bar on Mobile -->
+			<div class="w-16 h-0.5 bg-gradient-to-r from-cyan to-violet rounded-full mt-2 mb-2 sm:hidden" aria-hidden="true"></div>
+		</div>
+
+		<p class="hidden sm:block text-xs sm:text-base text-cream/70 font-sans max-w-xl mx-auto leading-relaxed">
+			Browse through our collective timeline of hackathons, technical symposia, research milestones, and open-source sprints.
+		</p>
+
+		<!-- The Responsive CTA Buttons -->
+		<div class="w-full flex justify-center pt-2">
+			<!-- Mobile CTA Button -->
+			<button
+				type="button"
+				id="open-gallery-dialog-mobile"
+				class="sm:hidden w-[90%] max-w-[280px] h-11 bg-cyan/15 border border-cyan rounded-full flex items-center justify-center hover:scale-105 transition-transform duration-200 cursor-pointer shadow-[0_0_15px_rgba(0,240,255,0.25)] backdrop-blur-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+				aria-haspopup="dialog"
+				aria-controls="gallery-dialog"
+			>
+				<span class="text-cyan text-[11px] font-mono uppercase tracking-wider font-bold">
+					View Event Vault →
+				</span>
+			</button>
+
+			<!-- Desktop CTA Button -->
+			<button
+				type="button"
+				id="open-gallery-dialog"
+				class="hidden sm:inline-flex group relative items-center gap-3 px-8 py-4 rounded-full bg-[#050B14]/90 border border-cyan/40 text-cream font-mono text-sm uppercase tracking-widest font-extrabold hover:border-cyan hover:bg-cyan/10 hover:text-cyan transition-all duration-300 shadow-[0_0_25px_rgba(0,240,255,0.15)] hover:shadow-[0_0_35px_rgba(0,240,255,0.4)] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+				aria-haspopup="dialog"
+				aria-controls="gallery-dialog"
+			>
+				<span>View Event &amp; Community Vault</span>
+				<span class="text-cyan group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
+			</button>
+		</div>
+
+		<!-- Static No-JS Category List -->
+		<noscript>
+			<div class="mt-8 text-left w-full max-w-md bg-[#050B14] p-4 rounded-xl border border-cyan/20">
+				<span class="text-xs font-mono text-cyan block mb-2 font-bold">ARCHIVED SECTIONS:</span>
+				<ul class="text-xs text-cream/80 list-disc pl-5 font-mono space-y-1">
+					<li>Hackathon Builds &amp; 24H Sprints</li>
+					<li>Charter Inauguration &amp; Keynotes</li>
+					<li>Systems &amp; Algorithmic Whiteboards</li>
+					<li>AI &amp; Quantum Research Seminars</li>
+				</ul>
+			</div>
+		</noscript>
+	</div>
+
+	<!-- 3. NATIVE <dialog> MODAL (SERVER-RENDERED CONTENT) -->
+	<dialog
+		id="gallery-dialog"
+		aria-labelledby="gallery-dialog-title"
+		class="m-auto w-[96vw] sm:w-[94vw] max-w-6xl h-[90vh] sm:h-[85vh] max-h-[850px] rounded-2xl sm:rounded-3xl bg-[#050B14]/95 backdrop-blur-2xl border border-cyan/30 text-cream p-0 shadow-[0_0_80px_rgba(0,0,0,0.9),0_0_30px_rgba(0,240,255,0.2)] overscroll-contain focus:outline-none"
+	>
+		<div class="w-full h-full flex flex-col overflow-hidden">
+			<!-- DIALOG HEADER -->
+			<div class="flex items-center justify-between px-5 sm:px-8 py-4 sm:py-5 border-b border-cyan/20 bg-[#020308]/80 shrink-0">
+				<!-- Brand Mark + Archive Title -->
+				<div class="flex items-center gap-3">
+					<img
+						src="/media/images/acm_tulas_mark.svg"
+						alt="ACM Mark"
+						class="w-7 h-7 sm:w-8 sm:h-8 object-contain shrink-0 drop-shadow-[0_0_12px_rgba(0,240,255,0.4)]"
+						width="32"
+						height="32"
+						loading="lazy"
+						decoding="async"
+					/>
+					<div>
+						<span class="text-[8px] sm:text-[9px] font-mono tracking-widest text-cyan uppercase font-bold block">
+							ACM TULA'S CHAPTER
+						</span>
+						<h3 id="gallery-dialog-title" class="text-sm sm:text-lg font-black uppercase tracking-tight text-cream m-0">
+							CHAPTER ARCHIVE &amp; VAULT
+						</h3>
+					</div>
+				</div>
+
+				<!-- Close "X" Button -->
+				<button
+					type="button"
+					id="close-gallery-dialog"
+					class="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#050B14] border border-cyan/30 text-cyan hover:border-cyan hover:bg-cyan/10 hover:text-white transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+					aria-label="Close archive vault"
+				>
+					<svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+					</svg>
+				</button>
+			</div>
+
+			<!-- DIALOG SCROLLABLE BODY -->
+			<div class="flex-1 overflow-y-auto p-4 sm:p-8 overscroll-contain scrollbar-none">
+				<ProofGallery />
+			</div>
+		</div>
+	</dialog>
+</section>
+
+<style>
+	dialog::backdrop {
+		background: rgba(2, 3, 8, 0.85);
+		backdrop-filter: blur(12px);
+	}
+
+	dialog[open] {
+		animation: dialog-fade-in 0.25s ease-out forwards;
+	}
+
+	@keyframes dialog-fade-in {
+		from {
+			opacity: 0;
+			transform: scale(0.96) translateY(12px);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1) translateY(0);
+		}
+	}
+</style>
+
+<script>
+	function setupGalleryDialog() {
+		const dialog = document.getElementById('gallery-dialog') as HTMLDialogElement | null;
+		const openBtn = document.getElementById('open-gallery-dialog');
+		const openBtnMobile = document.getElementById('open-gallery-dialog-mobile');
+		const closeBtn = document.getElementById('close-gallery-dialog');
+
+		if (!dialog) return;
+
+		function openModal() {
+			if (!dialog) return;
+			dialog.showModal();
+			document.body.style.overflow = 'hidden';
+
+			// Pause Lenis scrolling while dialog is open
+			if ((window as any).lenis) {
+				(window as any).lenis.stop();
+			}
+		}
+
+		function closeModal() {
+			if (!dialog) return;
+			dialog.close();
+			document.body.style.overflow = '';
+
+			// Resume Lenis scrolling
+			if ((window as any).lenis) {
+				(window as any).lenis.start();
+			}
+
+			// Return focus
+			openBtn?.focus();
+		}
+
+		// Expose window.openProofGallery globally for direct triggers
+		(window as any).openProofGallery = openModal;
+
+		openBtn?.addEventListener('click', openModal);
+		openBtnMobile?.addEventListener('click', openModal);
+		closeBtn?.addEventListener('click', closeModal);
+
+		// Native dialog cancel (Escape key)
+		dialog.addEventListener('cancel', () => {
+			document.body.style.overflow = '';
+			if ((window as any).lenis) {
+				(window as any).lenis.start();
+			}
+			openBtn?.focus();
+		});
+
+		// Backdrop click to close
+		dialog.addEventListener('click', (event) => {
+			if (event.target === dialog) {
+				closeModal();
+			}
+		});
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', setupGalleryDialog);
+	} else {
+		setupGalleryDialog();
+	}
+</script>

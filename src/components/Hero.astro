@@ -1,0 +1,182 @@
+---
+---
+
+<section
+	id="home"
+	class="relative w-full h-[100svh] min-h-[100svh] overflow-hidden flex flex-col justify-center bg-[#020308] scroll-mt-0 select-none"
+	aria-label="ACM Tula's Student Chapter Hero"
+>
+	<!-- 1. CAMPUS VIDEO CONTAINER & LOCAL PLACEHOLDER -->
+	<div class="video-container absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+		<video
+			id="hero-campus-video"
+			class="w-full h-full object-cover object-center opacity-70"
+			autoplay
+			muted
+			loop
+			playsinline
+			webkit-playsinline
+			preload="metadata"
+			disablepictureinpicture
+			aria-hidden="true"
+			poster="/media/images/campus-poster.jpg"
+		>
+			<source src="/media/video/campus.webm" type="video/webm" />
+			<source src="/media/video/campus.mp4" type="video/mp4" />
+		</video>
+
+		<!-- Hero Scrim: Black gradient to transparent for crisp text contrast -->
+		<div
+			class="absolute inset-0 bg-gradient-to-t from-[#020308] via-transparent to-[#020308]/60 pointer-events-none"
+			aria-hidden="true"
+		></div>
+		<div
+			class="absolute inset-0 bg-gradient-to-r from-[#020308]/85 via-[#020308]/40 to-transparent pointer-events-none"
+			aria-hidden="true"
+		></div>
+		<div
+			class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_40%,rgba(0,240,255,0.08),transparent)] pointer-events-none"
+			aria-hidden="true"
+		></div>
+	</div>
+
+	<!-- 2. H1 HEADLINE (EXACTLY ONCE) -->
+	<div class="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 md:pl-[15vw]">
+		<h1
+			id="hero-heading"
+			class="font-wide font-bold tracking-tight text-[clamp(2.2rem,7vw,4.5rem)] leading-[1.08] text-left cursor-default"
+			aria-label="ACM student chapter of Tula's university"
+		>
+			<!-- Line 1: Cyan -->
+			<span class="hero-line hero-line-1 block text-cyan overflow-hidden opacity-0 translate-y-10" aria-hidden="true">
+				<span class="scramble-word inline-block transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan rounded" data-text="ACM" tabindex="0">ACM</span>{" "}
+				<span class="scramble-word inline-block transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan rounded" data-text="student" tabindex="0">student</span>{" "}
+				<span class="scramble-word inline-block transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan rounded" data-text="chapter" tabindex="0">chapter</span>
+			</span>
+
+			<!-- Line 2: Cream -->
+			<span class="hero-line hero-line-2 block text-cream mt-1 sm:mt-2.5 overflow-hidden opacity-0 translate-y-10" aria-hidden="true">
+				<span class="scramble-word inline-block transition-colors hover:text-cyan focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan rounded" data-text="of" tabindex="0">of</span>{" "}
+				<span class="scramble-word inline-block transition-colors hover:text-cyan focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan rounded" data-text="Tula's" tabindex="0">Tula's</span>{" "}
+				<span class="scramble-word inline-block transition-colors hover:text-cyan focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan rounded" data-text="university" tabindex="0">university</span>
+			</span>
+
+			<!-- Accessible fallback text for screen readers -->
+			<span class="sr-only">ACM student chapter of Tula's university</span>
+		</h1>
+	</div>
+</section>
+
+<script>
+	import { gsap } from 'gsap';
+	import { isReducedMotion } from '../scripts/scroll';
+
+	function setupHero() {
+		const lines = document.querySelectorAll<HTMLElement>('.hero-line');
+		const words = document.querySelectorAll<HTMLElement>('.scramble-word');
+		const video = document.getElementById('hero-campus-video') as HTMLVideoElement | null;
+
+		// Video Reduced Motion & Autoplay handling
+		if (video) {
+			video.muted = true;
+			video.defaultMuted = true;
+			if (isReducedMotion()) {
+				video.pause();
+				video.removeAttribute('autoplay');
+			} else {
+				const playPromise = video.play();
+				if (playPromise !== undefined) {
+					playPromise.catch(() => {
+						// Autoplay was prevented by browser policy; poster stays visible
+					});
+				}
+			}
+		}
+
+		// 1. HERO ENTRANCE ANIMATION (TRIGGERED AFTER PRELOADER:DONE)
+		function playEntrance() {
+			if (isReducedMotion()) {
+				lines.forEach((line) => {
+					line.style.opacity = '1';
+					line.style.transform = 'translateY(0)';
+				});
+				return;
+			}
+
+			gsap.to(lines, {
+				y: 0,
+				opacity: 1,
+				duration: 0.9,
+				stagger: 0.18,
+				ease: 'power3.out',
+				overwrite: 'auto',
+			});
+		}
+
+		// Check if preloader has already completed
+		const introSeen = sessionStorage.getItem('intro-seen') === '1';
+		if (introSeen) {
+			playEntrance();
+		} else {
+			window.addEventListener('preloader:done', playEntrance, { once: true });
+			// Fallback entrance in case preloader event is delayed
+			setTimeout(playEntrance, 2600);
+		}
+
+		// 2. WORD SCRAMBLE EFFECT
+		const scrambleChars =
+			'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!<>-_\\/[]{}—=+*^?#________';
+
+		words.forEach((wordEl) => {
+			const originalText = wordEl.getAttribute('data-text') || wordEl.innerText;
+			let isScrambling = false;
+			let scrambleTween: gsap.core.Tween | null = null;
+
+			function startScramble() {
+				if (isScrambling || isReducedMotion()) return;
+				isScrambling = true;
+
+				const length = originalText.length;
+				const proxy = { progress: 0 };
+
+				if (scrambleTween) scrambleTween.kill();
+
+				scrambleTween = gsap.to(proxy, {
+					progress: 1,
+					duration: 0.8,
+					ease: 'power2.out',
+					onUpdate: () => {
+						const currentProgress = proxy.progress;
+						const revealedCharsCount = Math.floor(currentProgress * length);
+
+						let output = '';
+						for (let i = 0; i < length; i++) {
+							if (i < revealedCharsCount) {
+								output += originalText[i];
+							} else {
+								const randomIndex = Math.floor(Math.random() * scrambleChars.length);
+								output += scrambleChars[randomIndex];
+							}
+						}
+						wordEl.innerText = output;
+					},
+					onComplete: () => {
+						wordEl.innerText = originalText;
+						isScrambling = false;
+					},
+				});
+			}
+
+			// Mouse hover & keyboard focus parity
+			wordEl.addEventListener('mouseenter', startScramble);
+			wordEl.addEventListener('focus', startScramble);
+		});
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', setupHero);
+	} else {
+		setupHero();
+	}
+	document.addEventListener('astro:page-load', setupHero);
+</script>

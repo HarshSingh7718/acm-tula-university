@@ -1,0 +1,56 @@
+[
+  {
+    "id": "vault-01-hackathons",
+    "title": "Hackathon Builds & 24H Sprints",
+    "category": "BUILD VAULT",
+    "tag": "HACKATHONS",
+    "date": "2025–2026",
+    "count": "18 Project Repositories",
+    "description": "Snapshots and codebase archives from high-velocity builds, full-stack prototypes, hardware IoT nodes, and deployment demos created during chapter hackathons."
+  },
+  {
+    "id": "vault-02-charter",
+    "title": "Charter Inauguration & Keynotes",
+    "category": "MILESTONES",
+    "tag": "FOUNDATION",
+    "date": "OCT 2025",
+    "count": "12 Chapter Artifacts",
+    "description": "Historical documentation and inaugural sessions marking the official establishment of the ACM Student Chapter at Tula's University, Dehradun."
+  },
+  {
+    "id": "vault-03-workshops",
+    "title": "Systems & Algorithmic Whiteboards",
+    "category": "WORKSHOPS",
+    "tag": "COMPUTE LABS",
+    "date": "2025–2026",
+    "count": "24 Workshop Logs",
+    "description": "Technical deep-dives covering distributed consensus, Linux kernel internals, compiler construction, and competitive programming problem breakdowns."
+  },
+  {
+    "id": "vault-04-research",
+    "title": "AI & Quantum Research Seminars",
+    "category": "RESEARCH",
+    "tag": "PUBLICATIONS",
+    "date": "NOV 2025",
+    "count": "8 Research Papers",
+    "description": "Colloquia slides, student preprint digests, and exploratory sessions on transformer optimizations, local LLMs, and cryptographic protocols."
+  },
+  {
+    "id": "vault-05-opensource",
+    "title": "Open Source Upstream Sprints",
+    "category": "COMMUNITY",
+    "tag": "CONTRIBUTIONS",
+    "date": "FEB 2026",
+    "count": "45 Merged Pull Requests",
+    "description": "Collaborative pull request sprints, mentoring first-time contributors, and maintaining community developer tools across modern toolchains."
+  },
+  {
+    "id": "vault-06-mentorship",
+    "title": "Industry Colloquia & AMA Firesides",
+    "category": "NETWORKING",
+    "tag": "LEADERSHIP",
+    "date": "2025–2026",
+    "count": "14 Interactive Sessions",
+    "description": "Interactive ask-me-anything sessions with software architects, research scientists, and alumni working across leading engineering organizations."
+  }
+]

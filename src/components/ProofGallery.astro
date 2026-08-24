@@ -1,0 +1,94 @@
+---
+import galleryData from '../content/gallery.json';
+
+interface GalleryItem {
+	id: string;
+	title: string;
+	category: string;
+	tag: string;
+	date: string;
+	count: string;
+	description: string;
+}
+
+const items: GalleryItem[] = galleryData;
+---
+
+<div class="w-full flex flex-col gap-6 select-none">
+	<!-- SCROLLABLE TECH-GRID ARCHIVE VAULT -->
+	<div
+		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 w-full"
+	>
+		{
+			items.map((item, index) => (
+				<article
+					class="gallery-card group relative rounded-2xl bg-[#050B14]/95 border border-cyan/25 backdrop-blur-xl p-5 sm:p-6 flex flex-col justify-between gap-5 transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan hover:shadow-[0_10px_30px_rgba(0,240,255,0.2)] overflow-hidden"
+					data-vault-index={index}
+				>
+					<!-- Technical Background Pattern -->
+					<div
+						class="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,240,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,240,255,0.03)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none -z-0"
+						aria-hidden="true"
+					></div>
+
+					<!-- Ambient Inner Corner Glow -->
+					<div
+						class="absolute top-0 right-0 w-32 h-32 bg-cyan/5 rounded-full blur-2xl pointer-events-none group-hover:bg-cyan/10 transition-colors"
+						aria-hidden="true"
+					></div>
+
+					<!-- Card Header / Badges -->
+					<div class="relative z-10 flex items-center justify-between pb-3 border-b border-cyan/15">
+						<div class="flex items-center gap-2">
+							<span class="w-2 h-2 rounded-full bg-cyan shadow-[0_0_6px_#00F0FF] animate-pulse"></span>
+							<span class="text-[10px] font-mono tracking-widest text-cyan uppercase font-bold">
+								{item.category}
+							</span>
+						</div>
+						<span class="text-[10px] font-mono text-cream/50">
+							{item.date}
+						</span>
+					</div>
+
+					<!-- Card Content -->
+					<div class="relative z-10 flex flex-col gap-2">
+						<span class="text-[11px] font-mono tracking-wider text-violet font-semibold uppercase">
+							{item.count}
+						</span>
+						<h3 class="text-base sm:text-lg font-bold tracking-tight text-cream group-hover:text-cyan transition-colors leading-snug">
+							{item.title}
+						</h3>
+						<p class="text-xs text-cream/70 leading-relaxed font-sans mt-1">
+							{item.description}
+						</p>
+					</div>
+
+					<!-- Card Footer Action -->
+					<div class="relative z-10 pt-3 border-t border-cyan/15 flex items-center justify-between">
+						<span class="text-[9px] font-mono text-cream/40 uppercase tracking-widest">
+							{item.tag}
+						</span>
+						<span class="inline-flex items-center gap-1 text-xs font-mono font-bold text-cyan group-hover:text-white transition-colors">
+							<span>LOGS</span>
+							<span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+						</span>
+					</div>
+				</article>
+			))
+		}
+	</div>
+
+	<!-- NOSCRIPT ACCESSIBILITY FALLBACK -->
+	<noscript>
+		<div class="p-6 rounded-xl bg-[#050B14] border border-cyan/30 text-cream my-4">
+			<h4 class="text-lg font-bold text-cyan font-mono mb-3">Archive Directory (No-JS Fallback)</h4>
+			<ul class="flex flex-col gap-3 list-disc pl-5 text-xs font-mono">
+				{items.map((item) => (
+					<li>
+						<strong>{item.title}</strong> ({item.date}): {item.description}
+					</li>
+				))}
+			</ul>
+		</div>
+	</noscript>
+</div>
