@@ -9,7 +9,6 @@ interface BoardMember {
 	yearBranch?: string;
 	initials?: string;
 	photo?: string;
-	quote?: string;
 }
 
 const members: BoardMember[] = boardData;
@@ -67,7 +66,6 @@ const studentMembers = members.filter(
 								yearBranch={fac.yearBranch}
 								initials={fac.initials}
 								photo={fac.photo}
-								quote={fac.quote}
 								isFeatured={true}
 							/>
 						))}
@@ -95,7 +93,6 @@ const studentMembers = members.filter(
 							yearBranch={member.yearBranch}
 							initials={member.initials}
 							photo={member.photo}
-							quote={member.quote}
 							isFeatured={false}
 						/>
 					))

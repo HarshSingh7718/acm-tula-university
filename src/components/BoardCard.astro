@@ -5,7 +5,6 @@ interface Props {
 	yearBranch?: string;
 	initials?: string;
 	photo?: string;
-	quote?: string;
 	isFeatured?: boolean;
 }
 
@@ -20,9 +19,6 @@ const {
 		.substring(0, 2)
 		.toUpperCase(),
 	photo,
-	quote = position.toLowerCase().includes('faculty')
-		? 'Because technology empowers.'
-		: 'Because progress needs builders.',
 	isFeatured = false,
 } = Astro.props;
 
@@ -163,12 +159,6 @@ const passType = isFeatured || position.toLowerCase().includes('faculty') ? 'FAC
 						<div class="text-[8px] font-mono font-bold text-[#0099FF] uppercase tracking-wider mt-0.5">
 							LEVEL
 						</div>
-					</div>
-					<div class="h-[1px] bg-[#E2E8F0] my-0.5"></div>
-
-					<!-- 4. QUOTE / MOTTO -->
-					<div class="italic text-[9px] sm:text-[10px] text-[#475569] font-serif leading-tight mt-0.5 truncate">
-						"{quote}"
 					</div>
 				</div>
 			</div>
