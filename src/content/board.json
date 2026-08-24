@@ -21,6 +21,7 @@
     "position": "Advisor",
     "yearBranch": "4th Year · B.Tech CSE",
     "initials": "GS",
+    "photo": "/media/team/gaurav_shukla.webp",
     "quote": "Architecting resilient systems."
   },
   {
@@ -29,6 +30,7 @@
     "position": "Chairperson",
     "yearBranch": "4th Year · B.Tech CSE",
     "initials": "CP",
+    "photo": "/media/team/chetan_pandey.webp",
     "quote": "Because progress needs builders."
   },
   {
@@ -37,6 +39,7 @@
     "position": "Vice-Chairperson",
     "yearBranch": "4th Year · B.Tech CSE",
     "initials": "SB",
+    "photo": "/media/team/smriti_bisht.webp",
     "quote": "Engineering with curiosity."
   },
   {
@@ -45,6 +48,7 @@
     "position": "Secretary",
     "yearBranch": "3rd Year · B.Tech CSE",
     "initials": "PB",
+    "photo": "/media/team/Prashant_Krishan_Bharti.webp",
     "quote": "Empowering community collaboration."
   },
   {
@@ -53,6 +57,7 @@
     "position": "Treasurer",
     "yearBranch": "4th Year · B.Tech CSE",
     "initials": "PR",
+    "photo": "/media/team/prakriti.webp",
     "quote": "Sustaining innovation."
   },
   {
@@ -61,6 +66,7 @@
     "position": "Technical Lead",
     "yearBranch": "4th Year · B.Tech CSE",
     "initials": "PL",
+    "photo": "/media/team/piyush_lingwal.webp",
     "quote": "Crafting digital experiences."
   },
   {
@@ -69,6 +75,7 @@
     "position": "Co-Technical Lead",
     "yearBranch": "3rd Year · B.Tech AI/ML",
     "initials": "NR",
+    "photo": "/media/team/ca6275db-2951-4c68-868d-59687b8cea1f.webp",
     "quote": "Driven by intelligent computation."
   },
   {
@@ -77,6 +84,7 @@
     "position": "Event Head",
     "yearBranch": "3rd Year · BCA",
     "initials": "PK",
+    "photo": "/media/team/prince.webp",
     "quote": "Executing premier experiences."
   },
   {
@@ -85,6 +93,7 @@
     "position": "Co Event Head",
     "yearBranch": "3rd Year · BCA",
     "initials": "AT",
+    "photo": "/media/team/aaditya.webp",
     "quote": "Orchestrating memorable events."
   },
   {
@@ -93,6 +102,7 @@
     "position": "PR Lead",
     "yearBranch": "3rd Year · B.Tech AI/ML",
     "initials": "JD",
+    "photo": "/media/team/Jasan.webp",
     "quote": "Connecting minds and ideas."
   },
   {
@@ -101,6 +111,7 @@
     "position": "Membership Chair",
     "yearBranch": "3rd Year · B.Tech CSE",
     "initials": "RD",
+    "photo": "/media/team/Gemini_Generated_Image_chnwnachnwnachnw.webp",
     "quote": "Growing our computing family."
   },
   {
@@ -109,6 +120,7 @@
     "position": "Media Lead",
     "yearBranch": "3rd Year · B.Tech CSE",
     "initials": "AM",
+    "photo": "/media/team/Adarsh_maruya.webp",
     "quote": "Visualizing tech narratives."
   },
   {
@@ -117,6 +129,7 @@
     "position": "Webmaster",
     "yearBranch": "4th Year · B.Tech CSE",
     "initials": "RI",
+    "photo": "/media/team/Rishanshu_Tripathi.webp",
     "quote": "Building responsive interfaces."
   },
   {
@@ -125,6 +138,7 @@
     "position": "PR Member",
     "yearBranch": "2nd Year · B.Tech CSE",
     "initials": "KS",
+    "photo": "/media/team/Keshav_Kumar.webp",
     "quote": "Amplifying student voices."
   },
   {
@@ -133,6 +147,7 @@
     "position": "Event Management Member",
     "yearBranch": "3rd Year · BCA CSE",
     "initials": "SK",
+    "photo": "/media/team/sonali.webp",
     "quote": "Bringing ideas to life."
   },
   {
@@ -141,6 +156,7 @@
     "position": "Technical Member",
     "yearBranch": "3rd Year · B.Tech CSE",
     "initials": "HK",
+    "photo": "/media/team/harsh.webp",
     "quote": "Building solutions with code."
   },
   {
@@ -149,6 +165,7 @@
     "position": "Technical Member",
     "yearBranch": "3rd Year · BCA",
     "initials": "GK",
+    "photo": "/media/team/Golu.webp",
     "quote": "Curious coder and builder."
   },
   {
@@ -157,6 +174,7 @@
     "position": "Technical Member",
     "yearBranch": "3rd Year · B.Tech CSE",
     "initials": "AG",
+    "photo": "/media/team/Aditya_Rawat.webp",
     "quote": "Crafting intelligent software."
   },
   {
@@ -165,6 +183,7 @@
     "position": "Technical Member",
     "yearBranch": "4th Year · B.Tech CSE",
     "initials": "PR",
+    "photo": "/media/team/piyush_rawat.webp",
     "quote": "Solving real-world problems."
   },
   {
@@ -173,6 +192,7 @@
     "position": "Social Media Member",
     "yearBranch": "3rd Year · B.Tech CSE",
     "initials": "TB",
+    "photo": "/media/team/Tabeer_hussain.webp",
     "quote": "Broadcasting our journey."
   },
   {
@@ -181,6 +201,7 @@
     "position": "Social Media Member",
     "yearBranch": "2nd Year · B.Tech CSE",
     "initials": "SW",
+    "photo": "/media/team/swapnil.webp",
     "quote": "Engaging tech communities."
   }
 ]
