@@ -2,6 +2,7 @@
 import Font from 'astro/components/Font.astro';
 import Header from '../components/Header.astro';
 import Preloader from '../components/Preloader.astro';
+import Popup from '../components/Popup.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -59,6 +60,9 @@ const ogImageURL = new URL('/media/images/og-image.jpg', siteUrl);
 	<body class="bg-[#020308] text-[#FEFCD9] antialiased selection:bg-[#00F0FF] selection:text-[#0D0E0D]">
 		<!-- Preloader Overlay -->
 		<Preloader />
+		
+		<!-- Hackathon Popup -->
+		<Popup />
 
 		<!-- 5. ACCESSIBILITY: First focusable skip-to-content link -->
 		<a

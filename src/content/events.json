@@ -57,7 +57,7 @@
     "location": "Algorithmic Lab",
     "description": "Fast-paced competitive programming showdown testing algorithmic problem-solving, dynamic programming, data structures, and speed under strict time constraints.",
     "tag": "COMPETITIVE CODING",
-    "image": "/media/events/hack-the-future.svg"
+    "image": "/media/events/coderush.svg"
   },
   {
     "id": "utu-ai-coding-hackathon",
@@ -77,7 +77,7 @@
     "location": "Innovation Hub, Tula's",
     "description": "University-wide preliminary qualifier for Smart India Hackathon 2025, evaluating problem statements, architectural viability, and prototype readiness.",
     "tag": "INTERNAL HACKATHON",
-    "image": "/media/events/hack-the-future.svg"
+    "image": "/media/events/sih.svg"
   },
   {
     "id": "hack-the-future-2",
@@ -87,7 +87,7 @@
     "location": "Campus Central Arena",
     "description": "Flagship 24-hour national hackathon bringing together 500+ builders to architect, code, and deploy transformative software and hardware solutions.",
     "tag": "NATIONAL HACKATHON",
-    "image": "/media/events/hack-the-future.svg"
+    "image": "/media/events/hack-the-future-3.0.svg"
   },
   {
     "id": "workshop-21st-century-skills",

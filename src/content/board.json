@@ -3,15 +3,17 @@
     "id": "faculty-sandeep-kumar",
     "fullName": "Sandeep Kumar",
     "position": "HOD of CSE",
-    "yearBranch": "HOD of CSE",
-    "initials": "SK"
+    "yearBranch": "HOD-CSE",
+    "initials": "SK",
+    "photo": "/media/team/sandeep_kumar.webp"
   },
   {
     "id": "faculty-shivam-pandey",
     "fullName": "Shivam Pandey",
     "position": "Faculty Coordinator",
     "yearBranch": "Faculty Coordinator",
-    "initials": "SP"
+    "initials": "SP",
+    "photo": "/media/team/shivam_pandey.webp"
   },
   {
     "id": "gaurav-shukla",
@@ -93,7 +95,6 @@
     "initials": "JD",
     "photo": "/media/team/Jasan.webp"
   },
- 
   {
     "id": "adarsh-maurya",
     "fullName": "Adarsh Maurya",
@@ -126,7 +127,6 @@
     "initials": "SK",
     "photo": "/media/team/sonali.webp"
   },
- 
   {
     "id": "golu-kumar",
     "fullName": "Golu Kumar",
@@ -135,7 +135,7 @@
     "initials": "GK",
     "photo": "/media/team/Golu.webp"
   },
-   {
+  {
     "id": "harsh-kumar",
     "fullName": "Harsh Kumar",
     "position": "Technical Member",
@@ -143,7 +143,7 @@
     "initials": "HK",
     "photo": "/media/team/harsh.webp"
   },
-   {
+  {
     "id": "aayush-kumar",
     "fullName": "Aayush Kumar",
     "position": "Technical Member",
