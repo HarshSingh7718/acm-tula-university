@@ -144,8 +144,26 @@ import ProofGallery from './ProofGallery.astro';
 			</div>
 
 			<!-- DIALOG SCROLLABLE BODY -->
-			<div class="flex-1 overflow-y-auto p-4 sm:p-8 overscroll-contain" data-lenis-prevent>
-				<ProofGallery />
+			<div class="flex-1 overflow-y-auto relative overscroll-contain" data-lenis-prevent>
+				<div id="vault-view" class="p-4 sm:p-8 transition-opacity duration-300">
+					<ProofGallery />
+				</div>
+				<!-- EVENT IMAGES VIEW -->
+				<div id="event-images-view" class="absolute inset-0 bg-[#050B14]/95 backdrop-blur-xl hidden flex-col p-4 sm:p-8 opacity-0 transition-opacity duration-300 z-10">
+					<div class="flex items-center justify-between mb-6 shrink-0">
+						<div class="flex items-center gap-2 font-mono text-xs sm:text-sm uppercase tracking-widest text-cream">
+							<button type="button" id="back-to-vault" class="text-cyan hover:text-white flex items-center gap-1 cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan">
+								<span class="group-hover:-translate-x-1 transition-transform">←</span>
+								<span>Vault</span>
+							</button>
+							<span class="text-cyan/50">/</span>
+							<span id="current-event-name" class="text-cream/80 truncate max-w-[150px] sm:max-w-xs md:max-w-md"></span>
+						</div>
+					</div>
+					<div id="event-images-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5 auto-rows-auto overflow-y-auto pb-8" data-lenis-prevent>
+						<!-- Images injected here -->
+					</div>
+				</div>
 			</div>
 		</div>
 	</dialog>
@@ -186,7 +204,6 @@ import ProofGallery from './ProofGallery.astro';
 		}
 	}
 </style>
-
 <script>
 	function setupGalleryDialog() {
 		const dialog = document.getElementById('gallery-dialog') as HTMLDialogElement | null;
@@ -194,7 +211,67 @@ import ProofGallery from './ProofGallery.astro';
 		const openBtnMobile = document.getElementById('open-gallery-dialog-mobile');
 		const closeBtn = document.getElementById('close-gallery-dialog');
 
+		// Inner views
+		const vaultView = document.getElementById('vault-view');
+		const imagesView = document.getElementById('event-images-view');
+		const imagesGrid = document.getElementById('event-images-grid');
+		const backBtn = document.getElementById('back-to-vault');
+		const currentEventName = document.getElementById('current-event-name');
+		const cards = document.querySelectorAll('.gallery-card');
+
 		if (!dialog) return;
+
+		// Card click logic
+		cards.forEach(card => {
+			card.addEventListener('click', () => {
+				const imagesStr = card.getAttribute('data-images');
+				const title = card.getAttribute('data-title');
+				
+				if (currentEventName && title) {
+					currentEventName.textContent = title;
+				}
+
+				if (imagesStr && imagesGrid && vaultView && imagesView) {
+					const images = JSON.parse(imagesStr);
+					imagesGrid.innerHTML = '';
+					images.forEach((src: string) => {
+						const imgContainer = document.createElement('div');
+						imgContainer.className = 'w-full h-48 sm:h-64 rounded-xl overflow-hidden border border-cyan/20 group relative';
+						
+						const img = document.createElement('img');
+						img.src = src;
+						img.loading = 'lazy';
+						img.className = 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-500';
+						imgContainer.appendChild(img);
+
+						const overlay = document.createElement('div');
+						overlay.className = 'absolute inset-0 bg-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none';
+						imgContainer.appendChild(overlay);
+
+						imagesGrid.appendChild(imgContainer);
+					});
+
+					// Transition to images
+					vaultView.classList.add('hidden');
+					imagesView.classList.remove('hidden');
+					// small delay for transition
+					setTimeout(() => {
+						imagesView.classList.remove('opacity-0');
+					}, 10);
+				}
+			});
+		});
+
+		// Back button logic
+		backBtn?.addEventListener('click', () => {
+			if (imagesView && vaultView) {
+				imagesView.classList.add('opacity-0');
+				setTimeout(() => {
+					imagesView.classList.add('hidden');
+					vaultView.classList.remove('hidden');
+				}, 300);
+			}
+		});
 
 		function openModal() {
 			if (!dialog) return;
@@ -217,6 +294,15 @@ import ProofGallery from './ProofGallery.astro';
 				(window as any).lenis.start();
 			}
 
+			// Reset inner views to vault
+			setTimeout(() => {
+				if (imagesView && vaultView) {
+					imagesView.classList.add('opacity-0');
+					imagesView.classList.add('hidden');
+					vaultView.classList.remove('hidden');
+				}
+			}, 300);
+
 			// Return focus
 			openBtn?.focus();
 		}
@@ -234,6 +320,14 @@ import ProofGallery from './ProofGallery.astro';
 			if ((window as any).lenis) {
 				(window as any).lenis.start();
 			}
+			
+			// Reset inner views to vault
+			if (imagesView && vaultView) {
+				imagesView.classList.add('opacity-0');
+				imagesView.classList.add('hidden');
+				vaultView.classList.remove('hidden');
+			}
+
 			openBtn?.focus();
 		});
 

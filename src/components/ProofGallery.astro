@@ -22,8 +22,10 @@ const items: GalleryItem[] = galleryData;
 		{
 			items.map((item, index) => (
 				<article
-					class="gallery-card group relative rounded-2xl bg-[#050B14]/95 border border-cyan/25 backdrop-blur-xl p-5 sm:p-6 flex flex-col justify-between gap-5 transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan hover:shadow-[0_10px_30px_rgba(0,240,255,0.2)] overflow-hidden"
+					class="gallery-card group relative rounded-2xl bg-[#050B14]/95 border border-cyan/25 backdrop-blur-xl p-5 sm:p-6 flex flex-col justify-between gap-5 transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan hover:shadow-[0_10px_30px_rgba(0,240,255,0.2)] overflow-hidden cursor-pointer"
 					data-vault-index={index}
+					data-images={JSON.stringify((item as any).images || [])}
+					data-title={item.title}
 				>
 					<!-- Technical Background Pattern -->
 					<div

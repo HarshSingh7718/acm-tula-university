@@ -6,7 +6,13 @@
     "tag": "MINI HACKATHON",
     "date": "MAY 15, 2026",
     "count": "Rapid Build Sprint",
-    "description": "High-intensity engineering sprint challenging student teams to prototype functional applications, smart tools, and algorithmic workflows in a focused timeframe."
+    "description": "High-intensity engineering sprint challenging student teams to prototype functional applications, smart tools, and algorithmic workflows in a focused timeframe.",
+    "images": [
+      "/media/gallery/sprint-x-mini-hackathon/sprint-x-mini-hackathon-1.webp",
+      "/media/gallery/sprint-x-mini-hackathon/sprint-x-mini-hackathon-2.webp",
+      "/media/gallery/sprint-x-mini-hackathon/sprint-x-mini-hackathon-4.webp",
+      "/media/gallery/sprint-x-mini-hackathon/sprint-x-mini-hackathon-5.webp"
+    ]
   },
   {
     "id": "vault-02-design-athon",
@@ -15,7 +21,14 @@
     "tag": "DESIGN-ATHON",
     "date": "MAY 14, 2026",
     "count": "UI/UX Product Sprint",
-    "description": "Competitive design sprint focused on crafting intuitive UI/UX architectures, user flows, interactive prototypes, and design systems for next-gen digital products."
+    "description": "Competitive design sprint focused on crafting intuitive UI/UX architectures, user flows, interactive prototypes, and design systems for next-gen digital products.",
+    "images": [
+      "/media/gallery/design-athon/design-athon-1.webp",
+      "/media/gallery/design-athon/design-athon-2.webp",
+      "/media/gallery/design-athon/design-athon-3.webp",
+      "/media/gallery/design-athon/design-athon-4.webp",
+      "/media/gallery/design-athon/design-athon-5.webp"
+    ]
   },
   {
     "id": "vault-03-personal-task-manager",
@@ -25,6 +38,7 @@
     "date": "APR 20–25, 2026",
     "count": "6-Day Masterclass",
     "description": "Multi-day hands-on technical workshop guiding students through building, containerizing, and deploying a full-stack personal task manager with modern web technologies."
+    
   },
   {
     "id": "vault-04-utkrisht-2025",
@@ -34,6 +48,7 @@
     "date": "NOV 13–14, 2025",
     "count": "Landmark Tech Symposium",
     "description": "The landmark technical fest uniting students across domains for competitive coding battles, robotics challenges, research expos, and keynote masterclasses."
+    
   },
   {
     "id": "vault-05-coderush",
@@ -43,6 +58,7 @@
     "date": "NOV 04, 2025",
     "count": "Algorithmic Arena",
     "description": "Fast-paced competitive programming showdown testing algorithmic problem-solving, dynamic programming, data structures, and speed under strict time constraints."
+    
   },
   {
     "id": "vault-06-utu-ai-hackathon",
@@ -51,7 +67,15 @@
     "tag": "AI & STATE SUMMIT",
     "date": "NOV 04–06, 2025",
     "count": "25 Years Uttarakhand Glory",
-    "description": "State-level 3-day hackathon celebrating 25 years of Uttarakhand through AI-driven innovation, regional problem-solving, smart governance solutions, and coding challenges."
+    "description": "State-level 3-day hackathon celebrating 25 years of Uttarakhand through AI-driven innovation, regional problem-solving, smart governance solutions, and coding challenges.",
+    "images": [
+      "/media/gallery/utu-ai-coding-hackathon/utu-ai-coding-hackathon1.webp",
+      "/media/gallery/utu-ai-coding-hackathon/utu-ai-coding-hackathon2.webp",
+      "/media/gallery/utu-ai-coding-hackathon/utu-ai-coding-hackathon3.webp",
+      "/media/gallery/utu-ai-coding-hackathon/utu-ai-coding-hackathon4.webp",
+      "/media/gallery/utu-ai-coding-hackathon/utu-ai-coding-hackathon5.webp",
+      "/media/gallery/utu-ai-coding-hackathon/utu-ai-coding-hackathon6.webp"
+    ]
   },
   {
     "id": "vault-07-sih-internal",
@@ -61,6 +85,7 @@
     "date": "OCT 13, 2025",
     "count": "Campus Qualifier",
     "description": "University-wide preliminary qualifier for Smart India Hackathon 2025, evaluating problem statements, architectural viability, and prototype readiness."
+   
   },
   {
     "id": "vault-08-hack-the-future-2",
@@ -69,7 +94,17 @@
     "tag": "NATIONAL HACKATHON",
     "date": "SEP 26–27, 2025",
     "count": "Flagship 24H Arena",
-    "description": "Flagship 24-hour national hackathon bringing together 500+ builders to architect, code, and deploy transformative software and hardware solutions."
+    "description": "Flagship 24-hour national hackathon bringing together 500+ builders to architect, code, and deploy transformative software and hardware solutions.",
+    "images": [
+      "/media/gallery/hack-the-future-2.0/hack-the-future-2.0-1.webp",
+      "/media/gallery/hack-the-future-2.0/hack-the-future-2.0-2.webp",
+      "/media/gallery/hack-the-future-2.0/hack-the-future-2.0-3.webp",
+      "/media/gallery/hack-the-future-2.0/hack-the-future-2.0-4.webp",
+      "/media/gallery/hack-the-future-2.0/hack-the-future-2.0-5.webp",
+      "/media/gallery/hack-the-future-2.0/hack-the-future-2.0-6.webp",
+      "/media/gallery/hack-the-future-2.0/hack-the-future-2.0-7.webp",
+      "/media/gallery/hack-the-future-2.0/hack-the-future-2.0-8.webp" 
+    ]
   },
   {
     "id": "vault-09-pm-shri-workshop",
@@ -79,6 +114,7 @@
     "date": "SEP 12, 2025",
     "count": "Youth Outreach",
     "description": "Community outreach and skill empowerment workshop introducing school students to foundational computational thinking, cybersecurity safety, and modern digital tools."
+   
   },
   {
     "id": "vault-10-web-a-thon",
@@ -88,6 +124,7 @@
     "date": "SEP 08–10, 2025",
     "count": "Fullstack Showdown",
     "description": "Intensive 3-day fullstack hackathon dedicated to designing, engineering, and optimizing high-performance web applications and chapter digital portals."
+   
   },
   {
     "id": "vault-11-care-a-thon",
@@ -96,7 +133,15 @@
     "tag": "SUSTAINABILITY SPRINT",
     "date": "SEP 04, 2025",
     "count": "Campus Action",
-    "description": "Tech-for-good hackathon crafting digital logistics, awareness platforms, and resource-sharing systems for sustainable campus essentials and recycling."
+    "description": "Tech-for-good hackathon crafting digital logistics, awareness platforms, and resource-sharing systems for sustainable campus essentials and recycling.",
+    "images": [
+      "/media/gallery/care-a-thon/care-a-thon1.webp",
+      "/media/gallery/care-a-thon/care-a-thon2.webp",
+      "/media/gallery/care-a-thon/care-a-thon3.webp",
+      "/media/gallery/care-a-thon/care-a-thon4.webp",
+      "/media/gallery/care-a-thon/care-a-thon5.webp",
+      "/media/gallery/care-a-thon/care-a-thon6.webp"
+    ]
   },
   {
     "id": "vault-12-cyber-security-inauguration",
@@ -106,5 +151,6 @@
     "date": "AUG 29, 2025",
     "count": "Chapter Foundation",
     "description": "Milestone inaugural event marking the formal establishment of ACM Tula's Student Chapter paired with an intensive ethical hacking and threat defense masterclass."
+   
   }
 ]
