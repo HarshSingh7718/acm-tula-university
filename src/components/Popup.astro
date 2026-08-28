@@ -1,0 +1,139 @@
+---
+// Popup.astro
+---
+<!-- Google Fonts for the popup -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+<!-- Pop-up Overlay Container -->
+<div id="awardModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+    
+    <!-- Vignette & Glow Overlays -->
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/40 to-black pointer-events-none"></div>
+
+    <!-- Pop-up Content Card -->
+    <div class="relative w-full max-w-4xl mx-4 p-6 sm:p-12 text-center z-20 flex flex-col items-center justify-center modal-content-card">
+
+        <!-- Close Button (Top Right) -->
+        <button id="closeModalBtn" aria-label="Close dialog" class="close-btn absolute top-2 right-2 sm:top-6 sm:right-6 w-10 h-10 rounded-full flex items-center justify-center text-gray-300 hover:text-white focus:outline-none cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <!-- Centered Tula's Institute + ACM Combined Logo (Yellow Strip Removed) -->
+        <div class="w-full max-w-lg mx-auto mb-8 award-banner-shadow transform hover:scale-[1.02] transition-transform duration-300 flex items-center justify-center">
+            <img src="/media/images/acm_tulas_logo.svg" alt="ACM Tulas Logo" class="w-full h-auto max-h-40 object-contain" />
+        </div>
+
+        <!-- Announcement Header Text -->
+        <h2 class="title-font text-white text-xl sm:text-2xl md:text-3xl font-bold tracking-wider uppercase mb-4 max-w-2xl leading-snug">
+            Hack The Future 3.0
+        </h2>
+
+        <!-- Announcement Subtitle Copy -->
+        <p class="text-gray-300 font-mono text-xs sm:text-sm md:text-base max-w-xl leading-relaxed">
+            Join us for the ultimate hackathon experience. Innovate, build, and shape the future!
+        </p>
+
+    </div>
+</div>
+
+<style>
+    .title-font {
+        font-family: 'IBM Plex Mono', sans-serif;
+        letter-spacing: 0.05em;
+    }
+
+    /* Glass / Glow effects */
+    .close-btn {
+        transition: all 0.2s ease-in-out;
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .close-btn:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.4);
+        transform: scale(1.05);
+    }
+
+    /* Drop shadow for graphic banner */
+    .award-banner-shadow {
+        filter: drop-shadow(0px 15px 25px rgba(0, 0, 0, 0.6));
+    }
+
+    /* Keyframes for pop-up animation */
+    @keyframes modalFadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.95) translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+    }
+
+    .animate-modal-in {
+        animation: modalFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+</style>
+
+<script>
+    const setupPopup = () => {
+        const awardModal = document.getElementById('awardModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const contentCard = awardModal?.querySelector('.modal-content-card');
+
+        if (!awardModal || !closeModalBtn) return;
+
+        // Ensure the modal is hidden initially if script re-runs
+        awardModal.classList.add('opacity-0', 'pointer-events-none');
+        contentCard?.classList.remove('animate-modal-in');
+
+        // Function to close modal
+        const closeModal = () => {
+            awardModal.classList.add('opacity-0', 'pointer-events-none');
+            awardModal.classList.remove('opacity-100');
+            // We can also remove the animation class so it plays again if opened (though it won't reopen)
+            setTimeout(() => {
+                contentCard?.classList.remove('animate-modal-in');
+            }, 300);
+        };
+
+        // Open modal functionality (called automatically on load)
+        const openModal = () => {
+            awardModal.classList.remove('opacity-0', 'pointer-events-none');
+            awardModal.classList.add('opacity-100');
+            contentCard?.classList.add('animate-modal-in');
+        };
+
+        // Show popup automatically after a short delay
+        setTimeout(openModal, 1500);
+
+        closeModalBtn.addEventListener('click', closeModal);
+
+        // Close modal when pressing Escape key
+        const handleKeydown = (e) => {
+            if (e.key === 'Escape' && !awardModal.classList.contains('opacity-0')) {
+                closeModal();
+            }
+        };
+        document.addEventListener('keydown', handleKeydown);
+
+        // Close modal when clicking outer backdrop
+        awardModal.addEventListener('click', (e) => {
+            if (e.target === awardModal) {
+                closeModal();
+            }
+        });
+    };
+
+    // Run on initial load
+    setupPopup();
+
+    // Run on subsequent page loads if view transitions are used
+    document.addEventListener('astro:page-load', setupPopup);
+</script>
