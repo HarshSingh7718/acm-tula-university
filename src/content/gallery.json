@@ -37,8 +37,13 @@
     "tag": "DEV WORKSHOP",
     "date": "APR 20–25, 2026",
     "count": "6-Day Masterclass",
-    "description": "Multi-day hands-on technical workshop guiding students through building, containerizing, and deploying a full-stack personal task manager with modern web technologies."
-    
+    "description": "Multi-day hands-on technical workshop guiding students through building, containerizing, and deploying a full-stack personal task manager with modern web technologies.",
+    "images": [
+      "/media/gallery/Personal-Task-Manager-Workshop/Personal-Task-Manager-Workshop1.webp",
+      "/media/gallery/Personal-Task-Manager-Workshop/Personal-Task-Manager-Workshop2.webp",
+      "/media/gallery/Personal-Task-Manager-Workshop/Personal-Task-Manager-Workshop3.webp",
+      "/media/gallery/Personal-Task-Manager-Workshop/Personal-Task-Manager-Workshop4.webp"
+    ]
   },
   {
     "id": "vault-04-utkrisht-2025",
@@ -47,7 +52,13 @@
     "tag": "ANNUAL TECHFEST",
     "date": "NOV 13–14, 2025",
     "count": "Landmark Tech Symposium",
-    "description": "The landmark technical fest uniting students across domains for competitive coding battles, robotics challenges, research expos, and keynote masterclasses."
+    "description": "The landmark technical fest uniting students across domains for competitive coding battles, robotics challenges, research expos, and keynote masterclasses.",
+      "images": [
+      "/media/gallery/utkrisht-2025/utkrisht-20251.webp",
+      "/media/gallery/utkrisht-2025/utkrisht-20252.webp",
+      "/media/gallery/utkrisht-2025/utkrisht-20253.webp",
+      "/media/gallery/utkrisht-2025/utkrisht-20254.webp"
+    ]
     
   },
   {
@@ -57,7 +68,14 @@
     "tag": "COMPETITIVE CODING",
     "date": "NOV 04, 2025",
     "count": "Algorithmic Arena",
-    "description": "Fast-paced competitive programming showdown testing algorithmic problem-solving, dynamic programming, data structures, and speed under strict time constraints."
+    "description": "Fast-paced competitive programming showdown testing algorithmic problem-solving, dynamic programming, data structures, and speed under strict time constraints.",
+    "images": [
+      "/media/gallery/coderush/CODERUSH1.webp",
+      "/media/gallery/coderush/CODERUSH2.webp",
+      "/media/gallery/coderush/CODERUSH3.webp",
+      "/media/gallery/coderush/CODERUSH4.webp"
+    ]
+    
     
   },
   {
@@ -84,8 +102,13 @@
     "tag": "INTERNAL QUALIFIER",
     "date": "OCT 13, 2025",
     "count": "Campus Qualifier",
-    "description": "University-wide preliminary qualifier for Smart India Hackathon 2025, evaluating problem statements, architectural viability, and prototype readiness."
-   
+    "description": "University-wide preliminary qualifier for Smart India Hackathon 2025, evaluating problem statements, architectural viability, and prototype readiness.",
+    "images": [
+      "/media/gallery/sih-Internal-Hackathon-2025/sit-Internal-Hackathon-20251.webp",
+      "/media/gallery/sih-Internal-Hackathon-2025/sit-Internal-Hackathon-20252.webp",
+      "/media/gallery/sih-Internal-Hackathon-2025/sit-Internal-Hackathon-20253.webp",
+      "/media/gallery/sih-Internal-Hackathon-2025/sit-Internal-Hackathon-20254.webp"
+    ]
   },
   {
     "id": "vault-08-hack-the-future-2",
@@ -113,8 +136,13 @@
     "tag": "PM SHRI YOJANA",
     "date": "SEP 12, 2025",
     "count": "Youth Outreach",
-    "description": "Community outreach and skill empowerment workshop introducing school students to foundational computational thinking, cybersecurity safety, and modern digital tools."
-   
+    "description": "Community outreach and skill empowerment workshop introducing school students to foundational computational thinking, cybersecurity safety, and modern digital tools.",
+    "images": [
+      "/media/gallery/workshopCenturySkills/workshopCenturySkills1.webp",
+      "/media/gallery/workshopCenturySkills/workshopCenturySkills2.webp",
+      "/media/gallery/workshopCenturySkills/workshopCenturySkills3.webp",
+      "/media/gallery/workshopCenturySkills/workshopCenturySkills4.webp"
+    ]
   },
   {
     "id": "vault-10-web-a-thon",
@@ -123,8 +151,13 @@
     "tag": "ACM WEBSITE SPRINT",
     "date": "SEP 08–10, 2025",
     "count": "Fullstack Showdown",
-    "description": "Intensive 3-day fullstack hackathon dedicated to designing, engineering, and optimizing high-performance web applications and chapter digital portals."
-   
+    "description": "Intensive 3-day fullstack hackathon dedicated to designing, engineering, and optimizing high-performance web applications and chapter digital portals.",
+    "images": [
+      "/media/gallery/web-a-thon/web-a-thon1.webp",
+      "/media/gallery/web-a-thon/web-a-thon2.webp",
+      "/media/gallery/web-a-thon/web-a-thon3.webp",
+      "/media/gallery/web-a-thon/web-a-thon4.webp"
+    ]
   },
   {
     "id": "vault-11-care-a-thon",
@@ -150,7 +183,13 @@
     "tag": "FOUNDATION & TALK",
     "date": "AUG 29, 2025",
     "count": "Chapter Foundation",
-    "description": "Milestone inaugural event marking the formal establishment of ACM Tula's Student Chapter paired with an intensive ethical hacking and threat defense masterclass."
+    "description": "Milestone inaugural event marking the formal establishment of ACM Tula's Student Chapter paired with an intensive ethical hacking and threat defense masterclass.",
+    "images": [
+      "/media/gallery/cyber-securityAwareness/cyber-securityAwareness1.webp",
+      "/media/gallery/cyber-securityAwareness/cyber-securityAwareness2.webp",
+      "/media/gallery/cyber-securityAwareness/cyber-securityAwareness3.webp",
+      "/media/gallery/cyber-securityAwareness/cyber-securityAwareness4.webp"
+    ]
    
   }
 ]
