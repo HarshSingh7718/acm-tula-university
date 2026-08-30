@@ -97,6 +97,17 @@
 				>
 					Submit Dispatch →
 				</button>
+
+				<div class="pt-3 border-t border-white/10 flex flex-col items-center">
+					<button
+						type="button"
+						id="show-community-btn-mobile"
+						class="w-full inline-flex items-center justify-center gap-2 rounded-full border border-[#25D366]/50 bg-[#25D366]/10 px-6 py-2.5 text-xs font-mono font-bold uppercase tracking-widest text-[#25D366] hover:bg-[#25D366] hover:text-black transition-all cursor-pointer shadow-[0_0_15px_rgba(37,211,102,0.2)]"
+					>
+						<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.066-1.127-.074-.27-.087-.62-.208-1.077-.406-1.927-.837-3.18-2.772-3.277-2.902-.097-.129-.779-1.036-.779-1.975 0-.939.492-1.4.667-1.595.176-.195.385-.244.513-.244.129 0 .257.002.368.007.118.005.275-.045.431.328.163.387.555 1.353.604 1.452.049.099.082.215.016.345-.065.131-.098.213-.195.328-.098.115-.207.257-.295.345-.098.098-.201.205-.086.402.115.197.511.843 1.096 1.364.753.671 1.388.878 1.585.976.197.098.312.082.427-.049.115-.131.492-.573.623-.77.131-.197.262-.164.443-.098.18.066 1.147.541 1.344.639.197.098.328.148.377.23.049.082.049.476-.095.881z"/></svg>
+						Show Community Channel
+					</button>
+				</div>
 			</form>
 		</div>
 	</div>
@@ -136,13 +147,13 @@
 				</div>
 
 				<form
-					class="contact-form pointer-events-auto mt-4 flex w-full max-w-[54%] flex-col gap-4 text-xs text-black px-4"
+					class="contact-form pointer-events-auto mt-2 flex w-full max-w-[54%] flex-col gap-3 text-xs text-black px-4"
 					method="POST"
 					id="contact-form-desktop"
 				>
-					<div class="contact-grid grid gap-4 sm:grid-cols-2">
+					<div class="contact-grid grid gap-3 sm:grid-cols-2">
 						<label
-							class="flex flex-col gap-2 text-[8px] font-semibold uppercase tracking-[0.35em] text-neutral-500 sm:text-[10px]"
+							class="flex flex-col gap-1.5 text-[8px] font-semibold uppercase tracking-[0.35em] text-neutral-500 sm:text-[10px]"
 						>
 							First Name
 							<input
@@ -153,22 +164,22 @@
 							/>
 						</label>
 						<label
-							class="flex flex-col gap-2 text-[8px] font-semibold uppercase tracking-[0.35em] text-neutral-500 sm:text-[10px]"
+							class="flex flex-col gap-1.5 text-[8px] font-semibold uppercase tracking-[0.35em] text-neutral-500 sm:text-[10px]"
 						>
 							Last Name
 							<input type="text" name="lastName" class="contact-input" />
 						</label>
 					</div>
 
-					<div class="contact-grid grid gap-4 sm:grid-cols-2">
+					<div class="contact-grid grid gap-3 sm:grid-cols-2">
 						<label
-							class="flex flex-col gap-2 text-[8px] font-semibold uppercase tracking-[0.35em] text-neutral-500 sm:text-[10px]"
+							class="flex flex-col gap-1.5 text-[8px] font-semibold uppercase tracking-[0.35em] text-neutral-500 sm:text-[10px]"
 						>
 							Email
 							<input type="email" name="email" required class="contact-input" />
 						</label>
 						<label
-							class="flex flex-col gap-2 text-[8px] font-semibold uppercase tracking-[0.35em] text-neutral-500 sm:text-[10px]"
+							class="flex flex-col gap-1.5 text-[8px] font-semibold uppercase tracking-[0.35em] text-neutral-500 sm:text-[10px]"
 						>
 							Phone
 							<input
@@ -182,30 +193,112 @@
 					</div>
 
 					<label
-						class="flex flex-col gap-2 text-[8px] font-semibold uppercase tracking-[0.35em] text-neutral-500 sm:text-[10px]"
+						class="flex flex-col gap-1.5 text-[8px] font-semibold uppercase tracking-[0.35em] text-neutral-500 sm:text-[10px]"
 					>
 						Message
 						<textarea
 							name="message"
 							rows="2"
 							required
-							class="contact-input resize-none py-2.5"
+							class="contact-input resize-none py-2"
 						></textarea>
 					</label>
 
-					<div class="flex flex-col items-center gap-4 mt-4">
+					<div class="flex items-center justify-center gap-3 mt-2">
 						<div
-							class="w-40 h-10 bg-stone-900 rounded-[200px] flex items-center justify-center overflow-hidden"
+							class="w-36 h-9 bg-stone-900 rounded-[200px] flex items-center justify-center overflow-hidden"
 						>
 							<button
 								type="submit"
-								class="group inline-flex items-center justify-center gap-2 w-full h-full text-lg font-light text-[#ffeead] sm:text-xl hover:bg-white/5 transition-colors cursor-pointer"
+								class="group inline-flex items-center justify-center gap-2 w-full h-full text-base font-light text-[#ffeead] sm:text-lg hover:bg-white/5 transition-colors cursor-pointer"
 							>
 								Submit
 							</button>
 						</div>
+
+						<button
+							type="button"
+							id="show-community-btn-desktop"
+							class="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full border border-[#25D366]/70 bg-[#25D366]/15 hover:bg-[#25D366] hover:text-black text-[10px] sm:text-[11px] font-mono font-bold tracking-wider text-black transition-all cursor-pointer shadow-[0_0_15px_rgba(37,211,102,0.25)]"
+						>
+							<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.066-1.127-.074-.27-.087-.62-.208-1.077-.406-1.927-.837-3.18-2.772-3.277-2.902-.097-.129-.779-1.036-.779-1.975 0-.939.492-1.4.667-1.595.176-.195.385-.244.513-.244.129 0 .257.002.368.007.118.005.275-.045.431.328.163.387.555 1.353.604 1.452.049.099.082.215.016.345-.065.131-.098.213-.195.328-.098.115-.207.257-.295.345-.098.098-.201.205-.086.402.115.197.511.843 1.096 1.364.753.671 1.388.878 1.585.976.197.098.312.082.427-.049.115-.131.492-.573.623-.77.131-.197.262-.164.443-.098.18.066 1.147.541 1.344.639.197.098.328.148.377.23.049.082.049.476-.095.881z"/></svg>
+							Community Channel
+						</button>
 					</div>
 				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- ========================================== -->
+	<!-- 3. COMMUNITY CHANNEL QR POPUP MODAL -->
+	<!-- ========================================== -->
+	<div
+		id="communityModal"
+		class="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-300 p-4"
+		role="dialog"
+		aria-modal="true"
+		aria-labelledby="community-modal-title"
+	>
+		<!-- Backdrop Glow -->
+		<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#25D366]/15 via-black/60 to-black pointer-events-none"></div>
+
+		<!-- Modal Card -->
+		<div
+			class="community-modal-card relative w-full max-w-sm sm:max-w-md mx-auto rounded-[32px] border border-[#25D366]/40 bg-[#060a12]/95 p-6 sm:p-8 text-center text-white shadow-[0_0_60px_rgba(37,211,102,0.25)] flex flex-col items-center justify-center transform scale-95 transition-transform duration-300"
+		>
+			<!-- Close Button (Top Right) -->
+			<button
+				type="button"
+				id="closeCommunityModalBtn"
+				class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#25D366]"
+				aria-label="Close dialog"
+			>
+				<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+				</svg>
+			</button>
+
+			<!-- Badge -->
+			<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#25D366]/15 border border-[#25D366]/40 text-[#25D366] text-[10px] font-mono font-bold tracking-widest uppercase mb-2.5">
+				<span class="w-2 h-2 rounded-full bg-[#25D366] animate-pulse"></span>
+				OFFICIAL COMMUNITY
+			</div>
+
+			<!-- Heading -->
+			<h3 id="community-modal-title" class="text-xl sm:text-2xl font-bold font-wide text-white tracking-tight uppercase">
+				Tulas ACM Members
+			</h3>
+			<p class="mt-1 text-xs font-mono text-cream/70 max-w-xs leading-relaxed">
+				Official WhatsApp Community Channel
+			</p>
+
+			<!-- QR Code Card -->
+			<div class="mt-4 p-2.5 rounded-2xl bg-white shadow-[0_12px_35px_rgba(0,0,0,0.6)] border border-white/30 flex items-center justify-center max-w-[240px] sm:max-w-[260px] w-full overflow-hidden">
+				<img
+					src="/media/images/whatsapp_qr.png"
+					alt="TULAS ACM MEMBERS WhatsApp Group QR Code"
+					class="w-full h-auto object-contain rounded-xl select-none"
+					loading="eager"
+				/>
+			</div>
+
+			<p class="mt-2.5 text-[11px] font-mono text-cream/60">
+				Scan with WhatsApp Camera OR click below to join:
+			</p>
+
+			<!-- Join Redirect Button -->
+			<div class="mt-4 flex flex-col sm:flex-row items-center gap-3 w-full">
+				<a
+					href="https://chat.whatsapp.com/LOMvSlh1AbY6QZ59NMgVKG?s=qt&p=a&mlu=4"
+					target="_blank"
+					rel="noopener noreferrer"
+					id="join-whatsapp-direct-btn"
+					class="w-full py-3 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-black text-sm font-mono font-extrabold uppercase tracking-widest transition-all duration-200 shadow-[0_0_25px_rgba(37,211,102,0.4)] hover:shadow-[0_0_35px_rgba(37,211,102,0.6)] flex items-center justify-center gap-2 cursor-pointer"
+				>
+					<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.316 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.818-.981z"/></svg>
+					Join WhatsApp Group →
+				</a>
 			</div>
 		</div>
 	</div>
@@ -479,12 +572,67 @@
 		});
 	}
 
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', initLaptopCanvas);
-	} else {
+	// Setup WhatsApp Community Modal
+	function setupCommunityModal() {
+		const modal = document.getElementById('communityModal');
+		const card = modal?.querySelector('.community-modal-card');
+		const closeBtn = document.getElementById('closeCommunityModalBtn');
+		const showBtnMobile = document.getElementById('show-community-btn-mobile');
+		const showBtnDesktop = document.getElementById('show-community-btn-desktop');
+
+		if (!modal) return;
+
+		const openModal = (e?: Event) => {
+			if (e) {
+				e.preventDefault();
+				e.stopPropagation();
+			}
+			modal.classList.remove('opacity-0', 'pointer-events-none');
+			modal.classList.add('opacity-100');
+			if (card) {
+				card.classList.remove('scale-95');
+				card.classList.add('scale-100');
+			}
+		};
+
+		const closeModal = () => {
+			modal.classList.add('opacity-0', 'pointer-events-none');
+			modal.classList.remove('opacity-100');
+			if (card) {
+				card.classList.add('scale-95');
+				card.classList.remove('scale-100');
+			}
+		};
+
+		showBtnMobile?.addEventListener('click', openModal);
+		showBtnDesktop?.addEventListener('click', openModal);
+		closeBtn?.addEventListener('click', closeModal);
+
+		modal.addEventListener('click', (e) => {
+			if (e.target === modal) {
+				closeModal();
+			}
+		});
+
+		window.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && !modal.classList.contains('opacity-0')) {
+				closeModal();
+			}
+		});
+	}
+
+	function initAll() {
+		setupCommunityModal();
 		initLaptopCanvas();
 	}
-	window.addEventListener('load', initLaptopCanvas);
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initAll);
+	} else {
+		initAll();
+	}
+	window.addEventListener('load', initAll);
+	document.addEventListener('astro:page-load', initAll);
 
 	// Desktop Form Handling
 	const desktopForm = document.getElementById('contact-form-desktop') as HTMLFormElement | null;

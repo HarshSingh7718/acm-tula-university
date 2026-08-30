@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="acmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066B3" />
+      <stop offset="35%" stop-color="#008FD5" />
+      <stop offset="70%" stop-color="#00AEEF" />
+      <stop offset="100%" stop-color="#00C8F8" />
+    </linearGradient>
+    <filter id="tabShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Solid Diamond Base -->
+  <g filter="url(#tabShadow)">
+    <polygon points="256,28 484,256 256,484 28,256" fill="url(#acmGrad)" />
+  </g>
+
+  <!-- White Circle Stroke -->
+  <circle cx="256" cy="256" r="142" fill="none" stroke="#FFFFFF" stroke-width="20" />
+
+  <!-- ACM Center Text -->
+  <text x="256" y="246" text-anchor="middle" dominant-baseline="central" fill="#FFFFFF" font-family="system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-weight="900" font-size="120" letter-spacing="-0.04em" transform="translate(0, -12)">acm</text>
+
+  <!-- Student Chapter Subtitle Text -->
+  <text x="256" y="312" text-anchor="middle" dominant-baseline="central" fill="#FFFFFF" font-family="system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-weight="700" font-size="28" letter-spacing="0.02em">student chapter</text>
+</svg>
