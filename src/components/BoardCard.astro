@@ -53,26 +53,16 @@ const passType = isFeatured || position.toLowerCase().includes('faculty') ? 'FAC
 			<!-- CARD HEADER -->
 			<div class="w-full flex items-center justify-between pb-2 border-b border-[#E2E8F0]">
 				<!-- Logo & University Branding -->
-				<div class="flex items-center gap-2.5">
-					<div class="w-8 h-8 rounded-full bg-[#0080E6] flex items-center justify-center p-1.5 shadow-sm shrink-0">
-						<img
-							src="/media/images/acm_tulas_mark.svg"
-							alt="ACM Mark"
-							class="w-full h-full object-contain brightness-0 invert"
-							width="20"
-							height="20"
-							loading="lazy"
-							decoding="async"
-						/>
-					</div>
-					<div class="flex flex-col text-left">
-						<span class="font-serif font-black text-xs sm:text-[13px] text-[#0A2540] tracking-wide leading-tight">
-							TULAS UNIVERSITY
-						</span>
-						<span class="text-[9px] sm:text-[10px] font-sans font-bold text-[#0099FF] leading-tight">
-							Dehradun · ACM Student Chapter
-						</span>
-					</div>
+				<div class="flex items-center">
+					<img
+						src="/media/images/boardCardLogo.png"
+						alt="ACM Tulas University"
+						class="h-8 sm:h-9 w-auto max-w-[170px] sm:max-w-[195px] object-contain object-left block"
+						width="180"
+						height="40"
+						loading="lazy"
+						decoding="async"
+					/>
 				</div>
 
 				<!-- Header Role Pill -->
@@ -81,15 +71,7 @@ const passType = isFeatured || position.toLowerCase().includes('faculty') ? 'FAC
 				</div>
 			</div>
 
-			<!-- BLUE RIBBON BANNER -->
-			<div class="rounded-xl bg-gradient-to-r from-[#0099FF] via-[#0088EE] to-[#00A3FF] text-white px-3.5 py-1.5 sm:py-2 flex items-center justify-between shadow-[0_3px_10px_rgba(0,153,255,0.3)]">
-				<span class="font-black text-xs sm:text-sm tracking-wide font-sans uppercase">
-					ACM TULAS
-				</span>
-				<span class="text-[8px] sm:text-[9px] font-mono font-extrabold tracking-widest text-white/95 uppercase">
-					{passType}
-				</span>
-			</div>
+			
 
 			<!-- TWO-COLUMN MAIN BODY -->
 			<div class="grid grid-cols-[100px_1fr] sm:grid-cols-[115px_1fr] gap-3 items-stretch pt-0.5">
@@ -157,7 +139,7 @@ const passType = isFeatured || position.toLowerCase().includes('faculty') ? 'FAC
 							{yearBranch || position}
 						</div>
 						<div class="text-[8px] font-mono font-bold text-[#0099FF] uppercase tracking-wider mt-0.5">
-							LEVEL
+							DEPARTMENT
 						</div>
 					</div>
 				</div>
