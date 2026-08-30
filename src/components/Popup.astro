@@ -22,10 +22,16 @@
             </svg>
         </button>
 
-        <!-- Centered Tulas Institute + ACM Combined Logo (Yellow Strip Removed) -->
-        <div class="w-full max-w-lg mx-auto mb-8 award-banner-shadow transform hover:scale-[1.02] transition-transform duration-300 flex items-center justify-center">
-            <img src="/media/images/acm_tulas_logo.svg" alt="ACM Tulas Logo" class="w-full h-auto max-h-40 object-contain" />
-        </div>
+        <!-- Centered Tulas Institute + ACM Combined Logo (Clickable Link) -->
+        <a 
+            href="https://www.tulashackathon.com/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="block w-full max-w-lg mx-auto mb-8 award-banner-shadow transform hover:scale-[1.03] transition-all duration-300 flex items-center justify-center cursor-pointer"
+            aria-label="Visit Tulas Hackathon"
+        >
+            <img src="/media/images/acm_tulas_logo.svg" alt="ACM Tulas Logo" class="w-full h-auto max-h-40 object-contain hover:brightness-110 transition-all duration-300" />
+        </a>
 
         <!-- Announcement Header Text -->
         <h2 class="title-font text-white text-xl sm:text-2xl md:text-3xl font-bold tracking-wider uppercase mb-4 max-w-2xl leading-snug">
@@ -33,9 +39,22 @@
         </h2>
 
         <!-- Announcement Subtitle Copy -->
-        <p class="text-gray-300 font-mono text-xs sm:text-sm md:text-base max-w-xl leading-relaxed">
+        <p class="text-gray-300 font-mono text-xs sm:text-sm md:text-base max-w-xl leading-relaxed mb-6">
             Join us for the ultimate hackathon experience. Innovate, build, and shape the future!
         </p>
+
+        <!-- Visit Button -->
+        <a 
+            href="https://www.tulashackathon.com/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="visit-btn inline-flex items-center gap-2.5 px-8 py-3 rounded-full text-[#020308] font-mono text-sm sm:text-base font-bold tracking-wider uppercase transition-all duration-300 cursor-pointer group"
+        >
+            <span>Visit</span>
+            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+        </a>
 
     </div>
 </div>
@@ -44,6 +63,21 @@
     .title-font {
         font-family: 'IBM Plex Mono', sans-serif;
         letter-spacing: 0.05em;
+    }
+
+    .visit-btn {
+        background: linear-gradient(135deg, #00f0ff 0%, #0070f3 100%);
+        box-shadow: 0 4px 20px rgba(0, 240, 255, 0.35);
+    }
+
+    .visit-btn:hover {
+        background: linear-gradient(135deg, #33f3ff 0%, #1e85f7 100%);
+        box-shadow: 0 6px 28px rgba(0, 240, 255, 0.55);
+        transform: translateY(-2px) scale(1.03);
+    }
+
+    .visit-btn:active {
+        transform: translateY(0) scale(0.98);
     }
 
     /* Glass / Glow effects */
