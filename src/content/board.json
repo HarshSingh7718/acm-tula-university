@@ -72,14 +72,6 @@
     "initials": "NR",
     "photo": "/media/team/ca6275db-2951-4c68-868d-59687b8cea1f.webp"
   },
-    {
-    "id": "Ritish Dhar",
-    "fullName": "Ritish Dhar",
-    "position": "Membership chair",
-    "yearBranch": "3rd Year · B.Tech CSE",
-    "initials": "RD",
-    "photo": "/media/team/ritish.webp"
-  },
   {
     "id": "prince-kumar",
     "fullName": "Prince Kumar",
@@ -111,6 +103,14 @@
     "yearBranch": "3rd Year · B.Tech CSE",
     "initials": "AM",
     "photo": "/media/team/Adarsh_maruya.webp"
+  },
+    {
+    "id": "Ritish Dhar",
+    "fullName": "Ritish Dhar",
+    "position": "Membership chair",
+    "yearBranch": "3rd Year · B.Tech CSE",
+    "initials": "RD",
+    "photo": "/media/team/ritish.webp"
   },
   {
     "id": "rishanshu",
