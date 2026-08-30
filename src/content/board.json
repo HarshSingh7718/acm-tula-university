@@ -47,14 +47,7 @@
     "initials": "PB",
     "photo": "/media/team/Prashant_Krishan_Bharti.webp"
   },
-   {
-    "id": "Ritish Dhar",
-    "fullName": "Ritish Dhar",
-    "position": "Membership chair",
-    "yearBranch": "3rd Year · B.Tech CSE",
-    "initials": "RD",
-    "photo": "/media/team/ritish.webp"
-  },
+ 
   {
     "id": "prakriti",
     "fullName": "Prakriti",
@@ -78,6 +71,14 @@
     "yearBranch": "3rd Year · B.Tech AI/ML",
     "initials": "NR",
     "photo": "/media/team/ca6275db-2951-4c68-868d-59687b8cea1f.webp"
+  },
+    {
+    "id": "Ritish Dhar",
+    "fullName": "Ritish Dhar",
+    "position": "Membership chair",
+    "yearBranch": "3rd Year · B.Tech CSE",
+    "initials": "RD",
+    "photo": "/media/team/ritish.webp"
   },
   {
     "id": "prince-kumar",
