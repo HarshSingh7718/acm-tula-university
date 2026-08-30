@@ -577,8 +577,6 @@
 		const modal = document.getElementById('communityModal');
 		const card = modal?.querySelector('.community-modal-card');
 		const closeBtn = document.getElementById('closeCommunityModalBtn');
-		const showBtnMobile = document.getElementById('show-community-btn-mobile');
-		const showBtnDesktop = document.getElementById('show-community-btn-desktop');
 
 		if (!modal) return;
 
@@ -604,8 +602,14 @@
 			}
 		};
 
-		showBtnMobile?.addEventListener('click', openModal);
-		showBtnDesktop?.addEventListener('click', openModal);
+		const triggers = document.querySelectorAll(
+			'.trigger-community-modal, #show-community-btn-mobile, #show-community-btn-desktop, #show-community-btn-footer'
+		);
+		triggers.forEach((btn) => {
+			btn.removeEventListener('click', openModal);
+			btn.addEventListener('click', openModal);
+		});
+
 		closeBtn?.addEventListener('click', closeModal);
 
 		modal.addEventListener('click', (e) => {

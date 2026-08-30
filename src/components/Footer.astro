@@ -54,7 +54,7 @@ const currentYear = new Date().getFullYear();
 				<!-- Subtle Divider -->
 				<div class="hidden sm:block w-[1px] h-4 bg-cyan/20" aria-hidden="true"></div>
 
-				<!-- Social Media Links -->
+				<!-- Social Media Links & WhatsApp Community Trigger -->
 				<div class="flex items-center gap-3">
 					<a
 						href="https://www.instagram.com/acmtulas/"
@@ -78,6 +78,16 @@ const currentYear = new Date().getFullYear();
 							<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
 						</svg>
 					</a>
+					<!-- WhatsApp Community Channel Button (Opens Modal with QR & Link) -->
+					<button
+						type="button"
+						id="show-community-btn-footer"
+						class="trigger-community-modal inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#25D366]/50 bg-[#25D366]/10 hover:bg-[#25D366] text-[#25D366] hover:text-black text-[11px] font-mono font-bold tracking-wider transition-all duration-200 shadow-[0_0_12px_rgba(37,211,102,0.2)] hover:shadow-[0_0_20px_rgba(37,211,102,0.45)] cursor-pointer"
+						aria-label="Open ACM Tulas WhatsApp Community Channel Modal"
+					>
+						<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.066-1.127-.074-.27-.087-.62-.208-1.077-.406-1.927-.837-3.18-2.772-3.277-2.902-.097-.129-.779-1.036-.779-1.975 0-.939.492-1.4.667-1.595.176-.195.385-.244.513-.244.129 0 .257.002.368.007.118.005.275-.045.431.328.163.387.555 1.353.604 1.452.049.099.082.215.016.345-.065.131-.098.213-.195.328-.098.115-.207.257-.295.345-.098.098-.201.205-.086.402.115.197.511.843 1.096 1.364.753.671 1.388.878 1.585.976.197.098.312.082.427-.049.115-.131.492-.573.623-.77.131-.197.262-.164.443-.098.18.066 1.147.541 1.344.639.197.098.328.148.377.23.049.082.049.476-.095.881z"/></svg>
+						<span>Community</span>
+					</button>
 				</div>
 			</div>
 
