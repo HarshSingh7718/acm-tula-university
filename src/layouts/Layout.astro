@@ -10,9 +10,9 @@ interface Props {
 	description?: string;
 }
 
-const defaultTitle = "ACM Tulas | Student Chapter — Tula's University";
+const defaultTitle = "ACM Tulas | Student Chapter — Tulas University";
 const defaultDescription =
-	"Official ACM Student Chapter of Tula's University, Dehradun. Empowering students in computing, software engineering, technical excellence, and innovation.";
+	"Official ACM Student Chapter of Tulas University, Dehradun. Empowering students in computing, software engineering, technical excellence, and innovation.";
 
 const { title = defaultTitle, description = defaultDescription } = Astro.props;
 const siteUrl = Astro.site || 'https://acmtulas.org';
@@ -41,7 +41,7 @@ const ogImageURL = new URL('/media/images/og-image.jpg', siteUrl);
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={ogImageURL} />
-		<meta property="og:site_name" content="ACM Tula's Student Chapter" />
+		<meta property="og:site_name" content="ACM Tulas Student Chapter" />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />

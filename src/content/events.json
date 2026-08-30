@@ -14,7 +14,7 @@
     "title": "Sprint-X Mini Hackathon",
     "category": "Student Competitions",
     "date": "MAY 15, 2026",
-    "location": "Tula's Incubation Center",
+    "location": "Tulas Incubation Center",
     "description": "High-intensity rapid engineering sprint challenging student teams to prototype functional applications, smart tools, and algorithmic workflows in a focused timeframe.",
     "tag": "MINI HACKATHON",
     "image": "/media/events/sprint-x-hackathon.svg"
@@ -74,7 +74,7 @@
     "title": "SIH Internal Hackathon 2025",
     "category": "Student Competitions",
     "date": "OCT 13, 2025",
-    "location": "Innovation Hub, Tula's",
+    "location": "Innovation Hub, Tulas",
     "description": "University-wide preliminary qualifier for Smart India Hackathon 2025, evaluating problem statements, architectural viability, and prototype readiness.",
     "tag": "INTERNAL HACKATHON",
     "image": "/media/events/sih.svg"
@@ -125,7 +125,7 @@
     "category": "Lecture/Tech Talk",
     "date": "AUG 29, 2025",
     "location": "Auditorium & Virtual Stream",
-    "description": "Milestone inaugural event marking the formal establishment of ACM Tula's Student Chapter paired with an intensive ethical hacking and threat defense masterclass.",
+    "description": "Milestone inaugural event marking the formal establishment of ACM Tulas Student Chapter paired with an intensive ethical hacking and threat defense masterclass.",
     "tag": "INAUGURATION & TALK",
     "image": "/media/events/cyber-security-awareness.svg"
   }
