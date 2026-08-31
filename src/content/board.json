@@ -15,6 +15,14 @@
     "initials": "SP",
     "photo": "/media/team/shivam_pandey.webp"
   },
+  {
+    "id": "gaurav-shukla",
+    "fullName": "Gaurav Shukla",
+    "position": "Advisor",
+    "yearBranch": "4th Year · B.Tech CSE",
+    "initials": "GS",
+    "photo": "/media/team/gaurav_shukla.webp"
+  },
 
   {
     "id": "chetan-pandey",
@@ -24,14 +32,7 @@
     "initials": "CP",
     "photo": "/media/team/chetan_pandey.webp"
   },
-    {
-    "id": "gaurav-shukla",
-    "fullName": "Gaurav Shukla",
-    "position": "Advisor",
-    "yearBranch": "4th Year · B.Tech CSE",
-    "initials": "GS",
-    "photo": "/media/team/gaurav_shukla.webp"
-  },
+
   {
     "id": "simriti-bisht",
     "fullName": "Simriti Bisht",
@@ -99,22 +100,17 @@
     "initials": "JD",
     "photo": "/media/team/Jasan.webp"
   },
+
   {
-    "id": "adarsh-maurya",
-    "fullName": "Adarsh Maurya",
+    "id": "tabeer",
+    "fullName": "Tabeer Hussain",
     "position": "Media Lead",
     "yearBranch": "3rd Year · B.Tech CSE",
-    "initials": "AM",
-    "photo": "/media/team/Adarsh_maruya.webp"
+    "initials": "TB",
+    "photo": "/media/team/Tabeer_hussain.webp"
   },
-    {
-    "id": "Ritish Dhar",
-    "fullName": "Ritish Dhar",
-    "position": "Membership chair",
-    "yearBranch": "3rd Year · B.Tech CSE",
-    "initials": "RD",
-    "photo": "/media/team/ritish.webp"
-  },
+  
+
   {
     "id": "rishanshu",
     "fullName": "Rishanshu",
@@ -125,16 +121,16 @@
   },
   {
     "id": "keshav",
-    "fullName": "Keshav",
+    "fullName": "Keshav Kumar",
     "position": "PR Member",
-    "yearBranch": "2nd Year · B.Tech Cyber Security",
+    "yearBranch": "3rd Year · B.Tech Cyber Security",
     "initials": "KS",
     "photo": "/media/team/Keshav_Kumar.webp"
   },
   {
     "id": "sonali-kumari",
     "fullName": "Sonali Kumari",
-    "position": "Event Management Member",
+    "position": "Event Crew",
     "yearBranch": "3rd Year · BCA",
     "initials": "SK",
     "photo": "/media/team/sonali.webp"
@@ -155,14 +151,7 @@
     "initials": "HK",
     "photo": "/media/team/harsh.webp"
   },
-  {
-    "id": "aayush-kumar",
-    "fullName": "Aayush Kumar",
-    "position": "Technical Member",
-    "yearBranch": "3rd Year · B.Tech AI/ML",
-    "initials": "AK",
-    "photo": "/media/team/Gemini_Generated_Image_chnwnachnwnachnw.webp"
-  },
+
   {
     "id": "aditya-rawat",
     "fullName": "Aditya Rawat",
@@ -179,14 +168,7 @@
     "initials": "PR",
     "photo": "/media/team/piyush_rawat.webp"
   },
-  {
-    "id": "tabeer",
-    "fullName": "Tabeer",
-    "position": "Social Media Member",
-    "yearBranch": "3rd Year · B.Tech CSE",
-    "initials": "TB",
-    "photo": "/media/team/Tabeer_hussain.webp"
-  },
+
   {
     "id": "sawpnil",
     "fullName": "Sawpnil",
